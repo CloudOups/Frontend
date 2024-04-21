@@ -1,0 +1,111 @@
+<div style="position: absolute; z-index: 1001;">
+<app-navbar ></app-navbar>
+</div>
+ <!-- <app-div-home></app-div-home>  -->
+<!-- <app-abonnementhome></app-abonnementhome> -->
+<!-- <app-stadehome></app-stadehome> -->
+ <!-- <app-sporthome></app-sporthome>  -->
+<!------------------------------------------------------------------------------------>
+
+<ng-container >
+
+<!------------------------------------------------------------------>
+<div class="container text-center">
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" style="z-index: 1000;">      
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- Ajoutez plus d'éléments de navigation ici si nécessaire -->
+          </ul>
+          
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" style="margin-top: 50px; z-index: 1000;">        
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto d-flex justify-content-between w-100">
+          <li class="align-items-center">
+            <form class="form-inline my-2 my-lg-0 d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Recherche">     
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+            </form>
+        </li>
+          <!---------------------->
+          <app-status-panier></app-status-panier>
+          <!---------------------->
+      </ul>
+        
+      </div>
+  </nav>
+    
+
+
+    <h1>Product card</h1>
+      <span>Create With <i class="zmdi zmdi-favorite red"></i>  By: <strong>Deni Kurniawan</strong> From: <i><a href="http://blog.wingerdstok.com" class="wsk-btn">Wingerdstok</a></i></span>
+    </div>
+    
+    
+    <div class="shell">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-3" *ngFor="let p of produits">
+            <div class="wsk-cp-product">
+              <div class="wsk-cp-img"><img src="https://1.bp.blogspot.com/-b-2SgNUrFHg/WVSvmewWqgI/AAAAAAAAAK0/1K4YCcbYjhokHwV_IgiVJN9mEnQoWunIwCPcBGAYYCw/s1600/fashion-portrait-nicole-6347.jpg" alt="Product" class="img-responsive" /></div>
+              <div class="wsk-cp-text">
+                <div class="category">
+                  
+                  <span><a [routerLink]="['/detailProduit/', p.nomProd]">Details</a></span>
+                </div>
+                <div class="title-product">
+                  <h3>{{p.nomProd}}</h3>
+                </div>
+                <div class="description-prod">
+                  <p>{{p.description}} </p>
+                </div>
+                <div class="card-footer">
+                  <div class="wcf-left"><span class="price">{{p.prix}}</span></div>
+                  <div class="wcf-right"><a (click)="ajouterAuPanier(p)" class="buy-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+           <!---------------------- paggination ------------->
+          
+        
+        <!---------------------- paggination ------------->
+
+        </div>
+        
+
+        <!---------------------- paggination ------------->
+            <div class="footer-pagination">
+              <div class="row">
+                <div class="col-md-9" style="padding-left: 30%;">
+
+                  <ngb-pagination [(page)]="currentPage"
+                                  [pageSize]="pageSize"
+                                 [collectionSize]="totalElements"                                    
+                                  [rotate]="true"
+                                  (pageChange)="listProduits3()">
+                    
+                  </ngb-pagination>
+                </div>
+
+              </div>
+            </div>
+        
+        <!---------------------- paggination ------------->
+
+      </div>
+    </div>
+    
+<!------------------------------------------------------------------>
+
+
+</ng-container>
+
+<!-- <app-footer></app-footer> -->

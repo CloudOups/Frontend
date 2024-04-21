@@ -1,0 +1,16 @@
+
+<div class="">
+    <div class="container-fluid">
+        <img src="{{produit.image}}" alt="">
+        <h3>{{ produit.nomProd}}</h3>
+        <div>{{ produit.prix}}</div>
+        <button (click)="addToPanier()" class="btn btn-success btn-sm"> ajouter au panier</button>
+    
+    
+        <hr>
+        <h4>Description</h4>
+        <p>{{ produit.description }}</p>
+        <button class="btn btn-primary"> retour aux produits</button>
+    </div>
+
+</div>
