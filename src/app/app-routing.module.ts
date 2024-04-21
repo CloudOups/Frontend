@@ -50,14 +50,18 @@ const routes: Routes = [
   
 
     //---------------------------------------------paths michel-------------------------------------
+<<<<<<< Updated upstream
 
 
     { path : 'produit', component: ListProduitComponent},
     { path : 'detailProduit/:id', component: DetailsProduitComponent},
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 
-
+    { path : 'produit', component: ListProduitComponent},
+    { path : 'detailProduit/:id', component: DetailsProduitComponent},
 
 
 

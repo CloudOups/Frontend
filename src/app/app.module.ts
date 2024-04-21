@@ -37,6 +37,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StatusPanierComponent } from './produit/status-panier/status-panier.component';
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 @NgModule({
@@ -86,6 +89,9 @@ import { DetailsProduitComponent } from './produit/details-produit/details-produ
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   ],
   providers: [],
