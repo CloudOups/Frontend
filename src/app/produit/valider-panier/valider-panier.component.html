@@ -1,0 +1,155 @@
+<p>valider-panier works!</p>
+<div class="container">
+    <div>
+        <div class="container-fluid">
+
+            <form [formGroup]="validerPanierFormGroup" (ngSubmit)="onSubmit()">
+            
+                <div formGroupName="client" class="form-area">
+                    <h3>Client</h3>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label >Nom</label>
+                        </div>
+                        <div class="input-space">
+                            <input type="text" formControlName="nom" class="form-control" placeholder="Nom">
+                            <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="nom.errors['required']">
+                                    Nom est obligatoire
+                                </div>
+                                <div *ngIf="nom.errors['minlength']">
+                                    il faut minimun 3 caractères
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label >Prenom</label>
+                        </div>
+                        <div class="input-space">
+                            <input type="text" formControlName="prenom" class="form-control" placeholder="prenom">
+                            <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="prenom.errors['required']">
+                                    Prenom est obligatoire
+                                </div>
+                                <div *ngIf="prenom.errors['minlength']">
+                                    il faut minimun 3 caractères
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label >Email</label>
+                        </div>
+                        <div class="input-space">
+                            <input type="email" formControlName="email" class="form-control" placeholder="email">
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="email.errors['required']">
+                                    Prenom est obligatoire
+                                </div>
+                                <div *ngIf="email.errors['pattern']">
+                                    respectez le format aaa@xyz.bbb
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label >Adresse Livraison</label>
+                        </div>
+                        <div class="input-space">
+                            <input type="text" formControlName="adresse" class="form-control" placeholder="adresse">
+                            <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="prenom.errors['required']">
+                                    l'adresse est obligatoire
+                                </div>
+                                <div *ngIf="prenom.errors['minlength']">
+                                    il faut minimun 4 caractères
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-------- info carte de crédit -->
+                        <div formGroupName="carteDeCredit" class="form-area">
+                            <h3>Mode de Paiement</h3>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label >Type de Carte</label>
+                                </div>
+                                <div class="input-space">
+                                    <select formControlName="typeCarte">
+                                        <option value="visa">Visa</option>
+                                        <option value="mastercard">Mastercard</option>
+                                    </select>
+
+                                    <div *ngIf="typeCarte.invalid && (typeCarte.dirty || typeCarte.touched)" class="alert alert-danger mt-1">
+                                        <div *ngIf="typeCarte.errors['required']">
+                                            type carte est obligatoire
+                                        </div>
+
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label >numero de la carte</label>
+                                </div>
+                                <div class="input-space">
+                                    <input type="text" formControlName="numCarte" class="form-control" placeholder="numero carte">
+                                    <div *ngIf="numCarte.invalid && (numCarte.dirty || numCarte.touched)" class="alert alert-danger mt-1">
+                                        <div *ngIf="numCarte.errors['required']">
+                                            numero de carte est obligatoire
+                                        </div>
+                                        <div *ngIf="numCarte.errors['pattern']">
+                                            respectez le format 16 chiffres
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label >code de securité</label>
+                                </div>
+                                <div class="input-space">
+                                    <input type="text" formControlName="codeSecurite" class="form-control" placeholder="codeSecurite">
+                                    <div *ngIf="codeSecurite.invalid && (codeSecurite.dirty || codeSecurite.touched)" class="alert alert-danger mt-1">
+                                        <div *ngIf="codeSecurite.errors['required']">
+                                            code secret de la carte est obligatoire
+                                        </div>
+                                        <div *ngIf="codeSecurite.errors['pattern']">
+                                            respectez le format 4 chiffres
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--------------- Detail Commande --->
+                        <div class="form-are">
+                            <h3>Recap de la Commande </h3>
+                            <p>Quatntite Total : {{ quantiteTotal }}</p>
+                            <p>Prix Total : {{ prixTotal | currency:'TND':'symbol':'1.3-3' }}</p>
+                        </div>
+
+                <!------- bouton de validation -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info"> Valider</button>
+                </div>
+            </div>   
+        </form>
+        
+    </div>
+</div>

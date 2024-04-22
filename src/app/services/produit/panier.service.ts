@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ElementPanier } from 'src/app/Models/produit/panier.model';
 
 @Injectable({
@@ -9,8 +9,8 @@ export class PanierService {
 
 
   elementPaniers: ElementPanier[] = [];
-  totalprix: Subject<number> = new Subject<number>();
-  totalquantite: Subject<number> = new Subject<number>();
+  totalprix: Subject<number> = new BehaviorSubject<number>(0);
+  totalquantite: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor() { }
 
@@ -85,7 +85,7 @@ export class PanierService {
 
   supprimerProduit(produitPanier: ElementPanier) {
     //on recupere l'index de l'element a supprimer
-    const index = this.elementPaniers.findIndex(elt => elt.id === produitPanier.id);
+    const index = this.elementPaniers.findIndex(elt => elt.id == produitPanier.id);
     
     //on verifie si l'element existe
     if(index > -1){

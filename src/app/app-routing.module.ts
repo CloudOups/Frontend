@@ -11,6 +11,7 @@ import { BlogDetailsComponent } from './Blog/blog-details/blog-details.component
 import { ListProduitComponent } from './produit/list-produit/list-produit.component';
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
 import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
+import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
 // import {  } from '';
 // import {  } from '';
 // import {  } from '';
@@ -48,9 +49,7 @@ const routes: Routes = [
     { path : 'produit', component: ListProduitComponent},
     { path : 'detailProduit/:id', component: DetailsProduitComponent},
     { path : 'panierDetail', component: PanierDetailComponent},
-
-
-
+    { path : 'validerPanier', component: ValiderPanierComponent},
 
 
 

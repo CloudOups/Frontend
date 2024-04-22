@@ -41,6 +41,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StatusPanierComponent } from './produit/status-panier/status-panier.component';
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
 import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
+import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { PanierDetailComponent } from './produit/panier-detail/panier-detail.com
     ListProduitComponent,
     StatusPanierComponent,
     DetailsProduitComponent,
-    PanierDetailComponent],
+    PanierDetailComponent,
+    ValiderPanierComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
