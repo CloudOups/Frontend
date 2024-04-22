@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ElementPanier } from 'src/app/Models/produit/panier.model';
 import { Produit } from 'src/app/Models/produit/produit';
 import { PanierService } from 'src/app/services/produit/panier.service';
-import { PannierService } from 'src/app/services/produit/pannier.service';
 import { ProduitService } from 'src/app/services/produit/produit.service';
 
 @Component({

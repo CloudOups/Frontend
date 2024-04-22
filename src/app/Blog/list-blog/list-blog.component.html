@@ -1,0 +1,122 @@
+<app-navbar>   </app-navbar>
+<div class="main-wrapper blog">
+<div class="breadcrumb breadcrumb-list mb-0">
+    
+    <div class="container">
+        <h1 class="text-white"><br><br><br></h1>
+    </div>
+</div>
+<div class="content blog-grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+
+                <div *ngFor="let Publication of filteredPublications"  class="featured-venues-item">
+                    <div class="listing-item">
+                        <div class="listing-img">
+                            <a >
+                                <!-- link details lehne -->
+                                <img src="assets/img/blog/blog-01.jpg" class="img-fluid" alt="Venue">
+                            </a>
+                            <div class="fav-item-venues news-sports">
+                                <span class="tag tag-blue">Read more</span>
+                                <div class="list-reviews coche-star">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="feather-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-content news-content">
+                            <div class="listing-venue-owner">
+                                <div class="navigation">
+                                    <a href="javascript:void(0)"><img src="assets/img/profiles/avatar-01.jpg"
+                                            alt="User">Orlando Waters</a>
+                                    <span><i class="feather-calendar"></i>15 May 2023</span>
+                                </div>
+                            </div>
+                            <h3 class="listing-title">
+                                <a >{{Publication.Sujet}}</a>
+                                  <!-- link details lehne -->
+                            </h3>
+                            <p>{{Publication.dateCreation}}</p>
+                            <div class="listing-button read-new">
+                                <span><img src="assets/img/icons/clock.svg" alt="Icon">10 Min To Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div  class="featured-venues-item">
+                    <div class="listing-item">
+                        <div class="listing-img">
+                            <a >
+                               
+                                <img src="assets/img/blog/blog-01.jpg" class="img-fluid" alt="Venue">
+                            </a>
+                            <div class="fav-item-venues news-sports">
+                                <span class="tag tag-blue">Read more</span>
+                                <div class="list-reviews coche-star">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="feather-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-content news-content">
+                            <div class="listing-venue-owner">
+                                <div class="navigation">
+                                    <a href="javascript:void(0)"><img src="assets/img/profiles/avatar-01.jpg"
+                                            alt="User">Orlando Waters</a>
+                                    <span><i class="feather-calendar"></i>15 May 2023</span>
+                                </div>
+                            </div>
+                            <h3 class="listing-title">
+                                <a ></a>
+                            </h3>
+                            <p></p>
+                            <div class="listing-button read-new">
+                                <span><img src="assets/img/icons/clock.svg" alt="Icon">10 Min To Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 -->
+
+
+
+
+            </div>
+        </div>
+
+        <div class="blog-pagination">
+            <nav>
+                <ul class="pagination justify-content-center pagination-center">
+                    <li class="page-item previtem">
+                        <a class="page-link" href="javascript:void(0);"><i class="feather-chevrons-left"></i></a>
+                    </li>
+                    <li class="page-item previtem">
+                        <a class="page-link" href="javascript:void(0);"><i class="feather-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link active" href="javascript:void(0);">1</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="javascript:void(0);">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0);">3</a>
+                    </li>
+                    <li class="page-item nextlink">
+                        <a class="page-link" href="javascript:void(0);"> <i class="feather-chevron-right"></i></a>
+                    </li>
+                    <li class="page-item nextlink">
+                        <a class="page-link" href="javascript:void(0);"> <i class="feather-chevrons-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</div>
+</div>

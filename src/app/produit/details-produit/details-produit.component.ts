@@ -40,8 +40,9 @@ export class DetailsProduitComponent implements OnInit {
 
 addToPanier() {
   console.log(`Adding to panier: ${this.produit.nomProd}, ${this.produit.prix}`);
-
+  //on utilise  l'id du produit pour le recuperer et créer un objet de type Element panier
   const elementPanier = new ElementPanier(this.produit);
+  //on ajoute l'elementPanier dans le panier
   this.panierService.addToPanier(elementPanier);
 }
 }

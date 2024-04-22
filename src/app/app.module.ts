@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
+import { BlogServiceService } from './Blog/blog-service.service';
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { DivHomeComponent } from './div-home/div-home.component';
 import { SporthomeComponent } from './sporthome/sporthome.component';
 import { StadehomeComponent } from './stadehome/stadehome.component';
 import { AbonnementhomeComponent } from './abonnementhome/abonnementhome.component';
-import { BlogComponent } from './blog/blog.component';
-import { BlogdetailsComponent } from './blogdetails/blogdetails.component';
-import { NavbarconnectedComponent } from './navbarconnected/navbarconnected.component';
+import { BlogDetailsComponent } from './Blog/blog-details/blog-details.component';
+import { NavbarconnectedComponent } from './shared/navbarconnected/navbarconnected.component';
 import { LoginComponent } from './login/login.component';
-<<<<<<< Updated upstream
-import { CommentsComponent } from './comments/comments.component';
-import { HomeComponent } from './home/home.component';
-=======
 import { AddCommentaireComponent } from './Commentaire/add-commentaire/add-commentaire.component';
 import { HomeComponent } from './shared/home/home.component';
 import { UpdateBlogComponent } from './Blog/update-blog/update-blog.component';
@@ -37,10 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StatusPanierComponent } from './produit/status-panier/status-panier.component';
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
 
 @NgModule({
   declarations: [
@@ -51,18 +51,9 @@ import { DetailsProduitComponent } from './produit/details-produit/details-produ
     SporthomeComponent,
     StadehomeComponent,
     AbonnementhomeComponent,
-    BlogComponent,
-    BlogdetailsComponent,
+    BlogDetailsComponent,
     NavbarconnectedComponent,
     LoginComponent,
-<<<<<<< Updated upstream
-    CommentsComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-=======
     AddCommentaireComponent,
     HomeComponent,
     UpdateBlogComponent,
@@ -80,7 +71,8 @@ import { DetailsProduitComponent } from './produit/details-produit/details-produ
     ListBlogComponent,
     ListProduitComponent,
     StatusPanierComponent,
-    DetailsProduitComponent],
+    DetailsProduitComponent,
+    PanierDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -89,12 +81,8 @@ import { DetailsProduitComponent } from './produit/details-produit/details-produ
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   ],
-  providers: [],
+  providers: [BlogServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

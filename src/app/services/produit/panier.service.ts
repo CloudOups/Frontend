@@ -7,6 +7,7 @@ import { ElementPanier } from 'src/app/Models/produit/panier.model';
 })
 export class PanierService {
 
+
   elementPaniers: ElementPanier[] = [];
   totalprix: Subject<number> = new Subject<number>();
   totalquantite: Subject<number> = new Subject<number>();
@@ -34,11 +35,11 @@ export class PanierService {
       this.elementPaniers.push(panierElt);
     }
     //on met a jour le prix total et la quantite total
-    this.fusuionnerPanierTotal();
+    this.calculerTotalPanier();
 
   }
 
-  fusuionnerPanierTotal() {
+  calculerTotalPanier() {
     let prixTotal = 0;
     let quantiteTotal = 0;
     
@@ -66,4 +67,33 @@ export class PanierService {
     console.log('Prix Total: ' + prixTotal + ' Quantite Total: ' + quantiteTotal);
     console.log('----------------------'); 
   } 
+
+
+  decrementQuantite(produitPanier: ElementPanier) {
+    
+    //on decremente la quantite
+      produitPanier.quantite--;
+      //on verifie si la quantite est inferieur a 0
+      if(produitPanier.quantite == 0){
+        //on supprime le produit du panier
+        this.supprimerProduit(produitPanier);
+      }else{
+        //on recalcule le prix total et la quantite total
+        this.calculerTotalPanier();
+      }
+  }
+
+  supprimerProduit(produitPanier: ElementPanier) {
+    //on recupere l'index de l'element a supprimer
+    const index = this.elementPaniers.findIndex(elt => elt.id === produitPanier.id);
+    
+    //on verifie si l'element existe
+    if(index > -1){
+      //on supprime l'element du panier
+      this.elementPaniers.splice(index, 1);
+      //on recalcule le prix total et la quantite total
+      this.calculerTotalPanier();
+    }
+  }
+
 }
