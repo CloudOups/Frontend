@@ -6,7 +6,7 @@ export class Publication {
     contenu?: string;
     dateCreation?: Date;
     photo?: string;
-    user?: User;
+    user?: any;
     status?: boolean;
 
 

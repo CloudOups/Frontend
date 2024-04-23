@@ -18,4 +18,17 @@ export class AuthServiceService {
   logout(): Observable<any> {
     return this.http.post(BASE_URL + 'api/v1/auth/logout', null);
   }
+
+  getDecodedJwtData(): any {
+    const jwt = localStorage.getItem('jwt');
+
+    if (jwt) {
+      const jwtData = jwt.split('.')[1];
+      const decodedJwtJsonData = window.atob(jwtData);
+      return JSON.parse(decodedJwtJsonData);
+    }
+
+    return null;
+  }
+
 }

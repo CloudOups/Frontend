@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Publication } from '../Models/Blog/publication';
 import { Comment } from '../Models/Comment/comment';
+import { AuthServiceService } from '../services/auth-service.service';
 
 
 
@@ -15,7 +16,7 @@ export class BlogServiceService {
 
   
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private authService: AuthServiceService) { }
   private getHeaders(): HttpHeaders {
     const jwt = localStorage.getItem('jwt');
 
