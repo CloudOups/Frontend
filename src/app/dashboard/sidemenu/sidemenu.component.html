@@ -206,10 +206,10 @@
 							<a class="nav-link ">
 								<div class="d-flex user-box align-items-center">
 									<div class="user-info">
-										<p class="user-name mb-0">Samir</p>
+										<p class="user-name mb-0">{{ decodedJwtData.sub }}</p>
 										<p class="designattion mb-0">Available</p>
 									</div>
-									<img src="../images/avatars/avatar-1.png" class="user-img" alt="user avatar">
+									<button type="button" class="btn btn-secondary" (click)="logout()" routerLink="/login">logout</button>
 								</div>
 							</a>
 					

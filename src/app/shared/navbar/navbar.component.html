@@ -126,9 +126,11 @@
               <li><a href="coming-soon.html">Coming Soon</a></li>
             </ul>
           </li>
-          <li class="has-submenu">
+        
+          <li class="has-submenu" *ngIf="userConnected">
             <a routerLink="/listblog">Blog</a>
-          </li>
+        </li>
+     
           <li><a href="contact-us.html">Contact Us</a></li>
           <li class="login-link">
             <a href="register.html">Sign Up</a>
@@ -157,13 +159,12 @@
             </div>
           </ng-template>
         </li>
-        <li class="nav-item">
-                        <!-- <button (click)="logout()" routerLink="/login">Logout</button> -->
-
-          <a class="nav-link btn btn-secondary" href="add-court.html"
-            ><span><i class="feather-check-circle"></i></span>List Your Court</a
-          >
+        <div *ngIf="userConnected;">
+        <li class="nav-item">           
+          <button class="nav-link btn btn-secondary" (click)="logout()" routerLink="/login"
+            ><span><i class="feather-check-circle"></i></span>Logout</button>
         </li>
+      </div>
       </ul>
     </nav>
   </div>
