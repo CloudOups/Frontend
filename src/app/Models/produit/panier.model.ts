@@ -1,14 +1,14 @@
 import { Produit } from "./produit";
 
 export class ElementPanier{
-    id! : string;
+    id! : number;
     name! : string;
     prixUnitaire! : number;
     imageUrl! : string;
     quantite! : number;
 
     constructor(product: Produit) {
-        this.id = product.nomProd.toString(); // Convert to string;
+        this.id = product.numProd;
         this.name = product.nomProd;
         this.imageUrl = product.image;
         this.prixUnitaire = product.prix;

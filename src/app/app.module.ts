@@ -42,6 +42,7 @@ import { StatusPanierComponent } from './produit/status-panier/status-panier.com
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
 import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
 import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
+import { BackListProduitComponent } from './produit/back-list-produit/back-list-produit.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.
     StatusPanierComponent,
     DetailsProduitComponent,
     PanierDetailComponent,
-    ValiderPanierComponent],
+    ValiderPanierComponent,
+    BackListProduitComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

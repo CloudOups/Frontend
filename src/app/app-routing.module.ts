@@ -50,6 +50,7 @@ const routes: Routes = [
     { path : 'detailProduit/:id', component: DetailsProduitComponent},
     { path : 'panierDetail', component: PanierDetailComponent},
     { path : 'validerPanier', component: ValiderPanierComponent},
+    { path : 'backListProduit', component: ValiderPanierComponent},
 
 
 

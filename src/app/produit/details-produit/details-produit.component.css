@@ -236,10 +236,10 @@
     width: 100%;
     border-radius: 2px;
     cursor: pointer;
-    background: #fd7064;
+    background: green;
   }
   .btn:hover {
-    background: #fc796f;
+    background: green;
   }
   /*LINKS*/
   .block-footer {

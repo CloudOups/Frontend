@@ -10,7 +10,7 @@ export class PanierService {
 
   elementPaniers: ElementPanier[] = [];
   totalprix: Subject<number> = new BehaviorSubject<number>(0);
-  totalquantite: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  totalquantite: Subject<number> = new BehaviorSubject<number>(0);
 
   constructor() { }
 
