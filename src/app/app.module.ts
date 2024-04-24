@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 
 
@@ -93,6 +94,8 @@ import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RichTextEditorAllModule
+   
 
   ],
   providers: [BlogServiceService],

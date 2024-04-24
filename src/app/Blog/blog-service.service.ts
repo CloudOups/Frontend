@@ -41,7 +41,6 @@ export class BlogServiceService {
     };
     return this.http.post(`${this.baseUrl}/add`, blogData, options);
   }
-  
   deleteBlog(id: number): Observable<any> {
     const options = {
       headers: this.getHeaders(),
