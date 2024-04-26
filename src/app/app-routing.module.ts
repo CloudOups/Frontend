@@ -12,6 +12,7 @@ import { ListProduitComponent } from './produit/list-produit/list-produit.compon
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
 import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
 import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
+import { CommandeHistoryComponent } from './produit/commande-history/commande-history.component';
 // import {  } from '';
 // import {  } from '';
 // import {  } from '';
@@ -51,6 +52,7 @@ const routes: Routes = [
     { path : 'panierDetail', component: PanierDetailComponent},
     { path : 'validerPanier', component: ValiderPanierComponent},
     { path : 'backListProduit', component: ValiderPanierComponent},
+    { path : 'historiqueCommande', component: CommandeHistoryComponent},
 
 
 

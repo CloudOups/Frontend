@@ -20,6 +20,9 @@ export class ValiderPanierComponent implements OnInit {
   prixTotal: number = 0;
   quantiteTotal: number = 0;
 
+  // on pour acceder aux elements du user connecté
+  storage : Storage = sessionStorage;
+
   constructor(private formBuilder: FormBuilder,
     private panierService: PanierService,
     private achatService: AchatService,
@@ -27,6 +30,10 @@ export class ValiderPanierComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    //on recupere l'email de l'utilisateur a partir du brower storage que on a mis chez le user service
+    const lemail = JSON.parse(this.storage.getItem("userEmail"));
+
 
     this.actualisationPanier();
 
@@ -37,7 +44,7 @@ export class ValiderPanierComponent implements OnInit {
       client: this.formBuilder.group({
         nom: new FormControl('', [Validators.required, Validators.minLength(3)]),
         prenom: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        email: new FormControl('',
+        email: new FormControl(lemail,
           [Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
         adresse: new FormControl('', [Validators.required, Validators.minLength(4)]),

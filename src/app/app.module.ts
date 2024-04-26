@@ -43,6 +43,7 @@ import { DetailsProduitComponent } from './produit/details-produit/details-produ
 import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
 import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
 import { BackListProduitComponent } from './produit/back-list-produit/back-list-produit.component';
+import { CommandeHistoryComponent } from './produit/commande-history/commande-history.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { BackListProduitComponent } from './produit/back-list-produit/back-list-
     DetailsProduitComponent,
     PanierDetailComponent,
     ValiderPanierComponent,
-    BackListProduitComponent],
+    BackListProduitComponent,
+    CommandeHistoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

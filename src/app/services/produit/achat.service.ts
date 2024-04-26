@@ -11,7 +11,7 @@ import { Utilisateur } from 'src/app/Models/produit/utilisateur.model';
 })
 export class AchatService {
 
-  private achatUrl = "http://localhost:8089/pi/panier/passerCommande";
+  private achatUrl = "http://localhost:8089/pi/commande/add";
   constructor(private httpClient : HttpClient) { }
 
   passerCommande(achat : Achat): Observable<any>{

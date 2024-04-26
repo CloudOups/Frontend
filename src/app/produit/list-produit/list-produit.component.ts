@@ -29,6 +29,7 @@ export class ListProduitComponent implements OnInit {
   ngOnInit() {
     //this.listProduits();
     this.listProduits3();
+    this.produitService.getUserEmail();
   }
 
   listProduits() {

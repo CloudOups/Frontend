@@ -1,0 +1,38 @@
+<p>commande-history works!</p>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="commandHistoriqList.length > 0">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="20%"> Numero De Suivi Commande</th>
+                            <th width="10%">Prix Total</th>
+                            <th width="10%">Quantité Total</th>
+                            <th width="10%">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let command of commandHistoriqList">
+                            <td>{{command.numeroSuiviCommande}}</td>
+                            <td>{{command.prixTotal | currency}}</td>
+                            <td>{{command.quantiteTotale}}</td>
+                            <td>{{command.dateCreation | date : 'medium' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!--------- si il y'a pas de commande -->
+
+            
+                <div *ngIf="commandHistoriqList.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    
+                        <h1>Vous n'avez pas de commande.</h1>  
+                    
+                </div>
+            
+        </div>
+    </div>
+</div>

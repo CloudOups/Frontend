@@ -9,10 +9,26 @@ export class PanierService {
 
 
   elementPaniers: ElementPanier[] = [];
+
   totalprix: Subject<number> = new BehaviorSubject<number>(0);
   totalquantite: Subject<number> = new BehaviorSubject<number>(0);
 
-  constructor() { }
+  //on utilise le stockage du navigateur pour stocker les données
+  // storage : Storage = sessionStorage;
+  storage : Storage = localStorage;
+
+  constructor() { 
+
+    // lire les donnee du  stockage
+    let data = JSON.parse(this.storage.getItem('elementPaniers')!);
+
+    if(data != null){
+      this.elementPaniers = data;
+
+      //calcul des totaux basé sur les données stockées
+      this.calculerTotalPanier();
+    }
+  }
 
   addToPanier(panierElt: ElementPanier) {
     //on verifie si on a un élément dans le panier
@@ -54,6 +70,19 @@ export class PanierService {
 
     //gestion loo pour voir si sa marche
     this.logPanierData(prixTotal, quantiteTotal);
+
+    //on stocke les données dans le stockage du navigateur
+    this.persisterPanierElement();
+  }
+
+  persisterPanierElement() {
+    //on stocke les données dans le stockage du navigateur 
+    //storage ne prend que des chaines de caractères c'est 
+    //pour cela qu'on utilise JSON.stringify qui nos objets qui 
+    //sont en Json pour les convertir en chaine de caractères
+    //storage pour stocker utilise la methode setItem qui prend
+    //deux parametres le premier est la clé et le deuxieme est la valeur
+    this.storage.setItem('elementPaniers', JSON.stringify(this.elementPaniers));
   }
 
 
