@@ -49,7 +49,7 @@
                                         {{ publication.sujet }}
                                     </td>
                                     <td>{{ publication.dateCreation }}</td>
-                                    <td>{{ publication.user_id }}</td>
+                                    <td>{{ publication.user?.firstname}} {{ publication.user?.lastname}}</td>
                                   
                                     <td>
                                         <span *ngIf="publication.status == true">Approved</span>

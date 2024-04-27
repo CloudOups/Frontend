@@ -8,5 +8,5 @@ export class Publication {
     photo?: string;
     status?: boolean;
     likes?: number;
-    user_id?: number;
+    user?: User;
 }

@@ -20,7 +20,7 @@
                                                 <p>Upload Photo</p>
                                                 <span>
                                                     <i class="feather-edit-3"></i>
-                                                    <input type="file" id="file-input">
+                                                    <input type="file" id="file-input" (change)="onFileSelected($event)">
                                                 </span>
                                             </div>
                                             <h5>Upload a form Image (JPG, PNG, SVG).</h5>
