@@ -1,0 +1,27 @@
+
+<div class="collapse navbar-collapse " style="display: inline-block;" id="navbarSupportedContent">
+    <form class="my-2 my-lg-0" style="margin-top: 15px; ">
+        <div style="display: inline-block; ">
+            <input #myInput class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Recherche"
+            (keyup.enter)="rechercheProduit(myInput.value)" style="margin-top: 15px;width: 170px; height: 40px;">
+        </div>
+        <div style="display: inline-block; ">
+            <button (click)="rechercheProduit(myInput.value)" class="btn btn-outline-success my-2 my-sm-0" style="margin-top: 15px;width: 80px; height: 40px; margin-left: 10px; text-align: center;">
+                Search
+            </button>
+        </div>
+        
+    </form>
+    <div style="display: inline-block; ">
+        <a href="/home">Home</a>
+    </div>
+    <div style="display: inline-block; ">
+        <a class="nav-link btn btn-secondary" ><span><i
+            class="feather-check-circle" style="display: inline-block;"></i></span><app-status-panier></app-status-panier></a>
+    </div>
+</div>
+
+<!-- <form class="form-inline ">
+    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Recherche">     
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+</form> -->

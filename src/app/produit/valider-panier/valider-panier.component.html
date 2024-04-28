@@ -81,61 +81,20 @@
                 </div>
 
                 <!-------- info carte de crédit -->
-                        <div formGroupName="carteDeCredit" class="form-area">
-                            <h3>Mode de Paiement</h3>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label >Type de Carte</label>
-                                </div>
-                                <div class="input-space">
-                                    <select formControlName="typeCarte">
-                                        <option value="visa">Visa</option>
-                                        <option value="mastercard">Mastercard</option>
-                                    </select>
+                    <!---------Stripe element sexion carte de credit -->
 
-                                    <div *ngIf="typeCarte.invalid && (typeCarte.dirty || typeCarte.touched)" class="alert alert-danger mt-1">
-                                        <div *ngIf="typeCarte.errors['required']">
-                                            type carte est obligatoire
-                                        </div>
-
-                                </div>
-                            </div>
-        
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label >numero de la carte</label>
-                                </div>
-                                <div class="input-space">
-                                    <input type="text" formControlName="numCarte" class="form-control" placeholder="numero carte">
-                                    <div *ngIf="numCarte.invalid && (numCarte.dirty || numCarte.touched)" class="alert alert-danger mt-1">
-                                        <div *ngIf="numCarte.errors['required']">
-                                            numero de carte est obligatoire
-                                        </div>
-                                        <div *ngIf="numCarte.errors['pattern']">
-                                            respectez le format 16 chiffres
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label >code de securité</label>
-                                </div>
-                                <div class="input-space">
-                                    <input type="text" formControlName="codeSecurite" class="form-control" placeholder="codeSecurite">
-                                    <div *ngIf="codeSecurite.invalid && (codeSecurite.dirty || codeSecurite.touched)" class="alert alert-danger mt-1">
-                                        <div *ngIf="codeSecurite.errors['required']">
-                                            code secret de la carte est obligatoire
-                                        </div>
-                                        <div *ngIf="codeSecurite.errors['pattern']">
-                                            respectez le format 4 chiffres
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div formGroupName="carteDeCredit" class="form-area">
+                        <h3>Carte de Credit</h3>
+                        <div id="card-element">
+                            <!----- a Stripe element sront insérer ici ---->
 
                         </div>
+                      
+                        <!-------- affichage derreur ici-------->
+                        <div id="card-errors" class="displayError.textContent!=='': 'alert alert-danger mt-l' ">
+
+                        </div>
+                    </div>
 
                         <!--------------- Detail Commande --->
                         <div class="form-are">
@@ -148,7 +107,7 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-info"> Valider</button>
                 </div>
-            </div>   
+               
         </form>
         
     </div>

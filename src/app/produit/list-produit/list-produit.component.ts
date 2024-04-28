@@ -18,8 +18,12 @@ export class ListProduitComponent implements OnInit {
 
   //properties for pagination
   currentPage: number = 1;
-  pageSize: number = 10;
+  pageSize: number = 14;
   totalElements: number = 0;
+  searchMode: boolean = false;
+
+  //
+  storage : Storage = sessionStorage;
 
   constructor(
     private produitService: ProduitService,
@@ -28,18 +32,32 @@ export class ListProduitComponent implements OnInit {
 
   ngOnInit() {
     //this.listProduits();
-    this.listProduits3();
-    this.produitService.getUserEmail();
+    this.storage.setItem('userEmail', 'michel@gmail.com');
+    //this.listProduits3();
+    this.gererListeProduit();
+    
   }
 
   listProduits() {
     this.produitService.getProductList().subscribe(
       data => {
         this.produits = data;
-        console.log("liste des produit: " + this.produits);
-        console.log("liste des produit: " + data);
       }
     )
+  }
+
+  gererListeProduit(){
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    if(this.searchMode){
+      const keyword = this.route.snapshot.paramMap.get('keyword');
+      this.produitService.searchProduct(keyword).subscribe(
+        data => { this.produits = data['content']; 
+        });
+
+    }else{
+      this.listProduits3();
+    }
+
   }
 
 

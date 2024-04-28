@@ -48,6 +48,7 @@ const routes: Routes = [
 
 
     { path : 'produit', component: ListProduitComponent},
+    { path : 'searchProduit/:keyword', component: ListProduitComponent},
     { path : 'detailProduit/:id', component: DetailsProduitComponent},
     { path : 'panierDetail', component: PanierDetailComponent},
     { path : 'validerPanier', component: ValiderPanierComponent},

@@ -44,6 +44,8 @@ import { PanierDetailComponent } from './produit/panier-detail/panier-detail.com
 import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
 import { BackListProduitComponent } from './produit/back-list-produit/back-list-produit.component';
 import { CommandeHistoryComponent } from './produit/commande-history/commande-history.component';
+import { SearchProduitComponent } from './produit/search-produit/search-produit.component';
+import { NavbarProduitComponent } from './produit/navbar-produit/navbar-produit.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { CommandeHistoryComponent } from './produit/commande-history/commande-hi
     PanierDetailComponent,
     ValiderPanierComponent,
     BackListProduitComponent,
-    CommandeHistoryComponent],
+    CommandeHistoryComponent,
+    SearchProduitComponent,
+    NavbarProduitComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

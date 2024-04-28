@@ -1,10 +1,10 @@
 <li class="align-items-center">
-    <div class="cart-area">
+    <div class="cart-area" style="display: block;">
         <a routerLink="/panierDetail">
-            <div class="total">{{prixTotal | currency:'USD'}}
+            <div class="total" style="display: block;">{{prixTotal | currency:'USD'}}
                 <span>{{quantiteTotal}}</span>
-            </div>
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
         </a>
     </div>
 </li>

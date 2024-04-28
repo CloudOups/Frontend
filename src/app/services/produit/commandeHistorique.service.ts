@@ -17,10 +17,10 @@ export class CommandeHistoriqueService {
 }
 
 // interface pouur recouperer les donnée renvoé en Json de l'api
-interface GetResponseCommandeHistorique{
+/* interface GetResponseCommandeHistorique{
 
     _embedded : {
       commandes : HistoriqueCommande[];
-    }
+    } 
 
-}
+} */

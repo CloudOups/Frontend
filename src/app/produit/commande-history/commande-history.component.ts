@@ -23,10 +23,11 @@ export class CommandeHistoryComponent implements OnInit{
 
     //const lemail = JSON.parse(this.storage.getItem("userEmail"));
     // console.log("LA VALEUR DE L'EMAIL EST: ",lemail);
-    let email = "michel@gmail.com";
+    const lemail = this.storage.getItem("userEmail");
+    //let email = "michel@gmail.com";
   
     // recuperer les donné du service
-    this.commandeService.getCommandeHistorique(email).subscribe(
+    this.commandeService.getCommandeHistorique(lemail).subscribe(
       data => {
         //embedded est le nom de l'objet qui contient les données dans l'api
         this.commandHistoriqList = data.content;
