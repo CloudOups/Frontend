@@ -50,7 +50,7 @@ export class BlogServiceService {
   }
 
   getBlog(id: number): Observable<Publication> {  
-    return this.http.get<Publication>(`${this.baseUrl}/getDetailsBlog/${id}`, { headers: this.getHeaders()});  
+    return this.http.get<Publication>(`${this.baseUrl}/getpublication/${id}`, { headers: this.getHeaders()});  
   }  
  
   updateBlog(id: number, blog: Publication): Observable<Object> {  
@@ -78,20 +78,10 @@ export class BlogServiceService {
     return this.http.put(`${this.baseUrl}`+`/approveAll`,{ headers }, { headers: this.getHeaders()});
   }
   getCommentsForPublication(publicationId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`http://localhost:8083/commentaire/get/byPublication/${publicationId}`, { headers: this.getHeaders()});
+    return this.http.get<Comment[]>(`http://localhost:8084/commentaire/get/byPublication/${publicationId}`, { headers: this.getHeaders()});
   }
 
-  uploadFile(id: number, file: File): Observable<any> {
-const formData: FormData = new FormData();
-formData.append('photo', file, file.name);
-return this.http.post<any>(`http://localhost:8084/publication/upload/${id}`, formData, { headers: this.getHeaders() });
-}
 
-downloadFile(fileName: string): Observable<Blob> {
-  return this.http.get(`http://localhost:8084/publication/download/${fileName}`, {
-      headers: this.getHeaders(),
-      responseType: 'blob'
-  });
   
-}
+
 }

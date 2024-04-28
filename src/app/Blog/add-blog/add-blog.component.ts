@@ -54,24 +54,7 @@ export class AddBlogComponent implements OnInit {
         console.log('Current User:', this.newPublication.user?.id);
         console.log('Blog added successfully:', response);
         console.log('Publication id:', response.numPub);
-        
-        // Check if a file is selected
-        if (this.file) {
-          // Upload the file after creating the blog post
-          this.blogService.uploadFile(response.numPub, this.file).subscribe({
-            next: (uploadResponse) => {
-              console.log('File uploaded successfully:', uploadResponse);
-              this.router.navigate(['/listblog']);
-            },
-            error: (uploadError) => {
-              console.error('Error uploading file:', uploadError);
-              this.router.navigate(['/listblog']); // Navigate even if file upload fails
-            }
-          });
-        } else {
-          // If no file is selected, simply navigate to the list of blogs
-          this.router.navigate(['/listblog']);
-        }
+        this.router.navigate(['/listblog']);
 
         // Clear the form after adding the blog
         this.newPublication = {};
