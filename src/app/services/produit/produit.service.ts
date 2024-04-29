@@ -31,6 +31,11 @@ export class ProduitService {
     return this.httpClient.get<Produit[]>(`${this.url}/search/${keyword}`);
   }
 
+  deleteProduit(id : number) {
+    return this.httpClient.delete(this.url+"/delete/" + id);
+  }
+
+
   getProductListPagination(currentPage: number,pageSize: number) : Observable<any>{
     return this.httpClient.get(`${this.url}?page=${currentPage}&size=${pageSize}`);
   }

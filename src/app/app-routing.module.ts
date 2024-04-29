@@ -13,6 +13,7 @@ import { DetailsProduitComponent } from './produit/details-produit/details-produ
 import { PanierDetailComponent } from './produit/panier-detail/panier-detail.component';
 import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
 import { CommandeHistoryComponent } from './produit/commande-history/commande-history.component';
+import { BackListProduitComponent } from './produit/back-list-produit/back-list-produit.component';
 // import {  } from '';
 // import {  } from '';
 // import {  } from '';
@@ -52,7 +53,7 @@ const routes: Routes = [
     { path : 'detailProduit/:id', component: DetailsProduitComponent},
     { path : 'panierDetail', component: PanierDetailComponent},
     { path : 'validerPanier', component: ValiderPanierComponent},
-    { path : 'backListProduit', component: ValiderPanierComponent},
+    { path : 'backListProduit', component: BackListProduitComponent},
     { path : 'historiqueCommande', component: CommandeHistoryComponent},
 
 
