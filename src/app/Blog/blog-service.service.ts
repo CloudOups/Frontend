@@ -66,7 +66,7 @@ export class BlogServiceService {
   // }
   addComment(id: number,comment: Comment): Observable<any> {
     const headers = { 'Content-Type': 'application/json' };
-    return this.http.post<any>(`http://localhost:8083/commentaire/addcommentaire/${id}`, comment,  { headers: this.getHeaders()});
+    return this.http.post<any>(`http://localhost:8084/commentaire/addcommentaire/${id}`, comment,  { headers: this.getHeaders()});
     }
 
   approveBlog(id: number): Observable<any> {
