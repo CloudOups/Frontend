@@ -16,6 +16,11 @@ import { UpdateTerrainComponent } from './update-terrain/update-terrain.componen
 import { ListTournoiComponent } from './Tournoi/list-tournoi/list-tournoi.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
 import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.component';
+import { UpdateEquipeComponent } from './update-equipe/update-equipe.component';
+import { AddEquipeComponent } from './add-equipe/add-equipe.component';
+import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
+import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 // import {  } from '';
 // import {  } from '';
 // import {  } from '';
@@ -39,6 +44,15 @@ const routes: Routes = [
    {path:'equipes',component:EquipeComponent},
    {path:'addterrains',component:AddTerrainComponent},
    {path:'updateterrain/:numTerrain',component:UpdateTerrainComponent},
+   {path:'addEquipe',component:AddEquipeComponent},
+
+   {path:'updateEquipe/:numEquipe/:chefEquipe',component:UpdateEquipeComponent},
+   { path:'choisirTerrain/:startTime/:endTime/:typeTerrain', component: ChoisirTerrainComponent },
+   { path:'addReservation', component: AddReservationComponent },
+
+   {path:'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',component:ConfirmartionReservationComponent},
+
+
 
 
 

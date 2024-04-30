@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Terrain } from '../Models/Terrain/terrain';
+import { TypeTerrain } from '../Models/Terrain/typeTerrain';
+import { StatusTerrain } from '../Models/Terrain/statusTerrain';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +20,33 @@ export class TerrainService {
   }
 
   // Method to add a terrain
-  addTerrain(terrain: Terrain): Observable<Terrain> {
+  //addTerrain(terrain: Terrain): Observable<Terrain> {
+  //  const formData: FormData = new FormData();
+
+   //0 return this.httpClient.post<Terrain>(this.API_URL + this.ENDPOINT_TERRAINS + "/add", terrain);
+  //}
+
+  addTerrain(nomTerrain: string, typeTerrain: TypeTerrain, statusTerrain: StatusTerrain, file: File): Observable<Terrain> {
     const formData: FormData = new FormData();
 
-    return this.httpClient.post<Terrain>(this.API_URL + this.ENDPOINT_TERRAINS + "/add", terrain);
+    formData.append('imageTerrain', file, file.name); // Append the image file to FormData
+    
+      formData.append('nomTerrain', nomTerrain); // Append the image file to FormData
+
+        formData.append('statusTerrain', statusTerrain); // Append the image file to FormData
+
+          formData.append('typeTerrain', typeTerrain); // Append the image file to FormData
+
+           
+    return this.httpClient.post<Terrain>(this.API_URL + this.ENDPOINT_TERRAINS + "/add", formData);
   }
+  
+  checkAvailabilityBySport(datedebut: string, datefin: string, typeTerrain: TypeTerrain): Observable<Terrain[]> {
+    // Utiliser les paramètres de requête pour la recherche d'accessibilité
+    return this.httpClient.get<Terrain[]>(`${this.API_URL}/terrain/checkAvailabilityBySport/datedebut=${datedebut}/datefin=${datefin}/${typeTerrain}`);
+  }
+
+
 
   // Method to update a terrain
   updateTerrain(terrain: Terrain): Observable<Terrain> {

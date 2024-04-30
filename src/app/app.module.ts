@@ -43,6 +43,9 @@ import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.co
 import { ListEventComponent } from './Event/list-event/list-event.component';
 import { AddEventComponent } from './Event/add-event/add-event.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
+import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
+import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +87,11 @@ import { UpdateEventComponent } from './Event/update-event/update-event.componen
     DetailtournoiComponent,
     ListEventComponent,
     AddEventComponent,
-    UpdateEventComponent],
+    UpdateEventComponent,
+    AddReservationComponent,
+    ConfirmartionReservationComponent,
+    ChoisirTerrainComponent
+],
   imports: [
     BrowserModule,
     AppRoutingModule,

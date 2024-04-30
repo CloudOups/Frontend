@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { TerrainService } from '../services/terrain.service';
-import { StatusTerrain, Terrain, TypeTerrain } from '../Models/Terrain/terrain';
+import {  Terrain } from '../Models/Terrain/terrain';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TypeTerrain } from '../Models/Terrain/typeTerrain';
+import { StatusTerrain } from '../Models/Terrain/statusTerrain';
 
 @Component({
   selector: 'app-update-terrain',

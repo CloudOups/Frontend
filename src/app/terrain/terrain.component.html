@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let terrain of terrains">
+            <ng-container  *ngFor="let terrain of terrains">
                 <tr>
                     <td>{{ terrain.numTerrain }}</td>
                     <td>
@@ -31,9 +31,9 @@
                                 <a href="#">{{ terrain.nomTerrain }}</a>
                             </span>
                         </h2>
-                    </td>
-                    <td><img [src]="terrain.imageTerrain" alt="Terrain"></td>
-                    <td>{{ terrain.statusTerrain }}</td>
+                    </td>                      
+                     <td><img [src]="terrain.imageTerrain" alt="imageTerrain"></td>
+                      <td>{{ terrain.statusTerrain }}</td>
                     <td>{{ terrain.typeTerrain }}</td>
                     <td>
                         <!-- Buttons for actions -->

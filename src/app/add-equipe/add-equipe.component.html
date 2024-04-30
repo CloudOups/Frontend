@@ -1,12 +1,14 @@
-<form [formGroup]="AddEquipeForm"> <!-- Updated formGroup name -->
-
-    <h5>Numéro d'Équipe</h5> <!-- Adjusted form control label -->
-    <input class="form-control" type="text" formControlName="numEquipe"> <!-- Updated formControlName -->
- 
-    <div class="alert alert-danger" *ngIf="AddEquipeForm.get('numEquipe')?.errors?.['required'] && AddEquipeForm.get('numEquipe')?.touched">
-      Le champ Numéro d'Équipe est obligatoire.
-    </div>
-   
+<app-navbar></app-navbar>
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+    <h1 class="text-white">ajout d'une equipe</h1>
+    <ul>
+    
+      <form [formGroup]="AddEquipeForm"> <!-- Updated formGroup name -->
+      
+        <input class="form-control" id="chefEquipe" formControlName="chefEquipe">
+          <input  *ngFor="let chef of chefEquipeList" [value]="chef.userId">
     <h5>Nom d'Équipe</h5> <!-- Adjusted form control label -->
     <input class="form-control" type="text" formControlName="nomEquipe"> <!-- Updated formControlName -->
  
@@ -27,7 +29,9 @@
     <div class="alert alert-danger" *ngIf="AddEquipeForm.get('classement')?.errors?.['required'] && AddEquipeForm.get('classement')?.touched">
       Le champ Classement est obligatoire.
     </div>
-   
+    <input type="submit"class="btn btn-primary" value="Save" (click)="save()"  [disabled]="AddEquipeForm.invalid">
+
     <!-- Adjusted submit button -->
  </form>
- 
+</ul></div> </div>
+<app-footer></app-footer>

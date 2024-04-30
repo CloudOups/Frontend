@@ -1,5 +1,16 @@
-<form [formGroup]="UpdateEquipeForm"> <!-- Updated formGroup name -->
 
+<app-navbar></app-navbar>
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+    <h1 class="text-white">editer une equipe</h1>
+    <ul>
+    <form [formGroup]="UpdateEquipeForm"> <!-- Updated formGroup name -->
+  <h5>chef d'Équipe</h5> <!-- Adjusted form control label -->
+  <input class="form-control" type="text" formControlName="chefEquipe"> <!-- Updated formControlName -->
+  <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('chefEquipe')?.errors?.['required'] && UpdateEquipeForm.get('chefEquipe')?.touched">
+    Le chef  d'Équipe est obligatoire.
+  </div>
     <h5>Numéro d'Équipe</h5> <!-- Adjusted form control label -->
     <input class="form-control" type="text" formControlName="numEquipe"> <!-- Updated formControlName -->
  
@@ -29,6 +40,7 @@
     </div>
    
     <!-- Adjusted submit button -->
-    <input type="submit" value="Save" (click)="save()" [disabled]="UpdateEquipeForm.invalid">
+    <input type="submit" class="btn btn-primary" value="Save" (click)="save()" [disabled]="UpdateEquipeForm.invalid">
  </form>
- 
+</ul></div> </div>
+<app-footer></app-footer>
