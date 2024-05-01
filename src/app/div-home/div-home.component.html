@@ -25,41 +25,38 @@
                         <h1>Choose Your <span>Coaches</span> and Start Your Training</h1>
                         <p class="sub-info">Unleash Your Athletic Potential with Expert Coaching,
                             State-of-the-Art Facilities, and Personalized Training Programs.</p>
-                        <div class="search-box">
-                            <form action="#">
-                                <div class="search-input line">
-                                    <div class="form-group mb-0">
-                                        <label>Search for</label>
-                                        <select class="form-control select">
-                                            <option value >Choose Sport</option>
-                                            <option > Football</option>
-                                            <option > BascketBall</option>
-
-
-                                        </select>
-                                    </div>
+                                <div class="search-box">
+                                    <form action="#">
+                                        <div class="search-input line d-flex align-items-center">
+                                            <div class="form-group mb-3 me-3">
+                                                <label class="form-label me-2">Search for</label>
+                                                <select class="select" [(ngModel)]="selectedTypeTerrain" name="typeTerrain">
+                                                    <option value="" disabled selected>Choose Sport</option>
+                                                    <option *ngFor="let option of typeTerrainOptions" [value]="option">{{ option }}</option>
+                                                </select>
+                                            </div>                                        
+                                            <div class="form-group mb-3 me-3">
+                                                <label class="form-label me-2">Select Start Time</label>
+                                                <input type="datetime-local" class="form-control date" id="start-time" name="startTime" [(ngModel)]="startTime">
+                                            </div>
+                                            <div class="form-group mb-3 me-3">
+                                                <label class="form-label me-2">Select End Time</label>
+                                                <input type="datetime-local" class="form-control date" id="end-time" name="endTime" [(ngModel)]="endTime">
+                                            </div>
+                                            <div class="search-btn">
+                                                <button class="btn btn-primary search-btn" (click)="navigateToReservation()" [routerLink]="['/choisirTerrain',startTime,endTime,selectedTypeTerrain]" type="submit">
+                                                    <i class="feather-search"></i> Search
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <!-- reservation-terrain.component.html -->
-
-                                    <div class="form-group mb-0">
-                                        <label class="form-label">Select Start Time</label>
-                                    <input type="datetime-local" class="form-control date" id="date-time">
-                                    </div>
-                                    <div class="form-group mb-0">
-                                    <label class="form-label">Select end Time</label>
-                                    <input type="datetime-local" class="form-control date" id="date-time">
-                                    </div>
                                 
-                                <div class="search-btn">
-                                    <button class="btn"routerLink="/reservationTerrain" type="submit"><i class="feather-search"></i>
-                                       
-                                        <span
-                                            class="search-text" >Search</span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                            
+                            
+                          </div>
+
                 <div class="col-lg-5">
                     <div class="banner-imgs text-center aos" >
                         <img class="img-fluid" src="assets/img/bg/banner-right.png" alt="Banner">

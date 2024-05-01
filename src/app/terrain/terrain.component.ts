@@ -10,13 +10,31 @@ import { Terrain } from '../Models/Terrain/terrain';
 export class TerrainComponent {
   title='terrain-app';
   terrains!: Terrain []
+  url="http://localhost:8089/Users/ychaa/OneDrive/Documents/GitHub/Backend/PI/src/main/webapp/images/CampNou.jpg"  
 constructor(private terrainService:TerrainService){
 }
-ngOnInit(){
-  console.log("on init ......")
-  
+  ngOnInit() {
+    this.getTerrains();
+  }
+
+getTerrains() {
   this.terrainService.getTerrains().subscribe(
-    data=>this.terrains=data)
+    data => {
+      this.terrains = data;
+      this.attachImageUrl(); // Call a method to attach URL to image filenames
+    },
+    error => {
+      console.error('Error fetching terrains:', error);
+    }
+  );
+}
+
+// Method to attach URL to image filenames
+attachImageUrl() {
+  // Loop through each terrain and attach URL to the image filename
+  this.terrains.forEach(terrain => {
+    terrain.imageTerrain =  terrain.imageTerrain;
+  });
 }
 
   deleteTerrain(id: number) {

@@ -20,7 +20,10 @@ export class ReservationTerrainService {
 
   // Method to add a reservation terrain
   addReservationTerrain(reservationTerrain: ReservationTerrain, userId: number, terrainId: number): Observable<ReservationTerrain> {
-    return this.httpClient.post<ReservationTerrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/add/idUser=" + userId + "/idTerrain=" + terrainId, reservationTerrain);
+    return this.httpClient.post<ReservationTerrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/add/idUser=/" + userId + "/idTerrain=/" + terrainId, reservationTerrain);
+  }
+  calculateReservationPrice(datedebut: string, datefin: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.API_URL}${this.ENDPOINT_RESERVATIONS_TERRAINS}/calculateReservationPrice/datedebut=${datedebut}/datefin=${datefin}`);
   }
 
   // Method to update a reservation terrain

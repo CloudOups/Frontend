@@ -47,6 +47,10 @@ import { UpdateTournoiComponent } from './Tournoi/update-tournoi/update-tournoi.
 import { ListTicketComponent } from './Ticket/list-ticket/list-ticket.component';
 import { DetailEventComponent } from './Event/detail-event/detail-event.component';
 import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.component';
+import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
+import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
+import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +96,12 @@ import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.comp
     UpdateTournoiComponent,
     ListTicketComponent,
     DetailTicketComponent,
-    DetailEventComponent],
+    DetailEventComponent,
+    AddReservationComponent,
+    ConfirmartionReservationComponent,
+    ChoisirTerrainComponent,
+    ListEventbackComponent
+],
   imports: [
     BrowserModule,
     AppRoutingModule,

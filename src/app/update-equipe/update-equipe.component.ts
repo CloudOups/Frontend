@@ -13,38 +13,39 @@ export class UpdateEquipeComponent {
 
 
 title='updateequipe-app';
-equipes: any = {};
+equipes: Equipe[] = [];
 constructor(private equipeService:EquipeService,private act:ActivatedRoute, private router: Router){
 }
-//typeEquipe: string[] = Object.values(TypeEquipe);
-//statusEquipe: string[] = Object.values(StatusEquipe);
 
 UpdateEquipeForm= new FormGroup({
+chefEquipe:new FormControl('', [Validators.required]),
 numEquipe:new FormControl('', [Validators.required]),
 nomEquipe: new FormControl('', [Validators.required]),
 nbMemEquipe: new FormControl('', [Validators.required]),
 classement: new FormControl('', [Validators.required])
 });
 numEquipe!:number
+chefEquipe!:number
 equipe!:Equipe;
 ngOnInit() {
 console.log("on init ......");
 this.numEquipe = this.act.snapshot.params['numEquipe'];
-
+this.chefEquipe=this.act.snapshot.params['chefEquipe'];
 this.UpdateEquipeForm.patchValue({
-  numEquipe: this.numEquipe.toString() // Convert to string
+  numEquipe: this.numEquipe.toString() ,
+  //chefEquipe:this.chefEquipe.toString()
+
 });
 
 // Fetch the details of the equipe based on numEquipe
 this.equipeService.getEquipeById(this.numEquipe).subscribe(
   (equipe: Equipe) => {
     this.equipe = equipe;
-
     // Pre-fill other fields in the form with the fetched equipe details
     this.UpdateEquipeForm.patchValue({
       nomEquipe: equipe.nomEquipe,
-      //classement: equipe.classement,
-    //  nbMemEquipe: equipe.nbMemEquipe
+      classement:equipe.classement?.toString(),
+      nbMemEquipe:equipe.nbMemEquipe?.toString(),
     });
   },
   error => {

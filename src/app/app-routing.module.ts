@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/home/home.component';
 import { LoginComponent } from './login/login.component';
-//-------------------hedi---------------------------------------
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { ListBlogbackComponent } from './Blog/list-blogback/list-blogback.component';
 import { UpdateBlogComponent } from './Blog/update-blog/update-blog.component';
@@ -13,6 +12,8 @@ import { TerrainComponent } from './terrain/terrain.component';
 import { EquipeComponent } from './equipe/equipe.component';
 import { AddTerrainComponent } from './add-terrain/add-terrain.component';
 import { UpdateTerrainComponent } from './update-terrain/update-terrain.component';
+
+
 import { ListTournoiComponent } from './Tournoi/list-tournoi/list-tournoi.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
 import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.component';
@@ -22,12 +23,15 @@ import { UpdateTournoiComponent } from './Tournoi/update-tournoi/update-tournoi.
 import { ListTicketComponent } from './Ticket/list-ticket/list-ticket.component';
 import { DetailEventComponent } from './Event/detail-event/detail-event.component';
 import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.component';
-// import {  } from '';
-// import {  } from '';
-// import {  } from '';
-// import {  } from '';
-// import {  } from '';
-// import {  } from '';
+
+import { UpdateEquipeComponent } from './update-equipe/update-equipe.component';
+import { AddEquipeComponent } from './add-equipe/add-equipe.component';
+import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
+import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
+import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
+import { UpdateEventComponent } from './Event/update-event/update-event.component';
+
 
 
 
@@ -45,6 +49,15 @@ const routes: Routes = [
    {path:'equipes',component:EquipeComponent},
    {path:'addterrains',component:AddTerrainComponent},
    {path:'updateterrain/:numTerrain',component:UpdateTerrainComponent},
+   {path:'addEquipe',component:AddEquipeComponent},
+
+   {path:'updateEquipe/:numEquipe/:chefEquipe',component:UpdateEquipeComponent},
+   { path:'choisirTerrain/:startTime/:endTime/:typeTerrain', component: ChoisirTerrainComponent },
+   { path:'addReservation', component: AddReservationComponent },
+
+   {path:'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',component:ConfirmartionReservationComponent},
+
+
 
 
 
@@ -53,13 +66,17 @@ const routes: Routes = [
   { path :'addblog', component: AddBlogComponent},
   { path :'updateBlog/:id', component: UpdateBlogComponent},
   { path :'listBlogback', component: ListBlogbackComponent},
+
   { path : 'tournois', component:ListTournoiComponent},
   { path :'addtournoi', component: AddTournoiComponent},
   { path :'updatetournoi/:id', component: UpdateTournoiComponent},
   { path :'detailtournoi/:id',component: DetailtournoiComponent},
   { path : 'events', component:ListEventComponent},
+  { path : 'eventsback', component:ListEventbackComponent},
   { path :'detailevent/:id',component: DetailEventComponent},
   { path :'addevent', component: AddEventComponent},
+  { path :'updateevent/:id', component: UpdateEventComponent},
+
   { path :'tickets',component: ListTicketComponent},
   { path :'detailticket/:id',component: DetailTicketComponent},
 

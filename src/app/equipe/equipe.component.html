@@ -3,18 +3,18 @@
 <div class="breadcrumb mb-0">
     <span class="primary-right-round"></span>
     <div class="container">
-        <h1 class="text-white">List des terrains</h1>
+        <h1 class="text-white">List des Equipes</h1>
    
     </div></div>
 <div class="table-responsive">
     <table class="table table-borderless datatable">
         <thead class="thead-light">
-            <button class="btn btn-primary" routerLink="/addterrains
-            ">ajouter un terrain</button>
+            <button class="btn btn-primary" [routerLink]="['/addEquipe']">ajouter une equipe </button>
 
             <tr>
                 <th>Id du equipe</th>
                 <th>nom equipe</th>
+                <th> chef d'Equipe</th>
                 <th> nbMemEquipe</th>
                 <th>classement</th>
             </tr>
@@ -31,13 +31,14 @@
                             </span>
                         </h2>
                     </td>
+                    <td>{{e.chefEquipe?.nom}}</td>
                     <td>{{ e.nbMemEquipe }}</td>
                     <td>{{ e.classement }}</td>
                   
                     <td>
                         <!-- Buttons for actions -->
-                        <button class="btn btn-primary"[routerLink]="['/updateterrain',e.numequipe]">Edit</button>
-                        <button class="btn btn-danger"*ngIf="e.numequipe">Delete</button>
+                        <button class="btn btn-primary"[routerLink]="['/updateEquipe',e.numequipe,e.chefEquipe?.userId]">Edit</button>
+                        <button class="btn btn-danger"*ngIf="e.numequipe" (click)="deleteEquipe(e.numequipe)">Delete</button>
                     </td>
                 </tr>
             </ng-container>
