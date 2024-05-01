@@ -17,6 +17,7 @@ export class ChoisirTerrainComponent {
   typeTerrain!:TypeTerrain
   terrains!: Terrain []
   prixReser!:number
+  mostReser!:Terrain
   url="http://localhost:4200/assets/img/terrains/"  
 
 constructor(private act :ActivatedRoute,private terrainService:TerrainService,private reservationTerrainService :ReservationTerrainService ){}
@@ -28,6 +29,7 @@ ngOnInit(){
   this.terrains = this.act.snapshot.params['terrains'];
   this.Check()
   this.Calcule();
+  this.show()
 }
 attachImageUrl() {
   // Loop through each terrain and attach URL to the image filename
@@ -52,5 +54,11 @@ Check(){
 
     console.log('listeBySport', response);}
   );}
-  
+  show(){
+    this.reservationTerrainService.getMostReservedTerrain(this.typeTerrain).subscribe(response => {
+      this.mostReser= response;
+        console.log('mostReserved', response);
+})
+   }
+
 }

@@ -43,7 +43,7 @@ import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.co
 import { ListEventComponent } from './Event/list-event/list-event.component';
 import { AddEventComponent } from './Event/add-event/add-event.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
-import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { MesReservationComponent } from './mes-reservation/mes-reservation.component';
 import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 
@@ -88,7 +88,7 @@ import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.compo
     ListEventComponent,
     AddEventComponent,
     UpdateEventComponent,
-    AddReservationComponent,
+    MesReservationComponent,
     ConfirmartionReservationComponent,
     ChoisirTerrainComponent
 ],

@@ -8,38 +8,29 @@ import { ReservationTerrainService } from '../services/reservation-terrain.servi
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-reservation',
-  templateUrl: './add-reservation.component.html',
-  styleUrls: ['./add-reservation.component.css']
+  selector: 'app-mes-reservation',
+  templateUrl: './mes-reservation.component.html',
+  styleUrls: ['./mes-reservation.component.css']
 })
-export class AddReservationComponent {
+export class MesReservationComponent {
   endTime!:string
   startTime!:string
   typeTerrain!:TypeTerrain
   numTerrain!:number
+  etatReser!:boolean
 constructor(private act :ActivatedRoute,private reservationTerrainService:ReservationTerrainService ){}
 prixReser!:number
-
-
-
+//reservationTerrains!:ReservationTerrain[]
+reservationTerrains: any = {};
+url="http://localhost:4200/assets/img/terrains/"  
 
 ngOnInit(){
   console.log("on init ......")
-  this.endTime = this.act.snapshot.params['endTime'];
-  this.startTime = this.act.snapshot.params['startTime'];
-  this.numTerrain= this.act.snapshot.params['numTerrain'];
- 
-  this.Calcule();
-}
-Calcule(){
-  this.reservationTerrainService.calculateReservationPrice(this.startTime,this.endTime).subscribe(
-    (resultat: number) => {
-      this.prixReser = resultat;
-    },
-    (error) => {
-      console.error("Une erreur s'est produite lors du calcul du prix :", error);
-    }
-  )
+  this.reservationTerrainService.getReservationTerrainById(1).subscribe((datas)=>{
+    this.reservationTerrains=datas;
+    console.log('Reservation terrain received:', datas);
+
+  })
 }
 
 }

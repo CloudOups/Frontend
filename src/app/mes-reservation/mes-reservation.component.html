@@ -1,0 +1,58 @@
+
+<app-navbar></app-navbar>
+
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+        <h1 class="text-white">Mes Reservations </h1>
+   
+    </div></div>
+<div class="table-responsive">
+    <table class="table datatable">
+        <thead class="thead-light">
+            <tr>
+                <th>Id Reservation</th>
+                <th>Court Name</th>
+                <th>Date & Time</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of reservationTerrains">
+                <td>
+                    <h2 class="table-avatar">
+                        <a href="#" class="avatar avatar-sm flex-shrink-0">
+                        </a>
+                     
+                        <span class="table-head-name flex-grow-1">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#profile-court">{{ res.numRes }}</a>
+                        </span>
+                    </h2>
+                </td>
+                <td>
+                    <h2 class="table-avatar">
+                        <a href="#" class="avatar avatar-sm flex-shrink-0">
+                            <img class="avatar-img" [src]="url + res.terrain.imageTerrain" >
+                        </a>
+                     
+                        <span class="table-head-name flex-grow-1">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#profile-court">{{ res.terrain.nomTerrain }}</a>
+                            <span>{{ res.terrain.nomTerrain }}</span>
+                        </span>
+                    </h2>
+                </td>
+                <td class="table-date-time">
+                    <h4>{{ res.dateDebut | date:'EEE, MMM dd' }} <span>{{ res.dateDebut | date:'hh:mm a' }} - {{ res.dateFin | date:'hh:mm a' }}</span></h4>
+                </td>
+                <td><span class="pay-dark fs-16">{{ res.prixReser }}</span></td>
+                <td><span class="badge bg-success"><i class="feather-check-square me-1"></i>{{ res.etatReser ? 'Actif' : 'Expiré' }}</span></td>
+              
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+<app-footer></app-footer>

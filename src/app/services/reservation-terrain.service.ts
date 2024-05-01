@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReservationTerrain } from '../Models/Reservation/reservation-terrain';
+import { Terrain } from '../Models/Terrain/terrain';
+import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,13 @@ export class ReservationTerrainService {
     return this.httpClient.get<number>(`${this.API_URL}${this.ENDPOINT_RESERVATIONS_TERRAINS}/calculateReservationPrice/datedebut=${datedebut}/datefin=${datefin}`);
   }
 
+  getMostReservedTerrain(typeTerrain :TypeTerrain): Observable<Terrain> {
+    return this.httpClient.get<Terrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/most-reserved-terrain/"+typeTerrain);
+  }
+  getReservationsByUser(userId: number): Observable<ReservationTerrain> {
+    return this.httpClient.get<ReservationTerrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/get/ReservationbyUserId/"+userId);
+  }
+
   // Method to update a reservation terrain
   updateReservationTerrain(reservationTerrain: ReservationTerrain): Observable<ReservationTerrain> {
     return this.httpClient.put<ReservationTerrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/update", reservationTerrain);
@@ -33,7 +42,7 @@ export class ReservationTerrainService {
 
   // Method to get reservation terrain by ID
   getReservationTerrainById(idRes: number): Observable<ReservationTerrain> {
-    return this.httpClient.get<ReservationTerrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/get/idRes=" + idRes);
+    return this.httpClient.get<ReservationTerrain>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/get/ReservationbyUserId/" + idRes);
   }
 
   // Method to delete a reservation terrain
