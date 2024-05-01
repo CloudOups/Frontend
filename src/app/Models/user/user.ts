@@ -3,7 +3,7 @@ import { ERole } from "./role";
 export class User {
     id?: number;
     email?: string;
-    firstname?: string;
+    nom?: string;
     lastname?: string;
     password?: string;
     role?: [ERole];

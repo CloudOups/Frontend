@@ -43,6 +43,10 @@ import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.co
 import { ListEventComponent } from './Event/list-event/list-event.component';
 import { AddEventComponent } from './Event/add-event/add-event.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
+import { UpdateTournoiComponent } from './Tournoi/update-tournoi/update-tournoi.component';
+import { ListTicketComponent } from './Ticket/list-ticket/list-ticket.component';
+import { DetailEventComponent } from './Event/detail-event/detail-event.component';
+import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +88,11 @@ import { UpdateEventComponent } from './Event/update-event/update-event.componen
     DetailtournoiComponent,
     ListEventComponent,
     AddEventComponent,
-    UpdateEventComponent],
+    UpdateEventComponent,
+    UpdateTournoiComponent,
+    ListTicketComponent,
+    DetailTicketComponent,
+    DetailEventComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

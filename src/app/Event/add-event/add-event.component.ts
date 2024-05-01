@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -10,47 +9,50 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
-  //typeEvent: string[] = Object.values(TypeTerrain);
+  addEventForm: FormGroup;
+  progress = 0;
+  message = '';
 
-  
-  AddEventForm= new FormGroup({
-    nomEvent: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    categorie: new FormControl('', [Validators.required]),
-    dateDebut: new FormControl('', [Validators.required, this.dateTimeFormatValidator]),
-    dateFin: new FormControl('', [Validators.required, this.dateTimeFormatValidator]),
-    nbParticipants: new FormControl('', [Validators.required, Validators.min(2), this.onlyNumbersValidator]),
-    location: new FormControl('', [Validators.required])
-    
-  });
-
-  constructor(private http: HttpClient, private trService: EventService, private router: Router) {
-
-  }
-  
-  save() {
-    this.trService.addEvent(this.AddEventForm.value as any).subscribe(response => {
-      
-
-      console.log('Event added successfully!', response);
-      alert('Event ajouté avec succès!');
-      this.router.navigate(['/Events']);
-      this.AddEventForm.reset();
-    }, error => {
-      console.error('Error adding Event:', error);
+  constructor(private fb: FormBuilder, private http: HttpClient, private eventService: EventService) {
+    this.addEventForm = this.fb.group({
+      nomEvent: ['', [Validators.required, Validators.minLength(6)]],
+      categorie: ['', Validators.required],
+      dateDebut: ['', Validators.required],
+      dateFin: ['', Validators.required],
+      nbParticipants: ['', [Validators.required, Validators.min(2)]],
+      location: ['', Validators.required],
+      image: ['', Validators.required]
     });
-  
-  }
-  
-  onlyNumbersValidator(control: AbstractControl): { [key: string]: any } | null {
-    const valid = /^\d+$/.test(control.value);
-    return valid ? null : { onlyNumbers: true };
   }
 
-  dateTimeFormatValidator(control: AbstractControl): { [key: string]: any } | null {
-    // format (YYYY-MM-DDTHH:MM)
-    const validFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(control.value);
-    return validFormat ? null : { dateTimeFormat: true };
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.addEventForm.patchValue({
+        image: file
+      });
+    }
   }
 
-  radioButton: any;
+  onSubmit() {
+    const formData = new FormData();
+    formData.append('nomEvent', this.addEventForm.get('nomEvent')?.value);
+    formData.append('categorie', this.addEventForm.get('categorie')?.value);
+    formData.append('dateDebut', this.addEventForm.get('dateDebut')?.value);
+    formData.append('dateFin', this.addEventForm.get('dateFin')?.value);
+    formData.append('nbParticipants', this.addEventForm.get('nbParticipants')?.value);
+    formData.append('location', this.addEventForm.get('location')?.value);
+    formData.append('image', this.addEventForm.get('image')?.value);
+
+    this.eventService.addEvent(formData).subscribe(
+      event => {
+        console.log('Event added successfully!', event);
+        alert('Event ajouté avec succès!');
+        this.addEventForm.reset();
+      },
+      error => {
+        console.error('Error adding Event:', error);
+      }
+    );
+  }
 }

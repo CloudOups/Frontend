@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from '../Models/Event/event';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Ticket } from '../Models/Ticket/ticket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private baseUrl = 'http://localhost:8089/pi/Event'; 
+  private baseUrl = 'http://localhost:8089/pi/event'; 
 
   constructor(private http: HttpClient) { }
 
@@ -24,11 +25,18 @@ export class EventService {
     );
   }
 
-  addEvent(Event: Event): Observable<Event> {
-    return this.http.post<Event>(`${this.baseUrl}/addEventreservation`, Event).pipe(
+ /* addEvent(Event: Event): Observable<Event> {
+    return this.http.post<Event>(`${this.baseUrl}/add`, Event).pipe(
       catchError(this.handleError)
     );
+  }*/
+
+ 
+
+  addEvent(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/add`, formData);
   }
+
 
   updateEvent(Event: Event): Observable<Event> {
     return this.http.put<Event>(`${this.baseUrl}/update`, Event).pipe(

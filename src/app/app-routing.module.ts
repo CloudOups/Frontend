@@ -16,6 +16,12 @@ import { UpdateTerrainComponent } from './update-terrain/update-terrain.componen
 import { ListTournoiComponent } from './Tournoi/list-tournoi/list-tournoi.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
 import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.component';
+import { ListEventComponent } from './Event/list-event/list-event.component';
+import { AddEventComponent } from './Event/add-event/add-event.component';
+import { UpdateTournoiComponent } from './Tournoi/update-tournoi/update-tournoi.component';
+import { ListTicketComponent } from './Ticket/list-ticket/list-ticket.component';
+import { DetailEventComponent } from './Event/detail-event/detail-event.component';
+import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.component';
 // import {  } from '';
 // import {  } from '';
 // import {  } from '';
@@ -42,9 +48,6 @@ const routes: Routes = [
 
 
 
-
-
-  // ------------------------------------------paths hedi-------------------------------------
   { path :'listblog', component: ListBlogComponent},
   { path :'blogdetails/:id', component: BlogDetailsComponent},
   { path :'addblog', component: AddBlogComponent},
@@ -52,17 +55,13 @@ const routes: Routes = [
   { path :'listBlogback', component: ListBlogbackComponent},
   { path : 'tournois', component:ListTournoiComponent},
   { path :'addtournoi', component: AddTournoiComponent},
+  { path :'updatetournoi/:id', component: UpdateTournoiComponent},
   { path :'detailtournoi/:id',component: DetailtournoiComponent},
-  
-
-
-
-
-
-
-
-
-
+  { path : 'events', component:ListEventComponent},
+  { path :'detailevent/:id',component: DetailEventComponent},
+  { path :'addevent', component: AddEventComponent},
+  { path :'tickets',component: ListTicketComponent},
+  { path :'detailticket/:id',component: DetailTicketComponent},
 
 
 ];
