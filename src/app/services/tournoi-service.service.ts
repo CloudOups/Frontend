@@ -25,6 +25,10 @@ export class TournoiService {
     );
   }
 
+  /*addTournoiFromEvent(tournoi: Tournoi, eventId: number): Observable<Tournoi> {
+    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${eventId}`, tournoi);
+  }*/
+
   addTournoi(tournoi: Tournoi): Observable<Tournoi> {
     return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation`, tournoi).pipe(
       catchError(this.handleError)

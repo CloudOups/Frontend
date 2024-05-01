@@ -26,15 +26,23 @@ export class DetailEventComponent {
 
   }
   
+   
     participateEvent(eventId: number) {
       if (confirm('Êtes-vous sûr de vouloir participer à cet événement ?')) {
         this.ticketservice.participateEvent(eventId).subscribe(ticket => {
-          console.log('Ticket créé avec succès : ', ticket);
-          // Rediriger vers une autre page ou afficher un message de succès
+          if (ticket) {
+            console.log('Ticket créé avec succès : ', ticket);
+            // Rediriger vers une autre page ou afficher un message de succès
+          } else {
+            console.error('L\'événement est complet, désolé.');
+            // Afficher un message à l'utilisateur indiquant que l'événement est complet
+            alert('L\'événement est complet, désolé.');
+          }
         }, error => {
           console.error('Erreur lors de la création du ticket : ', error);
           // Gérer l'erreur et afficher un message approprié à l'utilisateur
         });
       }
     }
+    
 }

@@ -76,7 +76,6 @@ const routes: Routes = [
   { path :'detailevent/:id',component: DetailEventComponent},
   { path :'addevent', component: AddEventComponent},
   { path :'updateevent/:id', component: UpdateEventComponent},
-
   { path :'tickets',component: ListTicketComponent},
   { path :'detailticket/:id',component: DetailTicketComponent},
 

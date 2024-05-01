@@ -29,20 +29,24 @@ export class AddTournoiComponent {
   constructor(private http: HttpClient, private trService: TournoiService, private router: Router) {
 
   }
-  
+
   save() {
     this.trService.addTournoi(this.AddTournoiForm.value as any).subscribe(response => {
-      
-
-      console.log('Tournoi added successfully!', response);
-      alert('Tournoi ajouté avec succès!');
-      this.router.navigate(['/tournois']);
-      this.AddTournoiForm.reset();
+      if (response) {
+        console.log('Tournoi added successfully!', response);
+        alert('Tournoi ajouté avec succès!');
+        this.router.navigate(['/tournois']);
+        this.AddTournoiForm.reset();
+      } else {
+        console.error('Failed to add tournoi: Event full');
+        alert('Événement complet, désolé!');
+      }
     }, error => {
       console.error('Error adding tournoi:', error);
+      // Gérer l'erreur ici
     });
-  
   }
+  
   
   onlyNumbersValidator(control: AbstractControl): { [key: string]: any } | null {
     const valid = /^\d+$/.test(control.value);
