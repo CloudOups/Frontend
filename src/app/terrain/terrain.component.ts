@@ -10,7 +10,7 @@ import { Terrain } from '../Models/Terrain/terrain';
 export class TerrainComponent {
   title='terrain-app';
   terrains!: Terrain []
-  url="http://localhost:8089/Users/ychaa/OneDrive/Documents/GitHub/Backend/PI/src/main/webapp/images/CampNou.jpg"  
+  url="http://localhost:4200/assets/img/terrains/"  
 constructor(private terrainService:TerrainService){
 }
   ngOnInit() {
@@ -33,7 +33,7 @@ getTerrains() {
 attachImageUrl() {
   // Loop through each terrain and attach URL to the image filename
   this.terrains.forEach(terrain => {
-    terrain.imageTerrain =  terrain.imageTerrain;
+    terrain.imageTerrain = this.url + terrain.imageTerrain;
   });
 }
 

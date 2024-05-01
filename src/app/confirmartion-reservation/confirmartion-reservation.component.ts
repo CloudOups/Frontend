@@ -47,7 +47,7 @@ save() {
   this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,1,this.numTerrain).subscribe(response => {
     console.log('Reservation added successfully!', response);
     alert('Reservation done ! check your Email!!!');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/mesReservation']);
     this.ReservationForm.reset();
   }, error => {
     console.error('Error adding reservation:', error);

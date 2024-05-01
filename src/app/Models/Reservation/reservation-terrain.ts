@@ -7,6 +7,7 @@ export class ReservationTerrain {
   dateDebut!: Date;
   dateFin!: Date;
   prixReser!: number;
+  etatReser!:true
   typeRes!: TypeReservation;
   //user!: User;
   terrain!: Terrain;

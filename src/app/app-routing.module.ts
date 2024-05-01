@@ -26,7 +26,7 @@ import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.comp
 
 import { UpdateEquipeComponent } from './update-equipe/update-equipe.component';
 import { AddEquipeComponent } from './add-equipe/add-equipe.component';
-import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { MesReservationComponent } from './mes-reservation/mes-reservation.component';
 import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
 
    {path:'updateEquipe/:numEquipe/:chefEquipe',component:UpdateEquipeComponent},
    { path:'choisirTerrain/:startTime/:endTime/:typeTerrain', component: ChoisirTerrainComponent },
-   { path:'addReservation', component: AddReservationComponent },
+   { path:'mesReservation', component: MesReservationComponent },
 
    {path:'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',component:ConfirmartionReservationComponent},
 

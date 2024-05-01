@@ -19,35 +19,60 @@
         </ul>
     </div>
 </section>
-
 <div class="content book-cage">
     <div class="container">
         <section class="card mb-40">
-            <div class="text-center mb-40">
-                <h3 class="mb-1">Book A Court</h3>
-                <p class="sub-title mb-0">Hassle-free court bookings and state-of-the-art facilities.</p>
-            </div>
-
-            <div class="mb-3">
-                <div class="form-label">Selected Time Slot</div>
-                <div class="form-icon">
-                    <p class="fw-bold">{{ startTime }} - {{ endTime }}</p>
-                    <span class="cus-icon"><i class="feather-clock icon-time"></i></span>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center mb-40">
+                        <h3 class="mb-1">Book A Court</h3>
+                        <p class="sub-title mb-0">Hassle-free court bookings and state-of-the-art facilities.</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">  
+                            <span class="cus-icon"><i class="feather-clock icon-time"></i></span>
+                            Selected Time Slot
+                        </div>                  
+                        <div class="form-icon">
+                            <p class="fw-bold">{{ startTime }} - {{ endTime }}</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">Selected Terrain Type</div>
+                        <p class="fw-bold">{{ typeTerrain }}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="mb-3">
-                <div class="form-label">Selected Terrain Type</div>
-                <p class="fw-bold">{{ typeTerrain }}</p>
-            </div>
+                <div class="col-md-6">
+                    <aside class="card booking-details">
+                        <h3 class="border-bottom">Most Reserved Terrain</h3>
+                        <ul>
+                            <div *ngIf="mostReser" class="col-md-6 mb-3">
+                                <div class="academy-info">
+                                    <a href="#" class="academy-img">
+                                        <img [src]="url+mostReser.imageTerrain" alt="Most Reserved Terrain Image">
+                                    </a>
+                                    <div class="academy-content">
+                                        <h6><a href="#">{{ mostReser.numTerrain }}</a></h6>
+                                    </div>
+                                    <div class="academy-content">
+                                        <h6><a href="#">{{ mostReser.nomTerrain }}</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </aside>
+                </div>
+            </div> <!-- End of row -->
         </section>
-
-        <div class="card dashboard-card flex-fill">
-            <div class="card-header card-header-info">
-                <div class="card-header-inner">
-                    <h4>My Terrains</h4>
+    </div>
+</div>    
+            <div class="card dashboard-card flex-fill">
+                <div class="card-header card-header-info">
+                    <div class="card-header-inner">
+                        <h4>My Terrains</h4>
+                    </div>
                 </div>
-            </div>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="nav-Court" role="tabpanel" aria-labelledby="nav-Court-tab" tabindex="0">
                     <div class="table-responsive dashboard-table-responsive">
@@ -85,7 +110,9 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
+<div class="tab-pane fade show active" id="nav-Court" role="tabpanel" aria-labelledby="nav-Court-tab" tabindex="0">
+    <!-- Existing table content -->
+
+  
 <app-footer></app-footer>
