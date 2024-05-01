@@ -43,7 +43,7 @@ const routes: Routes = [
   
 
 
-  //----------------------------------Path yassin------------------------------
+  //----------------------------------Path yassin--------------------------------
    {path:'terrains',component:TerrainComponent},
    {path:'reservationTerrain',component:ReservationTerrainComponent},
    {path:'equipes',component:EquipeComponent},

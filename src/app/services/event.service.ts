@@ -19,6 +19,12 @@ export class EventService {
     );
   }
 
+  getEventsMostParticipation(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/mostparticipation`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getEventById(id: number): Observable<Event> {
     return this.http.get<Event>(`${this.baseUrl}/get/${id}`).pipe(
       catchError(this.handleError)

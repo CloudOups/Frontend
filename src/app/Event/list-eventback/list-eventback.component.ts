@@ -19,6 +19,9 @@ export class ListEventbackComponent {
     console.log('on init...')
     this.evService.getEvents().subscribe(
       data=>this.listevents=data)
+
+      this.evService.getEventsMostParticipation().subscribe(
+        data=>this.listevents=data)
   }
 
   

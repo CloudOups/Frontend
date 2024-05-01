@@ -50,6 +50,7 @@ import { DetailEventComponent } from './Event/detail-event/detail-event.componen
 import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.component';
 import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
+import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.compo
     DetailEventComponent,
     ConfirmartionReservationComponent,
     ChoisirTerrainComponent,
+    ListEventbackComponent
 ],
   imports: [
     BrowserModule,
