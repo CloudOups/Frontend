@@ -81,7 +81,13 @@ export class BlogServiceService {
     return this.http.get<Comment[]>(`http://localhost:8084/commentaire/get/byPublication/${publicationId}`, { headers: this.getHeaders()});
   }
 
+  likePublication(numPub: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/like/${numPub}`, null, { headers: this.getHeaders() });
+  }
 
+  unlikePublication(numPub: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/unlike/${numPub}`, null, { headers: this.getHeaders() });
+  }
   
 
 }

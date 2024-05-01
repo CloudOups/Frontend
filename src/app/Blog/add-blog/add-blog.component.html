@@ -41,8 +41,11 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="info-about">
-                                            <textarea [(ngModel)]="newPublication.contenu" name="contenu" class="form-control" id="comments" rows="3" placeholder="what about ?"></textarea>
-                                            <!-- <ejs-richtexteditor [(ngModel)]="newPublication.contenu" name="contenu" class="form-control" id="comments" rows="3" placeholder="what about ?"></ejs-richtexteditor> -->
+            
+                                            <angular-editor  [(ngModel)]="newPublication.contenu" [ngModelOptions]="{standalone: true}" class="form-control"></angular-editor>
+
+                                          <!-- <div #editorContainer class="editor-container"></div>  -->
+                                            <!-- <ejs-richtexteditor class="ejs-richtexteditor"></ejs-richtexteditor> -->
                                         </div>
                                     </div>
                                 </div>

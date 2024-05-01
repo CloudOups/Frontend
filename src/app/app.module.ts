@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 
@@ -60,6 +61,7 @@ import { ListBlogbackComponent } from './Blog/list-blogback/list-blogback.compon
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +96,11 @@ import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RichTextEditorAllModule
+    RichTextEditorAllModule,
+    AngularEditorModule
+    
+    
+    
    
 
   ],

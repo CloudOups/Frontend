@@ -4,8 +4,7 @@ import { BlogServiceService } from '../blog-service.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Comment } from 'src/app/Models/Comment/comment';
 import { UserService } from '../../services/user.service'; 
-
-
+import { Observable } from 'rxjs'; // Import Observable
 
 @Component({
   selector: 'app-blog-details',
@@ -14,73 +13,74 @@ import { UserService } from '../../services/user.service';
 })
 export class BlogDetailsComponent implements OnInit {
   publication: Publication = {};
-  comments : Comment[] = [];
-   newComment: Comment = new Comment();
-   blogId = this.route.snapshot.paramMap.get('id');
-   var : number = Number(this.blogId);
-  constructor(private blogService: BlogServiceService,private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  comments: Comment[] = [];
+  newComment: Comment = new Comment();
+  blogId = this.route.snapshot.paramMap.get('id');
+  var: number = Number(this.blogId);
+  badWords: string[] = ['badword1', 'badword2', 'badword3'];
+  
+  constructor(
+    private blogService: BlogServiceService,
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     const today = new Date();
-    console.log(this.blogId)
-    this.getBlogById(Number(this.blogId));
-    this.getCommentaires(Number(this.blogId));
-
-    if (this.newComment.publication) {
-      this.newComment.publication.numPub = this.publication.numPub;
-    }
-        // get current user
-        this.userService.getCurrentUser().subscribe({
-          next: (user) => {
-            // Assign the user to newPublication
-            if (user) {
-              this.newComment.user = { ...this.newComment.user, id: user.id };
-              this.newComment.user.role = user.role;
-              this.newComment.user.firstname = user.firstname;
-              this.newComment.user.lastname = user.lastname;
-              console.log("commentaire sa7bi",this.newComment.user)
-            }
-          },
-          error: (error) => {
-            console.error('Error fetching current user:', error);
-          }
-        });
+    console.log(this.blogId);
+    this.getBlogById(Number(this.blogId)).subscribe((blog: Publication) => {
+      // Specify the type of 'blog' parameter as 'Publication'
+      console.log(blog); // Log the fetched blog
+      this.publication = blog; // Assign the fetched blog to the component's publication property
+      this.newComment.publication = { ...this.newComment.publication, numPub: this.publication.numPub };
+      // Now, you can proceed to fetch comments or perform any other actions dependent on the blog publication
+      this.getCommentaires(Number(this.blogId));
+    });
   
-
-}
-
-  getBlogById(blogId: number): void {
-    this.blogService.getBlog(blogId).subscribe(
-      (blog) => {
-        this.publication = blog;
-        console.log(this.publication);
-      },
-      (error) => {
-        console.error(error);
-        console.log("mcohkla blog ")
-      }
-    );
-  }
-
-  getCommentaires(blogId: number): void {
-    this.blogService.getCommentsForPublication(blogId).subscribe({
-      next: (comments) => {
-        // Filter only the approved publications
-        console.log('Fetched comments:', this.comments); // Log the fetched publications
+    // Get current user
+    this.userService.getCurrentUser().subscribe({
+      next: (user) => {
+        if (user) {
+          this.newComment.user = { ...this.newComment.user, id: user.id };
+          this.newComment.user.role = user.role;
+          this.newComment.user.firstname = user.firstname;
+          this.newComment.user.lastname = user.lastname;
+          console.log("commentaire sa7bi", this.newComment.user);
+        }
       },
       error: (error) => {
-        console.error(error);
-        console.log("mcohkla commentairet ")
+        console.error('Error fetching current user:', error);
       }
     });
   }
+
+  getBlogById(blogId: number): Observable<Publication> {
+    return this.blogService.getBlog(blogId);
+  }
+
+  getCommentaires(blogId: number): void {
+    this.blogService.getCommentsForPublication(blogId)
+      .subscribe({
+        next: (comments) => {
+          this.comments = comments; // Assign fetched comments to the comments array
+          console.log('Fetched comments:', this.comments);
+        },
+        error: (error) => {
+          console.error(error);
+          console.log("mcohkla commentairet ")
+        }
+      });
+  }
+
   addCommentToPublication(id: number): void {
     // Optionally, you can set other properties of the new comment if needed
-    
     this.blogService.addComment(id, this.newComment)
       .subscribe({
         next: () => {
           console.log('Comment added successfully');
+          console.log(this.newComment.publication?.numPub);
+          console.log(this.newComment);
           // You may want to refresh the list after adding the comment
           this.getCommentaires(Number(this.blogId));
         },
@@ -90,6 +90,41 @@ export class BlogDetailsComponent implements OnInit {
       });
   }
 
+  likePublication(numPub: number): void {
+    this.blogService.likePublication(numPub)
+      .subscribe({
+        next: () => {
+          console.log('Publication liked successfully');
+          // Optionally, you can update the publication or do other actions
+        },
+        error: (error) => {
+          console.error('Error liking publication:', error);
+        }
+      });
+  }
 
+  unlikePublication(numPub: number): void {
+    this.blogService.unlikePublication(numPub)
+      .subscribe({
+        next: () => {
+          console.log('Publication unliked successfully');
+          // Optionally, you can update the publication or do other actions
+        },
+        error: (error) => {
+          console.error('Error unliking publication:', error);
+        }
+      });
+  }
+
+
+
+  containsBadWord(text: string): boolean {
+    for (const word of this.badWords) {
+      if (text.toLowerCase().includes(word.toLowerCase())) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 }
