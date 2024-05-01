@@ -18,8 +18,7 @@ export class ListTournoiComponent implements OnInit{
   
   ngOnInit(): void {
     console.log('on init...')
-    this.trService.getTournois().subscribe(
-      data=>this.listtournois=data)
+    this.trService.getTournois().subscribe( data=>this.listtournois=data)
   }
 
   deleteTournoi(id: number) {

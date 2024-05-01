@@ -1,3 +1,4 @@
+import { Ticket } from "../Ticket/ticket";
 import { Tournoi } from "../Tournoi/tournoi";
 
 export class Event {
@@ -9,6 +10,6 @@ export class Event {
     dateFin!: Date;
     image!: string;
     nbParticipants!: number;
-    //tickets!: Ticket[];
+    tickets!: Ticket[];
     tournois!: Tournoi[];
 }

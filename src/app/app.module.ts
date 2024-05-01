@@ -44,6 +44,10 @@ import { ListEventComponent } from './Event/list-event/list-event.component';
 import { AddEventComponent } from './Event/add-event/add-event.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
 import { MesReservationComponent } from './mes-reservation/mes-reservation.component';
+import { UpdateTournoiComponent } from './Tournoi/update-tournoi/update-tournoi.component';
+import { ListTicketComponent } from './Ticket/list-ticket/list-ticket.component';
+import { DetailEventComponent } from './Event/detail-event/detail-event.component';
+import { DetailTicketComponent } from './Ticket/detail-ticket/detail-ticket.component';
 import { ConfirmartionReservationComponent } from './confirmartion-reservation/confirmartion-reservation.component';
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 
@@ -89,8 +93,12 @@ import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.compo
     AddEventComponent,
     UpdateEventComponent,
     MesReservationComponent,
+    UpdateTournoiComponent,
+    ListTicketComponent,
+    DetailTicketComponent,
+    DetailEventComponent,
     ConfirmartionReservationComponent,
-    ChoisirTerrainComponent
+    ChoisirTerrainComponent,
 ],
   imports: [
     BrowserModule,

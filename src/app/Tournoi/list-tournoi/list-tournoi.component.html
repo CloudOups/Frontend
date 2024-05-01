@@ -5,11 +5,10 @@
     <div class="card-header-inner">
     <h4>My Tournaments</h4>
     </div>
-    <div class="card-header-btns">
+    <div class="card-header-btns">²
     <nav>
     <div class="nav nav-tabs" role="tablist">
-    <button class="nav-link active" id="nav-Court-tab" data-bs-toggle="tab" data-bs-target="#nav-Court" type="button" role="tab" aria-controls="nav-Court" aria-selected="true" [routerLink]="['/addtournoi']">Add tournoi</button>
-    
+    <button class="nav-link active" id="nav-Court-tab" data-bs-toggle="tab" data-bs-target="#nav-Court" type="button" role="tab" aria-controls="nav-Court" aria-selected="true" [routerLink]="['/addtournoi']">Add tournoi</button> 
 </div>
     </nav>
     </div>
@@ -44,6 +43,9 @@
     </td>
     <td>
     <button class="btn btn-outline-success" [routerLink]="['/detailtournoi',tournoi.numTournoi]">detail</button>
+    </td>
+    <td>
+        <button class="btn btn-outline-success" [routerLink]="['/updatetournoi', tournoi.numTournoi]">update</button>
     </td>
     <td>
     <button class="btn btn-outline-success" *ngIf="tournoi.numTournoi" (click)="deleteTournoi(tournoi.numTournoi)">supprimer</button>

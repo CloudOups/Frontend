@@ -10,7 +10,7 @@ import { EventService } from 'src/app/services/event.service';
 export class ListEventComponent implements OnInit{
   title='event app';
   listevents!: Event []
-
+  
   constructor(private evService: EventService){
 
   }
