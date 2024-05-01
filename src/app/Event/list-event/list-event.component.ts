@@ -19,6 +19,8 @@ export class ListEventComponent implements OnInit{
     console.log('on init...')
     this.evService.getEvents().subscribe(
       data=>this.listevents=data)
+      console.log('Liste des Events rafraîchie avec succès', this.listevents);
+
   }
 
   deleteEvent(id: number) {

@@ -14,7 +14,7 @@
         <tr *ngFor="let t of listtickets">
           <td>{{ t.numTicket }}</td>
           <td>{{ t.dateTicket }}</td>
-          <td>{{ t.user?.nom }}</td>
+          <td>{{ t.user?.firstname }}</td>
           <td>{{ t.event?.nomevent }}</td>
           <td>
             <button class="btn btn-outline-success" [routerLink]="['/detailticket',t.numTicket]">detail</button>

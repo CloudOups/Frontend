@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from 'src/app/Models/Event/event';
 import { Tournoi } from 'src/app/Models/Tournoi/tournoi';
-import { EventService } from 'src/app/services/event.service';
+import { EventService } from '../../services/event.service';
 import { TicketService } from 'src/app/services/ticket.service';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
 

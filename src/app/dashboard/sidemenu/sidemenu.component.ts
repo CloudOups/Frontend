@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -6,5 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidemenu.component.css']
 })
 export class SidemenuComponent {
-
+  userConnected: any;
+  decodedJwtData: any;
+  constructor(private authService: AuthServiceService) {
+    this.userConnected = localStorage.getItem('jwt');
+    if (this.userConnected) {
+      let jwt = this.userConnected;
+      let jwtData = jwt.split('.')[1];
+      let decodedJwtJsonData = window.atob(jwtData);
+      this.decodedJwtData = JSON.parse(decodedJwtJsonData);
+      console.log('user ::::::::', this.decodedJwtData.sub);
+    }
+  }
+  logout() {
+    this.authService.logout().subscribe(
+      (response) => {
+        // Successful logout handling
+        console.log('Logout successful');
+      },
+      (error) => {
+        // Error handling
+        console.error('Logout error:', error);
+      }
+    );
+  }
 }
