@@ -50,15 +50,10 @@ const routes: Routes = [
    {path:'addterrains',component:AddTerrainComponent},
    {path:'updateterrain/:numTerrain',component:UpdateTerrainComponent},
    {path:'addEquipe',component:AddEquipeComponent},
-
    {path:'updateEquipe/:numEquipe/:chefEquipe',component:UpdateEquipeComponent},
    { path:'choisirTerrain/:startTime/:endTime/:typeTerrain', component: ChoisirTerrainComponent },
    { path:'mesReservation', component: MesReservationComponent },
-
    {path:'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',component:ConfirmartionReservationComponent},
-
-
-
 
 
   { path :'listblog', component: ListBlogComponent},
@@ -68,7 +63,7 @@ const routes: Routes = [
   { path :'listBlogback', component: ListBlogbackComponent},
 
   { path : 'tournois', component:ListTournoiComponent},
-  { path :'addtournoi', component: AddTournoiComponent},
+  { path :'addTournoi/:id', component: AddTournoiComponent},
   { path :'updatetournoi/:id', component: UpdateTournoiComponent},
   { path :'detailtournoi/:id',component: DetailtournoiComponent},
   { path : 'events', component:ListEventComponent},

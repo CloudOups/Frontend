@@ -33,6 +33,8 @@ export class TicketService {
     addTicket(ticket: Ticket, idevent: number): Observable<Ticket> {
       return this.http.post<Ticket>(`${this.baseUrl}/add/${idevent}`, ticket);
     }
+
+    
     updateTicket(ticket: Ticket): Observable<Ticket> {
       return this.http.put<Ticket>(`${this.baseUrl}/update`, ticket).pipe(
         catchError(this.handleError)

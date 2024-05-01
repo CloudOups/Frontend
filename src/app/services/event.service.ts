@@ -31,6 +31,22 @@ export class EventService {
     );
   }
 
+  getCompleteEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/complete`);
+  }
+
+  getIncompleteEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/incomplete`);
+  }
+
+  getExpiredEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/expired`);
+  }
+
+  getUpcomingEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/upcoming`);
+  }
+
  /* addEvent(Event: Event): Observable<Event> {
     return this.http.post<Event>(`${this.baseUrl}/add`, Event).pipe(
       catchError(this.handleError)

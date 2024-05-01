@@ -1,11 +1,14 @@
-<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+  
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <h2>Liste des Terrains</h2>
 
-<div class="breadcrumb mb-0">
-    <span class="primary-right-round"></span>
-    <div class="container">
-        <h1 class="text-white">List des terrains</h1>
-   
-    </div></div>
 <div class="table-responsive">
     <table class="table table-borderless datatable">
         <thead class="thead-light">
@@ -45,5 +48,3 @@
         </tbody>
     </table>
 </div>
-
-<app-footer></app-footer>

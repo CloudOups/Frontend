@@ -16,16 +16,42 @@ export class DetailEventComponent {
   id!:number
   event!: Event
   listtournois!: Tournoi []
+  currentPage = 0;
+  pageSize = 5;
+  totalPages = 0;
+  totalPagesArray: number[] = [];
 
   constructor(private Act:ActivatedRoute,private ts:EventService,private tournoiservice:TournoiService,private ticketservice:TicketService){}
 
   ngOnInit(){
     this.id=this.Act.snapshot.params['id']
     this.ts.getEventById(this.id).subscribe(data=>this.event=data as any )
-    this.tournoiservice.getTournois().subscribe( data=>this.listtournois=data)
+    //this.tournoiservice.getTournois().subscribe( data=>this.listtournois=data)
+    this.getTournoiss();
+
 
   }
+
+
   
+  getTournoiss(): void {
+    this.tournoiservice.getAllTournois(this.currentPage, this.pageSize).subscribe(
+      response => {
+        this.listtournois = response.content;
+        this.totalPages = response.totalPages;
+        this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1); // Generate array of page numbers
+      },
+      error => {
+        console.error('Error fetching reservations: ', error);
+      }
+    );
+  }
+  
+  goToPage(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    this.getTournoiss();
+  }
+
    
     participateEvent(eventId: number) {
       if (confirm('Êtes-vous sûr de vouloir participer à cet événement ?')) {
