@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Publication } from '../../Models/Blog/publication';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { BlogServiceService } from '../blog-service.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Comment } from 'src/app/Models/Comment/comment';
@@ -17,16 +18,22 @@ export class BlogDetailsComponent implements OnInit {
   newComment: Comment = new Comment();
   blogId = this.route.snapshot.paramMap.get('id');
   var: number = Number(this.blogId);
+
+  newCommentForm!: FormGroup;
   badWords: string[] = ['badword1', 'badword2', 'badword3'];
   
   constructor(
     private blogService: BlogServiceService,
     private userService: UserService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
+
   ) { }
 
   ngOnInit(): void {
+
+    this.initializeForm();
     const today = new Date();
     console.log(this.blogId);
     this.getBlogById(Number(this.blogId)).subscribe((blog: Publication) => {
@@ -54,6 +61,15 @@ export class BlogDetailsComponent implements OnInit {
       }
     });
   }
+
+//***************************validator for comments */
+initializeForm(): void {
+  this.newCommentForm = this.formBuilder.group({
+    contenucm: ['', [Validators.required, Validators.maxLength(200), this.badWordValidator()]]
+  });
+}
+
+
 
   getBlogById(blogId: number): Observable<Publication> {
     return this.blogService.getBlog(blogId);
@@ -118,6 +134,16 @@ export class BlogDetailsComponent implements OnInit {
 
 
 
+  badWordValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const text = control.value;
+      if (this.containsBadWord(text)) {
+        return { 'badWord': true };
+      }
+      return null;
+    };
+  }
+
   containsBadWord(text: string): boolean {
     for (const word of this.badWords) {
       if (text.toLowerCase().includes(word.toLowerCase())) {
@@ -127,4 +153,19 @@ export class BlogDetailsComponent implements OnInit {
     return false;
   }
 
+
+
+    deletecomment(id: number): void {
+    this.blogService.deleteComment(id)
+      .subscribe({
+        next: () => {
+          console.log('comment deleted successfully');
+          // You may want to refresh the list after deletion
+          this.getCommentaires(Number(this.blogId));
+        },
+        error: (error) => {
+          console.error('Error deleting publication:', error);
+        }
+      });
+  }
 }

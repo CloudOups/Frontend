@@ -38,7 +38,7 @@
                                                 src="../../../assets/img/profiles/avatar-01.jpg" alt="User">{{
                                             publication.user?.firstname}} {{publication.user?.lastname}}</a>
                                         <span><i class="feather-calendar">{{ publication.dateCreation}}</i></span>
-                                        <span><i class="far fa-comment-alt"></i>30 Comments</span>
+                                        <span><i class="far fa-comment-alt"></i>{{comments.length}} Comments</span>
                                     </div>
                                     <a class="btn btn-primary"><img src="assets/img/icons/grid.svg" class="img-fluid"
                                             alt="Icon">Rules of Game</a>
@@ -55,7 +55,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                               
                                    
-                                        <a href="#" (onclick)="likePublication(publication.numPub||0)" class="feather-heart fea "></a>
+                                        <a href="#" (onclick)="likePublication(publication.numPub||0)" class="feather-heart fea "></a>{{publication.likes}}
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                                 <div class="d-flex justify-content-lg-end align-items-center social-medias-wrapper">
@@ -93,6 +93,7 @@
                                             <h5>{{ comment.user?.firstname}} {{comment.user?.lastname}}</h5>
                                             <i class="fa-solid fa-circle"></i>
                                             <span>{{ comment.datecm }}</span>
+                                            <i class="feather-heart" (onclick)="deletecomment(comment.idcmt || 0)" ></i>
                                         </div>
                                         <p>{{ comment.contenucm }}</p>
                                        

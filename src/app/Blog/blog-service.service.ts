@@ -49,6 +49,15 @@ export class BlogServiceService {
     return this.http.delete(`${this.baseUrl}/delete/${id}`, options);
   }
 
+  deleteComment(id: number): Observable<any> {
+    const options = {
+      headers: this.getHeaders(),
+      responseType: 'text' as const
+    };
+    return this.http.delete(`http://localhost:8084/commentaire/delete/${id}`, options);
+  }
+
+
   getBlog(id: number): Observable<Publication> {  
     return this.http.get<Publication>(`${this.baseUrl}/getpublication/${id}`, { headers: this.getHeaders()});  
   }  
