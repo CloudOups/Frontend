@@ -1,27 +1,43 @@
 
 <app-navbar></app-navbar>
 
-<div class="breadcrumb mb-0">
-    <span class="primary-right-round"></span>
-    <div class="container">
-        <h1 class="text-white">List des Reservations </h1>
-   
-    </div></div>
+        <div class="breadcrumb mb-0">
+            <span class="primary-right-round"></span>
+            <div class="container">
+                <h1 class="text-white">List des Reservations </h1>
+    </div>
+</div>
 <div class="table-responsive">
     <table class="table table-borderless datatable">
         <thead class="thead-light">
             <button class="btn btn-primary" [routerLink]="['/home']">ajouter une reservation</button>
-
+         
             <tr>
-                <th>Id du reservation</th>
-                <th>etat Reservation</th>
-                <th>date Debut</th>
-                <th>date Fin</th>
-                <th>Type</th>
-                <th>nomTerrain</th>
-                <th>typeRes</th>
-
+               
+                <th>Reservation ID</th>
+                <th>Reservation Status
+                <button class="icon fa fa-sort" (click)="sortByEtatRes()"></button></th>
+                <th>User
+                    <button class="icon fa fa-sort" (click)="sortByUser()"></button>
+                </th>
+                <th>Start Date 
+                    <button class="icon fa fa-sort" (click)="sortByDateDebut()"></button>
+                </th>
+                <th>End Date 
+                    <button class="icon fa fa-sort" (click)="sortByDateFin()"></button>
+                </th>
+                <th>Type 
+                    <button class="icon fa fa-sort" (click)="sortByTypeRes()"></button>
+                </th>
+                <th>Terrain Name 
+                    <button class="icon fa fa-sort" (click)="sortByNomTerrain()"></button>
+                </th>
+                <th>
+                    <button (click)="clearSort()"> <i class="fas fa-sync"></i> Refresh
+              </button>
+                </th>
             </tr>
+            
         </thead>
         <tbody>
             <ng-container *ngFor="let res of reservationTerrains">
@@ -38,19 +54,40 @@
                             </span>
                         </h2>
                     </td>
+                    <td>{{ res.user.userId }}</td>
                     <td>{{ res.dateDebut }}</td>
                     <td>{{ res.dateFin }}</td>
+                    <td>{{ res.typeRes }}</td>
                     <td>{{ res.terrain.nomTerrain }}</td> 
-                     <td>{{ res.typeRes }}</td>
                     <td>
                         <!-- Buttons for actions -->
                         <button class="btn btn-primary"[routerLink]="['/updateterrain',res.numTerrain]">Edit</button>
                         <button class="btn btn-danger"*ngIf="res.numTerrain">Delete</button>
                     </td>
+                    
                 </tr>
             </ng-container>
         </tbody>
     </table>
+
 </div>
 
+  
+  
+
+
+    <div class="row justify-content-between align-items-center">
+      
+        <div class="col-auto">
+            <button class="btn btn-secondary" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+        </div>
+        <div class="col-auto">
+            <ng-container *ngFor="let page of totalPagesArray">
+                <button class="btn btn-secondary" (click)="goToPage(page - 1)" [class.active]="currentPage === page - 1">{{ page }}</button>
+            </ng-container>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-secondary" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Next</button>
+        </div>
+    </div>
 <app-footer></app-footer>

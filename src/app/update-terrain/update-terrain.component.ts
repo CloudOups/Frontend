@@ -23,7 +23,8 @@ UpdateTerrainForm= new FormGroup({
   numTerrain:new FormControl('', [Validators.required]),
   nomTerrain: new FormControl('', [Validators.required]),
   statusTerrain: new FormControl('', [Validators.required]),
-  typeTerrain: new FormControl('', [Validators.required])
+  typeTerrain: new FormControl('', [Validators.required]),
+ // imageTerrain:new FormControl('', [Validators.required]),
 });
 numTerrain!:number
 terrain!:Terrain;

@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Equipe } from '../Models/Equipe/equipe';
+import { Page } from '../Models/Page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,13 @@ export class EquipeService {
   updateEquipe(equipe: Equipe): Observable<Equipe> {
     return this.httpClient.put<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/update", equipe);
   }
+  getAllPaginations(page: number, size: number): Observable<Page<Equipe>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
 
+    return this.httpClient.get<Page<Equipe>>(this.API_URL + this.ENDPOINT_EQUIPES +"/get/allEquipes", { params });
+  }
   // Method to get an equipe by ID
   getEquipeById(idEquipe: number): Observable<Equipe> {
     return this.httpClient.get<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/get/" + idEquipe);

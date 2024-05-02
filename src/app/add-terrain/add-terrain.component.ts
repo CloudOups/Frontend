@@ -17,7 +17,7 @@ export class AddTerrainComponent {
   title='addterrain-app';
   terrains: any = {};
   url="C:/xampp/htdocs/img/imgPI/"
-
+  imageTerrain: File | null = null;
 constructor(private terrainService:TerrainService, private router: Router){
 }
 typeTerrain: string[] = Object.values(TypeTerrain);
@@ -32,16 +32,15 @@ AddTerrainForm= new FormGroup({
 onFileSelected(event: any) {
   const file: File = event.target.files[0];
   if (file) {
+    this.imageTerrain = file;
     const fileName = file.name;
     const imageTerrainControl = this.AddTerrainForm.get('imageTerrain');
     if (imageTerrainControl) {
-      imageTerrainControl.setValue(this.url + fileName);
-   //   this.AddTerrainForm.setControl('imageFile', new FormControl(file)); // Add the selected file to the form
-
+      // Set the value to the file name for display purposes
+      imageTerrainControl.setValue(fileName);
     }
   }
 }
-
 
 ngOnInit(){
   console.log("on init ......")
@@ -50,7 +49,11 @@ ngOnInit(){
 }
 save() {
   
-  this.terrainService.addTerrain(this.AddTerrainForm.value.nomTerrain as any,this.AddTerrainForm.value.typeTerrain as any,this.AddTerrainForm.value.statusTerrain as any, this.AddTerrainForm.value.imageTerrain as any).subscribe(response => {
+  this.terrainService.addTerrain(this.AddTerrainForm.value.nomTerrain as any,
+    this.AddTerrainForm.value.typeTerrain as TypeTerrain,
+    this.AddTerrainForm.value.statusTerrain as StatusTerrain,
+    this.imageTerrain as File).subscribe(response => {
+
       // Handle response if needed
       console.log('Terrain added successfully!', response);
       alert('Terrain ajouté avec succès!');

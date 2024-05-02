@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReservationTerrain } from '../Models/Reservation/reservation-terrain';
 import { Terrain } from '../Models/Terrain/terrain';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
+import { Page } from '../Models/Page.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,52 @@ export class ReservationTerrainService {
   readonly ENDPOINT_RESERVATIONS_TERRAINS = "/reservation";
 
   constructor(private httpClient: HttpClient) { }
+  getAllReservations(page: number, size: number ,sortBy:string|null): Observable<Page<ReservationTerrain>> {
+    var params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+if (sortBy) {
+  params = params.set('sortBy', sortBy);
+}
 
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS +"/get/allreservations", { params });
+  }
+  getReservationsSortUser(page: number, size: number): Observable<Page<ReservationTerrain>> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString());
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/reservations-by-user", { params });
+  }
+  getReservationsSortDatedebut(page: number, size: number): Observable<Page<ReservationTerrain>> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString());
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/reservations-by-datedebut", { params });
+  }
+  getReservationsSortDatefin(page: number, size: number): Observable<Page<ReservationTerrain>> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString());
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/reservations-by-datefin", { params });
+  }
+  getReservationsSortTypeRes(page: number, size: number): Observable<Page<ReservationTerrain>> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString());
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/reservations-by-typeRes", { params });
+  }
+  getReservationsSortNomTerrain(page: number, size: number): Observable<Page<ReservationTerrain>> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString());
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/reservations-by-nomTerrain", { params });
+  }
+  getReservationsSortEtatRes(page: number, size: number): Observable<Page<ReservationTerrain>> {
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString());
+    return this.httpClient.get<Page<ReservationTerrain>>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/reservations-by-etatRes", { params });
+  }
   // Method to retrieve all reservation terrains
   getReservationTerrains(): Observable<ReservationTerrain[]> {
     return this.httpClient.get<ReservationTerrain[]>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/get/all");
