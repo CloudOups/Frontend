@@ -20,14 +20,14 @@ export class AddEquipeComponent {
   }
 
   AddEquipeForm = new FormGroup({
-    chefEquipe: new FormControl('', [Validators.required]), // FormControl for chefEquipe
+   /// chefEquipe: new FormControl('', [Validators.required]), 
     nomEquipe: new FormControl('', [Validators.required]),
     nbMemEquipe: new FormControl('', [Validators.required]),
     classement: new FormControl(null, [Validators.required]),
   });
 
   save() {
-    this.equipeService.addEquipe(this.AddEquipeForm.value as any , this.AddEquipeForm.value.chefEquipe as any).subscribe(response => {
+    this.equipeService.addEquipe(this.AddEquipeForm.value as any , 1).subscribe(response => {
       console.log('Equipe added successfully!', response);
       alert('Equipe ajouté avec succès!');
       this.router.navigate(['/equipes']);
