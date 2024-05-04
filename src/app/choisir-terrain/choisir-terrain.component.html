@@ -1,0 +1,118 @@
+<app-navbar></app-navbar>
+
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+        <h1 class="text-white">Book A Court</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>Book A Court</li>
+        </ul>
+    </div>
+</div>
+
+<section class="booking-steps py-30">
+    <div class="container">
+        <ul class="d-lg-flex justify-content-center align-items-center">
+            <li><h5><a class="btn btn-primary" routerLink="/choisirTerrain" ><span>1 </span>Book a Court</a></h5></li>
+            <li><h5><a class ="btn btn-primary" routerLink="/confirmerReservation"><span>2 </span>Order Confirmation </a></h5></li>
+        </ul>
+    </div>
+</section>
+<div class="content book-cage">
+    <div class="container">
+        <section class="card mb-40">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center mb-40">
+                        <h3 class="mb-1">Book A Court</h3>
+                        <p class="sub-title mb-0">Hassle-free court bookings and state-of-the-art facilities.</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">  
+                            <span class="cus-icon"><i class="feather-clock icon-time"></i></span>
+                            Selected Time Slot
+                        </div>                  
+                        <div class="form-icon">
+                            <p class="fw-bold">{{ startTime }} - {{ endTime }}</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">Selected Terrain Type</div>
+                        <p class="fw-bold">{{ typeTerrain }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <aside class="card booking-details">
+                        <h3 class="border-bottom">Most Reserved Terrain</h3>
+                        <ul>
+                            <div *ngIf="mostReser" class="col-md-6 mb-3">
+                                <div class="academy-info">
+                                    <a href="#" class="academy-img">
+                                        <img [src]="url+mostReser.imageTerrain" alt="Most Reserved Terrain Image">
+                                    </a>
+                                    <div class="academy-content">
+                                        <h6><a href="#">{{ mostReser.numTerrain }}</a></h6>
+                                    </div>
+                                    <div class="academy-content">
+                                        <h6><a href="#">{{ mostReser.nomTerrain }}</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </aside>
+                </div>
+            </div> <!-- End of row -->
+        </section>
+    </div>
+</div>    
+            <div class="card dashboard-card flex-fill">
+                <div class="card-header card-header-info">
+                    <div class="card-header-inner">
+                        <h4>My Terrains</h4>
+                    </div>
+                </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="nav-Court" role="tabpanel" aria-labelledby="nav-Court-tab" tabindex="0">
+                    <div class="table-responsive dashboard-table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Terrain</th>
+                                    <th>Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let terrain of terrains">
+                                    <td>
+                                        <div class="academy-info">
+                                            <a href="coach-booking.html" class="academy-img">
+                                                <img [src]="terrain.imageTerrain" alt="Terrain Image">
+                                            </a>
+                                            <div class="academy-content">
+                                                <h6><a href="#">{{ terrain.nomTerrain }}</a></h6>
+                                                <span>{{ terrain.statusTerrain }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p>{{ terrain.typeTerrain }}</p>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-outline-success reserve-btn" [routerLink]="['/confirmerReservation',startTime,endTime,terrain.numTerrain,prixReser]">Reserve</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="tab-pane fade show active" id="nav-Court" role="tabpanel" aria-labelledby="nav-Court-tab" tabindex="0">
+    <!-- Existing table content -->
+
+  
+<app-footer></app-footer>

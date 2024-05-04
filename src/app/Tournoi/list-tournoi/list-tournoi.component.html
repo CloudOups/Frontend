@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<h3></h3>
+<div class="card dashboard-card flex-fill">
+    <div class="card-header card-header-info">
+    <div class="card-header-inner">
+    <h4>My Tournaments</h4>
+    </div>
+    <div class="card-header-btns">²
+    <nav>
+    <div class="nav nav-tabs" role="tablist">
+    <button class="nav-link active" id="nav-Court-tab" data-bs-toggle="tab" data-bs-target="#nav-Court" type="button" role="tab" aria-controls="nav-Court" aria-selected="true" [routerLink]="['/addtournoi']">Add tournoi</button> 
+</div>
+    </nav>
+    </div>
+    </div>
+    <div class="tab-content">
+    <div class="tab-pane fade show active" id="nav-Court" role="tabpanel" aria-labelledby="nav-Court-tab" tabindex="0">
+    <div class="table-responsive dashboard-table-responsive">
+    <table class="table dashboard-card-table" *ngFor = "let tournoi of listtournois">
+    <tbody>
+    <tr>
+    <td>
+    <div class="academy-info">
+    <a href="coach-booking.html" class="academy-img">
+    <img src="assets/img/booking/booking-02.jpg" alt="Booking">
+    </a>
+    <div class="academy-content">
+    <h6><a href="#" data-bs-toggle="modal" data-bs-target="#upcoming-court">tournoiname</a></h6>
+    <span>{{tournoi.nomTournoi}}</span>
+    <ul>
+    <li> nombre d'equipe: {{tournoi.nbEquipes}}</li>
+    </ul>
+    </div>
+    </div>
+    </td>
+    <td>
+    <h6>Date & Time</h6>
+    <p> {{tournoi.dateDebut}}</p>
+    <p> {{tournoi.dateFin}}</p>
+    </td>
+    <td>
+    <h4>{{tournoi.recompense}}</h4>
+    </td>
+    <td>
+    <button class="btn btn-outline-success" [routerLink]="['/detailtournoi',tournoi.numTournoi]">detail</button>
+    </td>
+    <td>
+        <button class="btn btn-outline-success" [routerLink]="['/updatetournoi', tournoi.numTournoi]">update</button>
+    </td>
+    <td>
+    <button class="btn btn-outline-success" *ngIf="tournoi.numTournoi" (click)="deleteTournoi(tournoi.numTournoi)">supprimer</button>
+
+    </td>
+    <td>
+    <div class="dropdown dropdown-action">
+    <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis"></i></a>
+    <div class="dropdown-menu dropdown-menu-end">
+    <a class="dropdown-item" href="javascript:void(0);">
+    <i class="feather-x-circle"></i> Cancel
+    </a>
+    </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    </div>
+<app-footer></app-footer>

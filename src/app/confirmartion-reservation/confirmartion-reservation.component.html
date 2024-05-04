@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+
+<section class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+        <h1 class="text-white">Book A Court</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>Book A Court</li>
+        </ul>
+    </div>
+</section>
+
+<section class="booking-steps py-30">
+    <div class="container">
+        <ul class="d-lg-flex justify-content-center align-items-center">
+            <li><h5><a class="btn btn-primary" routerLink="/choisirTerrain"><span>1</span>Book a Court</a></h5></li>
+            <li><h5><a class="btn btn-primary" routerLink="/confirmerReservation"><span>2</span>Order Confirmation</a></h5></li>
+        </ul>
+    </div>
+</section>
+
+<div class="content book-cage">
+    <div class="container">
+        <section class="card mb-40">
+            <div class="text-center mb-40">
+                <h3 class="mb-1">Order Confirmation</h3>
+                <p class="sub-title mb-0">Thank you for your order! We're excited to fulfill it with care and efficiency.</p>
+            </div>
+
+            <section class="card booking-order-confirmation">
+                <h5 class="mb-3">Booking Details</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form [formGroup]="ReservationForm">
+                            <div class="form-group">
+                                <label>Date de Début</label>
+                                <input class="form-control" type="text" formControlName="dateDebut">
+                                <div class="alert alert-danger" *ngIf="ReservationForm.get('dateDebut')?.errors?.['required'] && ReservationForm.get('dateDebut')?.touched">
+                                    La date de début est obligatoire.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Date de Fin</label>
+                                <input class="form-control" type="text" formControlName="dateFin">
+                                <div class="alert alert-danger" *ngIf="ReservationForm.get('dateFin')?.errors?.['required'] && ReservationForm.get('dateFin')?.touched">
+                                    La date de fin est obligatoire.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form [formGroup]="ReservationForm">
+                            <div class="form-group">
+                                <label>Prix de la Réservation</label>
+                                <input class="form-control" type="text" formControlName="prixReser">
+                                <div class="alert alert-danger" *ngIf="ReservationForm.get('prixReser')?.errors?.['required'] && ReservationForm.get('prixReser')?.touched">
+                                    Le prix de la réservation est obligatoire.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <input class="form-control" type="text" formControlName="typeRes">
+                                <div class="alert alert-danger" *ngIf="ReservationForm.get('typeRes')?.errors?.['required'] && ReservationForm.get('typeRes')?.touched">
+                                    Le typeRes est obligatoire.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <button class="btn btn-primary" (click)="save()" [disabled]="ReservationForm.invalid">Save</button>
+            </section>
+        </section>
+    </div>
+</div>
+
+<app-footer></app-footer>

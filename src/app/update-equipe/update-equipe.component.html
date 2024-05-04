@@ -1,0 +1,53 @@
+
+<app-navbar></app-navbar>
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+    <h1 class="text-white">editer une equipe</h1>
+    <ul>
+    <form [formGroup]="UpdateEquipeForm"> <!-- Updated formGroup name -->
+  <h5>chef d'Équipe</h5> <!-- Adjusted form control label -->
+  <input class="form-control" type="text" formControlName="chefEquipe"> <!-- Updated formControlName -->
+  <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('chefEquipe')?.errors?.['required'] && UpdateEquipeForm.get('chefEquipe')?.touched">
+    Le chef  d'Équipe est obligatoire.
+  </div>
+    <h5>Numéro d'Équipe</h5> <!-- Adjusted form control label -->
+    <input class="form-control" type="text" formControlName="numEquipe"> <!-- Updated formControlName -->
+ 
+  <h5>Nom d'Équipe</h5>
+  <input class="form-control" type="text" formControlName="nomEquipe">
+
+  <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('nomEquipe')?.errors?.['required'] && UpdateEquipeForm.get('nomEquipe')?.touched">
+    Le champ Nom d'Équipe est obligatoire.
+  </div>
+ 
+  <h5>Nombre de Membres dans l'Équipe</h5>
+  <input class="form-control" type="text" formControlName="nbMemEquipe">
+
+  <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('nbMemEquipe')?.errors?.['required'] && UpdateEquipeForm.get('nbMemEquipe')?.touched">
+    Le champ Nombre de Membres dans l'Équipe est obligatoire.
+  </div>
+
+  <h5>Classement</h5>
+  <input class="form-control" type="text" formControlName="classement">
+
+  <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('classement')?.errors?.['required'] && UpdateEquipeForm.get('classement')?.touched">
+    Le champ Classement est obligatoire.
+  </div>
+ 
+    <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('nbMemEquipe')?.errors?.['required'] && UpdateEquipeForm.get('nbMemEquipe')?.touched">
+      Le champ Nombre de Membres dans l'Équipe est obligatoire.
+    </div>
+ 
+    <h5>Classement</h5> <!-- Adjusted form control label -->
+    <input class="form-control" type="text" formControlName="classement"> <!-- Updated formControlName -->
+ 
+    <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('classement')?.errors?.['required'] && UpdateEquipeForm.get('classement')?.touched">
+      Le champ Classement est obligatoire.
+    </div>
+   
+    <!-- Adjusted submit button -->
+    <input type="submit" class="btn btn-primary" value="Save" (click)="save()" [disabled]="UpdateEquipeForm.invalid">
+ </form>
+</ul></div> </div>
+<app-footer></app-footer>

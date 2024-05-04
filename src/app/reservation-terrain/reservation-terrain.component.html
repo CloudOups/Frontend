@@ -1,0 +1,56 @@
+
+<app-navbar></app-navbar>
+
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+        <h1 class="text-white">List des Reservations </h1>
+   
+    </div></div>
+<div class="table-responsive">
+    <table class="table table-borderless datatable">
+        <thead class="thead-light">
+            <button class="btn btn-primary" [routerLink]="['/home']">ajouter une reservation</button>
+
+            <tr>
+                <th>Id du reservation</th>
+                <th>etat Reservation</th>
+                <th>date Debut</th>
+                <th>date Fin</th>
+                <th>Type</th>
+                <th>nomTerrain</th>
+                <th>typeRes</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let res of reservationTerrains">
+                <tr>
+                    <td>{{ res.numRes }}</td>
+                    <td>
+                        <h2 class="table-avatar">
+                            <a href="#" class="avatar avatar-sm  flex-shrink-0"></a>
+                            <span class="table-head-name flex-grow-1">
+                                <a href="#">
+                                    {{ res.etatReser ? 'Actif' : 'Expiré' }}
+                                </a>
+                                
+                            </span>
+                        </h2>
+                    </td>
+                    <td>{{ res.dateDebut }}</td>
+                    <td>{{ res.dateFin }}</td>
+                    <td>{{ res.terrain.nomTerrain }}</td> 
+                     <td>{{ res.typeRes }}</td>
+                    <td>
+                        <!-- Buttons for actions -->
+                        <button class="btn btn-primary"[routerLink]="['/updateterrain',res.numTerrain]">Edit</button>
+                        <button class="btn btn-danger"*ngIf="res.numTerrain">Delete</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+<app-footer></app-footer>

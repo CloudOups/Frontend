@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+        <h1 class="text-white">List des terrains</h1>
+   
+    </div></div>
+<div class="table-responsive">
+    <table class="table table-borderless datatable">
+        <thead class="thead-light">
+            <button class="btn btn-primary" routerLink="/addterrains">ajouter un terrain</button>
+
+            <tr>
+                <th>Id du terrain</th>
+                <th>Nom du terrain</th>
+                <th>Image du terrain</th>
+                <th>Statut</th>
+                <th>Type</th>
+                <th>Actions</th> <!-- New column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container  *ngFor="let terrain of terrains">
+                <tr>
+                    <td>{{ terrain.numTerrain }}</td>
+                    <td>
+                        <h2 class="table-avatar">
+                            <a href="#" class="avatar avatar-sm  flex-shrink-0"></a>
+                            <span class="table-head-name flex-grow-1">
+                                <a href="#">{{ terrain.nomTerrain }}</a>
+                            </span>
+                        </h2>
+                    </td>                      
+                    <td><img [src]="terrain.imageTerrain" alt="imageTerrain" style="max-width: 100px; max-height: 100px;"></td>
+                    <td>{{ terrain.statusTerrain }}</td>
+                    <td>{{ terrain.typeTerrain }}</td>
+                    <td>
+                        <!-- Buttons for actions -->
+                        <button class="btn btn-primary"[routerLink]="['/updateterrain',terrain.numTerrain]">Edit</button>
+                        <button class="btn btn-danger"*ngIf="terrain.numTerrain" (click)="deleteTerrain(terrain.numTerrain)">Delete</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+<app-footer></app-footer>

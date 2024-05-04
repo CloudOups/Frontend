@@ -1,13 +1,12 @@
 import { User } from "../user/user";
 
 export class Publication {
-    id?: any;
-    Sujet?: string;
+    numPub?: number;
+    sujet?: string;
     contenu?: string;
     dateCreation?: Date;
     photo?: string;
-    user?: User;
     status?: boolean;
-
-
+    likes?: number;
+    user?: User;
 }

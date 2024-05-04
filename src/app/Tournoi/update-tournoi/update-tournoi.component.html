@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+<div class="container-sm">
+  <section class="card booking-form">
+    <h3 class="border-bottom">{{ title }}</h3>
+    <form [formGroup]="UpdateTournoiForm" (ngSubmit)="save()">
+      
+      <!-- Nom du tournoi -->
+      <h5>Nom du tournoi</h5>
+      <input class="form-control" type="text" formControlName="nomTournoi">
+      <div class="alert alert-warning alert-dismissible fade show" *ngIf="UpdateTournoiForm.get('nomTournoi')?.errors?.['required'] && UpdateTournoiForm.get('nomTournoi')?.touched">
+        Le champ Nom du tournoi est obligatoire.
+      </div>
+      <div *ngIf="UpdateTournoiForm.get('nomTournoi')?.errors?.['minlength'] && UpdateTournoiForm.get('nomTournoi')?.touched"
+           class="alert alert-danger">
+        Le nom du tournoi doit comporter au moins 6 caractères.
+      </div>
+      
+      <!-- Type de tournoi -->
+      <h5>Type de tournoi</h5>
+      <select class="form-control" formControlName="typeTournoi">
+        <option *ngFor="let type of typeTournoi" [value]="type">{{ type }}</option>
+      </select>
+      <div class="alert alert-warning alert-dismissible fade show" *ngIf="UpdateTournoiForm.get('typeTournoi')?.errors?.['required'] && UpdateTournoiForm.get('typeTournoi')?.touched">
+        Le champ Type de tournoi est obligatoire.
+      </div>
+      
+      <!-- Date de début -->
+      <h5>Date de début</h5>
+      <input class="form-control" type="datetime-local" formControlName="dateDebut">
+      <div class="alert alert-danger" *ngIf="UpdateTournoiForm.get('dateDebut')?.errors?.['required'] && UpdateTournoiForm.get('dateDebut')?.touched">
+        Le champ Date de début est obligatoire.
+      </div>
+      <div class="alert alert-danger" *ngIf="UpdateTournoiForm.get('dateDebut')?.errors?.['dateTimeFormat'] && UpdateTournoiForm.get('dateDebut')?.touched">
+        Format de date et heure invalide. Le format doit être YYYY-MM-DDTHH:MM.
+      </div>
+      
+      <!-- Date de fin -->
+      <h5>Date de fin</h5>
+      <input class="form-control" type="datetime-local" formControlName="dateFin">
+      <div class="alert alert-danger" *ngIf="UpdateTournoiForm.get('dateFin')?.errors?.['required'] && UpdateTournoiForm.get('dateFin')?.touched">
+        Le champ Date de fin est obligatoire.
+      </div>
+      <div class="alert alert-danger" *ngIf="UpdateTournoiForm.get('dateFin')?.errors?.['dateTimeFormat'] && UpdateTournoiForm.get('dateFin')?.touched">
+        Format de date et heure invalide. Le format doit être YYYY-MM-DDTHH:MM.
+      </div>
+      
+      <!-- Nombre d'équipes -->
+      <h5>Nombre d'équipes</h5>
+      <input class="form-control" type="text" formControlName="nbEquipes">
+      <div class="alert alert-danger" *ngIf="UpdateTournoiForm.get('nbEquipes')?.errors?.['required'] && UpdateTournoiForm.get('nbEquipes')?.touched">
+        Le champ Nombre d'équipes est obligatoire.
+      </div>
+      
+      <!-- Récompense -->
+      <h5>Récompense</h5>
+      <input class="form-control" type="text" formControlName="recompense">
+      <div class="alert alert-danger" *ngIf="UpdateTournoiForm.get('recompense')?.errors?.['required'] && UpdateTournoiForm.get('recompense')?.touched">
+        Le champ Récompense est obligatoire.
+      </div>
+      
+      <!-- Bouton de sauvegarde -->
+      <input class="btn btn-secondary btn-icon" type="submit" value="Enregistrer" [disabled]="UpdateTournoiForm.invalid">
+      
+    </form>
+  </section>
+</div>
+
+<app-footer></app-footer>

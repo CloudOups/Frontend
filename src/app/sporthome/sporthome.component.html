@@ -1,71 +1,106 @@
 <section class="section service-section">
-    <div class="work-cock-img">
-        <img src="assets/img/icons/work-cock.svg" alt="Service">
+  <div class="work-cock-img">
+    <img src="assets/img/icons/work-cock.svg" alt="Service" />
+  </div>
+  <div class="container">
+    <div class="section-heading aos">
+      <h2>Explore Our <span>Services</span></h2>
+      <p class="sub-title">
+        Fostering excellence and empowering sports growth through tailored
+        services for athletes, coaches, and enthusiasts.
+      </p>
     </div>
-    <div class="container">
-        <div class="section-heading aos"  >
-            <h2>Explore Our <span>Services</span></h2>
-            <p class="sub-title">Fostering excellence and empowering sports growth through tailored services for
-                athletes, coaches, and enthusiasts.</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 d-flex">
-                <div class="service-grid w-100 aos"  >
-                    <div class="service-img">
-                        <a href="service-detail.html">
-                            <img src="assets/img/services/service-01.jpg" class="img-fluid" alt="Service">
-                        </a>
-                    </div>
-                    <div class="service-content">
-                        <h4><a href="service-detail.html">Court Rent</a></h4>
-                        <a href="service-detail.html">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex">
-                <div class="service-grid w-100 aos"  >
-                    <div class="service-img">
-                        <a href="service-detail.html">
-                            <img src="assets/img/services/service-02.jpg" class="img-fluid" alt="Service">
-                        </a>
-                    </div>
-                    <div class="service-content">
-                        <h4><a href="service-detail.html">Group Lesson</a></h4>
-                        <a href="service-detail.html">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex">
-                <div class="service-grid w-100 aos"  >
-                    <div class="service-img">
-                        <a href="service-detail.html">
-                            <img src="assets/img/services/service-03.jpg" class="img-fluid" alt="Service">
-                        </a>
-                    </div>
-                    <div class="service-content">
-                        <h4><a href="service-detail.html">Training Program</a></h4>
-                        <a href="service-detail.html">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex">
-                <div class="service-grid w-100 aos"  >
-                    <div class="service-img">
-                        <a href="service-detail.html">
-                            <img src="assets/img/services/service-04.jpg" class="img-fluid" alt="Service">
-                        </a>
-                    </div>
-                    <div class="service-content">
-                        <h4><a href="service-detail.html">Private Lessons</a></h4>
-                        <a href="service-detail.html">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="view-all text-center aos"  >
-            <a href="services.html" class="btn btn-secondary d-inline-flex align-items-center">
-                View All Services <span class="lh-1"><i class="feather-arrow-right-circle ms-2"></i></span>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="service-grid w-100 aos">
+          <div class="service-img">
+            <a href="service-detail.html">
+              <img
+                src="assets/img/services/service-01.jpg"
+                class="img-fluid"
+                alt="Service"
+              />
             </a>
+          </div>
+          <div class="service-content">
+            <h4><a href="service-detail.html">Court Rent</a></h4>
+            <a href="service-detail.html">Learn More</a>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="service-grid w-100 aos">
+          <div class="service-img">
+            <a href="service-detail.html">
+              <img
+                src="assets/img/services/service-02.jpg"
+                class="img-fluid"
+                alt="Service"
+              />
+            </a>
+          </div>
+          <div class="service-content">
+            <h4><a href="service-detail.html">Group Lesson</a></h4>
+            <a href="service-detail.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="service-grid w-100 aos">
+          <div class="service-img">
+            <a href="service-detail.html">
+              <img
+                src="assets/img/services/service-03.jpg"
+                class="img-fluid"
+                alt="Service"
+              />
+            </a>
+          </div>
+          <div class="service-content">
+            <h4><a href="service-detail.html">Training Program</a></h4>
+            <a href="service-detail.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="service-grid w-100 aos">
+          <div class="service-img">
+            <a href="service-detail.html">
+              <img
+                src="assets/img/services/service-04.jpg"
+                class="img-fluid"
+                alt="Service"
+              />
+            </a>
+          </div>
+          <div class="service-content">
+            <h4><a href="service-detail.html">Private Lessons</a></h4>
+            <a href="service-detail.html">Learn More</a>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="view-all text-center aos">
+      <a
+        href="services.html"
+        class="btn btn-secondary d-inline-flex align-items-center"
+      >
+        View All Services
+        <span class="lh-1"
+          ><i class="feather-arrow-right-circle ms-2"></i
+        ></span>
+      </a>
+    </div>
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="message"
+        placeholder="Type your message..."
+      />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+    <div *ngIf="response">
+      <p>{{ response }}</p>
+    </div>
+  </div>
 </section>

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+    <h1 class="text-white">ajout d'un terrain</h1>
+    <ul>
+    
+   
+ <form [formGroup]="AddTerrainForm"> 
+
+   <h5>Nom Terrain</h5>
+   <input class="form-control" type="text" formControlName="nomTerrain">
+   <div class="alert alert-danger" *ngIf="AddTerrainForm.get('nomTerrain')?.errors?.['required'] && AddTerrainForm.get('nomTerrain')?.touched">
+     Le champ Nom Terrain est obligatoire.
+   </div>
+ 
+  
+ 
+   <h5>Statut Terrain</h5>
+ 
+   <select class="form-control" formControlName="statusTerrain">
+    <option *ngFor="let type of statusTerrain" >{{ type }}</option>
+  </select>
+
+  <h5>imageTerrain</h5>
+  <input type="file" (change)="onFileSelected($event)" formControlName="imageTerrain" id="imageTerrain">
+  
+  <h5>Types Terrain</h5>
+
+   <select class="form-control" formControlName="typeTerrain">
+    <option *ngFor="let type of typeTerrain" >{{ type }}</option>
+  </select>
+   
+ 
+   <input type="submit"class="btn btn-primary" value="Save" (click)="save()"  [disabled]="AddTerrainForm.invalid">
+ </form>
+</ul></div> </div>
+ <app-footer></app-footer>
+ 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Publication } from '../../Models/Blog/publication';
 import { BlogServiceService } from '../blog-service.service';
 import { Router } from '@angular/router';
+import { Comment } from 'src/app/Models/Comment/comment';
 
 @Component({
   selector: 'app-list-blogback',
@@ -19,14 +20,12 @@ export class ListBlogbackComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPublications();
   }
-
   fetchPublications(): void {
     this.blogService.getBlogList()
       .subscribe({
         next: (publications) => {
           this.publications = publications;
-          this.filteredPublications = this.publications;
-          this.sortPublications();
+          console.log('Fetched publications:', this.publications); // Log the fetched publications
         },
         error: (error) => {
           console.error(error);
@@ -34,43 +33,50 @@ export class ListBlogbackComponent implements OnInit {
       });
   }
 
-  sortPublications(): void {
-    this.publications.sort((a, b) => {
-      if (a[this.sortBy] < b[this.sortBy]) {
-        return 1;
-      } else if (a[this.sortBy] > b[this.sortBy]) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+
+  deletePublication(id: number): void {
+    this.blogService.deleteBlog(id)
+      .subscribe({
+        next: () => {
+          console.log('Publication deleted successfully');
+          // You may want to refresh the list after deletion
+          this.fetchPublications();
+        },
+        error: (error) => {
+          console.error('Error deleting publication:', error);
+        }
+      });
   }
 
-  onSortChange(): void {
-    this.sortPublications();
+  approvePublication(id: number): void {
+    this.blogService.approveBlog(id)
+      .subscribe({
+        next: () => {
+          console.log('Publication approved successfully');
+          // You may want to refresh the list after approval
+          this.fetchPublications();
+        },
+        error: (error) => {
+          console.error('Error approving publication:', error);
+        }
+      });
   }
 
-  deletePublication(publication: Publication): void {
-    this.blogService.deleteBlog(publication.id).subscribe(() => {
-      this.publications = this.publications.filter((p) => p.id !== publication.id);
-      this.filteredPublications = this.publications; // Update filtered list after deletion
-    });
+  approveAllPublications(): void {
+    this.blogService.approveAllBlogs()
+      .subscribe({
+        next: () => {
+          console.log('All publications approved successfully');
+          // You may want to refresh the list after approval
+          this.fetchPublications();
+        },
+        error: (error) => {
+          console.error('Error approving all publications:', error);
+        }
+      });
   }
 
-  navigateToUpdate(publicationId: string): void {
-    this.router.navigate(['/updatePublication/', publicationId]);
-  }
 
-  navigateToAddPublication() {
-    this.router.navigate(['/addPublication']);
-  }
 
-  onSearch(): void {
-    this.filteredPublications = this.publications.filter(publication =>
-      (publication.Sujet && publication.Sujet.toLowerCase().includes(this.searchInput.toLowerCase())) ||
-      (publication.contenu && publication.contenu.toLowerCase().includes(this.searchInput.toLowerCase())) ||
-      (publication.dateCreation && publication.dateCreation.toString().toLowerCase().includes(this.searchInput.toLowerCase()))
-    );
-  }
 }
 

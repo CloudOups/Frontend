@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="breadcrumb mb-0">
+    <span class="primary-right-round"></span>
+    <div class="container">
+    <h1 class="text-white">Modifier un terrain</h1>
+    <ul>
+   
+ <form [formGroup]="UpdateTerrainForm"> 
+
+    <h5>num Terrain</h5>
+    <input class="form-control" type="text" formControlName="numTerrain" >
+    <div class="alert alert-danger" *ngIf="UpdateTerrainForm.get('numTerrain')?.errors?.['required'] && UpdateTerrainForm.get('numTerrain')?.touched">
+      Le champ num Terrain est obligatoire.
+    </div>
+   <h5>Nom Terrain</h5>
+   <input class="form-control" type="text" formControlName="nomTerrain">
+   <div class="alert alert-danger" *ngIf="UpdateTerrainForm.get('nomTerrain')?.errors?.['required'] && UpdateTerrainForm.get('nomTerrain')?.touched">
+     Le champ Nom Terrain est obligatoire.
+   </div>
+ 
+  
+ 
+   <h5>Statut Terrain</h5>
+ 
+   <select class="form-control" formControlName="statusTerrain">
+    <option *ngFor="let type of statusTerrain" >{{ type }}</option>
+  </select>
+<select class="form-control" formControlName="typeTerrain">
+    <option *ngFor="let type of typeTerrain" >{{ type }}</option>
+  </select>
+   
+ 
+   <input type="submit" value="Save" (click)="save()"  [disabled]="UpdateTerrainForm.invalid">
+ </form>
+</ul></div> </div>
+ <app-footer></app-footer>
+ 
