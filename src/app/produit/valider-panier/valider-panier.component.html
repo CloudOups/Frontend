@@ -1,7 +1,9 @@
-<p>valider-panier works!</p>
-<div class="container">
+
+<app-navbar-produit> </app-navbar-produit>
+<div class="container-fluid" style="padding-top: 100px; background-color: #E3EBD0;">
+    <h2 style="text-align: center;"> Valider Paiement </h2>
     <div>
-        <div class="container-fluid">
+        <div class="container" style="background-color:aliceblue; border-radius: 2%;">
 
             <form [formGroup]="validerPanierFormGroup" (ngSubmit)="onSubmit()">
             
@@ -111,4 +113,10 @@
         </form>
         
     </div>
+    <div>
+        
+    </div>
 </div>
+
+
+<app-footer></app-footer>

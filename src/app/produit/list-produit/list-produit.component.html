@@ -9,36 +9,15 @@
 <!------------------------------------------------------------------------------------>
 
 <ng-container >
-<h1><a routerLink="/backListProduit"> Backend Prodtuit </a></h1>
 <!------------------------------------------------------------------>
-<div class="container text-center">
 
-  
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" style="z-index: 1000;">      
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-            </li>
-
-          </ul>       
-        </div>
-    </nav> -->
-
-
-
-    <h1>Product card</h1>
-      <span>Create With <i class="zmdi zmdi-favorite red"></i>  By: <strong>Deni Kurniawan</strong> From: <i><a href="http://blog.wingerdstok.com" class="wsk-btn">Wingerdstok</a></i></span>
-    </div>
-    <h1>Product card</h1>
-    <h1><a routerLink="/backListProduit"> liste des produits Baackend </a></h1>
     <div class="shell">
       <div class="container">
         <div class="row">
 
           <div class="col-md-3" *ngFor="let p of produits">
             <div class="wsk-cp-product">
-              <div class="wsk-cp-img"><img src="https://1.bp.blogspot.com/-b-2SgNUrFHg/WVSvmewWqgI/AAAAAAAAAK0/1K4YCcbYjhokHwV_IgiVJN9mEnQoWunIwCPcBGAYYCw/s1600/fashion-portrait-nicole-6347.jpg" alt="Product" class="img-responsive" /></div>
+              <div class="wsk-cp-img"><img [src]="p.image" alt="Product" class="img-responsive" /></div>
               <div class="wsk-cp-text">
                 <div class="category">
                   

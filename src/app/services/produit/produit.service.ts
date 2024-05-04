@@ -34,6 +34,10 @@ export class ProduitService {
   deleteProduit(id : number) {
     return this.httpClient.delete(this.url+"/delete/" + id);
   }
+  
+  addProduit(produit : Produit) {
+    return this.httpClient.post(this.url+"/add",produit);
+  }
 
 
   getProductListPagination(currentPage: number,pageSize: number) : Observable<any>{

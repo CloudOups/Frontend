@@ -18,7 +18,7 @@ export class ListProduitComponent implements OnInit {
 
   //properties for pagination
   currentPage: number = 1;
-  pageSize: number = 14;
+  pageSize: number = 8;
   totalElements: number = 0;
   searchMode: boolean = false;
 
@@ -32,7 +32,9 @@ export class ListProduitComponent implements OnInit {
 
   ngOnInit() {
     //this.listProduits();
-    this.storage.setItem('userEmail', 'michel@gmail.com');
+    this.storage.setItem('userEmail', 'michelscoot@gmail.com');
+    this.storage.setItem('userNom', 'Michel');
+    this.storage.setItem('userPrenom', 'bodol');
     //this.listProduits3();
     this.gererListeProduit();
     

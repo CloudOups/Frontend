@@ -14,6 +14,7 @@ import { PanierDetailComponent } from './produit/panier-detail/panier-detail.com
 import { ValiderPanierComponent } from './produit/valider-panier/valider-panier.component';
 import { CommandeHistoryComponent } from './produit/commande-history/commande-history.component';
 import { BackListProduitComponent } from './produit/back-list-produit/back-list-produit.component';
+import { BackAddProduitComponent } from './produit/back-add-produit/back-add-produit.component';
 // import {  } from '';
 // import {  } from '';
 // import {  } from '';
@@ -55,6 +56,7 @@ const routes: Routes = [
     { path : 'validerPanier', component: ValiderPanierComponent},
     { path : 'backListProduit', component: BackListProduitComponent},
     { path : 'historiqueCommande', component: CommandeHistoryComponent},
+    { path : 'backAddProduit', component: BackAddProduitComponent},
 
 
 

@@ -10,6 +10,12 @@ import { ProduitService } from 'src/app/services/produit/produit.service';
   styleUrls: ['./back-list-produit.component.css']
 })
 export class BackListProduitComponent implements OnInit {
+modfierProduit(arg0: number) {
+throw new Error('Method not implemented.');
+}
+modifier(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
 
 
@@ -18,7 +24,7 @@ export class BackListProduitComponent implements OnInit {
 
   //properties for pagination
   currentPage: number = 1;
-  pageSize: number = 14;
+  pageSize: number = 9;
   totalElements: number = 0;
   searchMode: boolean = false;
 

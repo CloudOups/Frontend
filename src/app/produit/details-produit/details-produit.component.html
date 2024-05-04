@@ -1,120 +1,42 @@
-<!----------------------------------------------------->
-<head>
-    <meta chatset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
-  </head>
-  <div class="content">
-    <div class="shop-bg"></div>
-    <div class="pop-up clearfix">
-      <!--GALLERY-->
-      <div class="pics">
-        <span class="main-img"><img src="https://images-na.ssl-images-amazon.com/images/I/81StewvXHeL._UX500_.jpg"></span>
-        <div class="additional-img">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/81D8-r%2BiZgL._UX500_.jpg">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/81PVFwDiEqL._UX500_.jpg">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/81u04RfSYcL._UX500_.jpg">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/81nuwkilZSL._UX500_.jpg">
-        </div>
-      </div>
-      <!-- PRODUCT INFORMATION -->
-      <div class="product">
-        <!--category-breadcrumb-->
-        <span class="category">Footwear</span>
-        <!--stock-label-->
-        <span class="stock">In Stock</span>
-        <h1>{{ produit.nomProd}}</h1>
-        <!--PRICE-RATING-REVIEW-->
-        <div class="block-price-rating clearfix">
-          <!--price-->
-          <div class="block-price clearfix">
-            <div class="price-new clearfix">
-              <span class="price-new-dollar">{{ produit.prix | currency: 'USD'}}</span>
-              <span class="price-new-cent">90</span>  
-            </div>
-            <div class="price-old clearfix">
-              <span class="price-old-dollar">$599</span>
-              <span class="price-old-cent">&#8228;90</span>
-            </div>  
-          </div>
-          <!--rating-->
-          <div class="block-rating clearfix">
-            <!--review-->
-            <span class="review">40 Reviews</span>
-            <span class="rating"><img src="http://thrivedigital.wpengine.com/wp-content/uploads/2015/03/Review-Stars.png"></span>
-          </div>
-        </div>
-        <!-- rating <ul class="rating">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul> -->
-        <!--PRODUCT DESCRIPTION-->
-        <div class="descr">
-          <p>Stacy Adams and men who know style have been a perfect fit for over 100 years. Founded in 1875 in Brockton, Massachusetts by William H. Stacy and Henry L. Adams, the Stacy Adams Shoe Company has long been a part of American culture.</p>
-       </div> 
-        <!--SELECT BLOCK-->
-       <div class="block-select clearfix">
-        <form>
-          <div class="select-color">
-            <span>Select Color</span>
-            <select class="color">
-              <option>Cognac</option>
-              <option>Black</option>
-            </select>
-          </div>
-          <div class="select-size">
-            <span>Size</span>
-            <select class="size">
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div> 
-          <!--BUTTON-->
-           <button (click)="addToPanier()" class="btn"><img src="">ajouter au panier</button> 
-          <button (click)="addToPanier()" class="btn btn-success btn-sm"> ajouter au panier</button>
-         </form> 
-        </div>
-        <!--LINKS-->
-       <div class="block-footer clearfix">
-        <div class="block-links">
-         <div class="send">
-           <img src="http://www.free-icons-download.net/images/share-icon-20724.png">
-           <span>Send to a friend</span>
-          </div>
-          <div class="wishlist">
-            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/23243-200.png">
-            <span>Save for later</span>
-          </div>
-        </div>
-        <!--SOCIAL-->
-        <div class="social">
-            <a href="#"><img src="http://www.iconsdb.com/icons/download/black/facebook-7-256.gif"></a>
-            <a href="#"><img src="http://www.iconsdb.com/icons/download/black/twitter-4-512.gif"></a>
-            <a href="#"><img src="http://www.iconsdb.com/icons/download/black/google-plus-4-512.jpg"></a>
-            <a href="#"><img src="http://www.nataliemorgan.co.nz/images/Pinterest.png"></a>
-        </div>
-        </div>
-      </div>
+<app-navbar-produit>  </app-navbar-produit>
+
+<!-------------------------------------------------------->
+
+<body>
+  <article class="card">
+    <div class="left-card">
+      <img
+        class="poster-img1"
+        [src]="produit.image"
+        alt="poster image 1"
+      />
+      <img
+        class="poster-img2"
+        src="images/image-product-mobile.jpg"
+        alt="poster image 2"
+      />
     </div>
-  </div>
+    <div class="right-card">
+      <h2 class="item-name">{{ produit.nomProd}}</h2>
+      <h1 class="main-title">{{ produit.nomProd}}</h1>
+      <p class="summary">
+        {{ produit.description }}
+      </p>
+      <div class="price">
+        <p class="current-price"> {{ produit.prix }} DT</p>
+        <p class="old-price">{{ produit.prix - 8 }} DT</p>
+      </div>
+      <button class="btn" (click)="addToPanier()">
+        
+        Ajouter au panier
+      </button>
+    </div>
+  </article>
+</body>
 
 
 <!----------------------------------------------------->
-<div class="">
-    <div class="container-fluid">
-        <img src="{{produit.image}}" alt="">
-        <h3>{{ produit.nomProd}}</h3>
-        <div>{{ produit.prix}}</div>
-        <button (click)="addToPanier()" class="btn btn-success btn-sm"> ajouter au panier</button>
-    
-    
-        <hr>
-        <h4>Description</h4>
-        <p>{{ produit.description }}</p>
-        <button class="btn btn-primary"> retour aux produits</button>
-    </div>
 
-</div>
+
+
+<!----------------------------------------------------->

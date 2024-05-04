@@ -48,6 +48,8 @@ export class ValiderPanierComponent implements OnInit {
    //c'est cette ecriture avec JSON.parse que tu mettra quand tu voudra recuperer les infos de l'utilisateur connecté
     // const lemail = JSON.parse(this.storage.getItem("userEmail"));
     const lemail = this.storage.getItem("userEmail");
+    const userNom = this.storage.getItem("userNom");
+    const userPrenom = this.storage.getItem("userPrenom");
 
     this.actualisationPanier();
 
@@ -56,8 +58,8 @@ export class ValiderPanierComponent implements OnInit {
     this.validerPanierFormGroup = this.formBuilder.group({
       //client
       client: this.formBuilder.group({
-        nom: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        prenom: new FormControl('', [Validators.required, Validators.minLength(3)]),
+        nom: new FormControl(userNom, [Validators.required, Validators.minLength(3)]),
+        prenom: new FormControl(userPrenom, [Validators.required, Validators.minLength(3)]),
         email: new FormControl(lemail,
           [Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),

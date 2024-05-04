@@ -46,6 +46,8 @@ import { BackListProduitComponent } from './produit/back-list-produit/back-list-
 import { CommandeHistoryComponent } from './produit/commande-history/commande-history.component';
 import { SearchProduitComponent } from './produit/search-produit/search-produit.component';
 import { NavbarProduitComponent } from './produit/navbar-produit/navbar-produit.component';
+import { BackAddProduitComponent } from './produit/back-add-produit/back-add-produit.component';
+import { BackDetailProduitComponent } from './produit/back-detail-produit/back-detail-produit.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,9 @@ import { NavbarProduitComponent } from './produit/navbar-produit/navbar-produit.
     BackListProduitComponent,
     CommandeHistoryComponent,
     SearchProduitComponent,
-    NavbarProduitComponent],
+    NavbarProduitComponent,
+    BackAddProduitComponent,
+    BackDetailProduitComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

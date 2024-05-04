@@ -1,140 +1,93 @@
-<div style="position: absolute; z-index: 1001;">
-    <app-navbar ></app-navbar>
-    </div>
-     <!-- <app-div-home></app-div-home>  -->
-    <!-- <app-abonnementhome></app-abonnementhome> -->
-    <!-- <app-stadehome></app-stadehome> -->
-     <!-- <app-sporthome></app-sporthome>  -->
-    <!------------------------------------------------------------------------------------>
+<app-navbar-produit> </app-navbar-produit>
 
-    <div class="container text-center">
-    
-      
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" style="z-index: 1000;">      
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-                </li>
-                <!-- Ajoutez plus d'éléments de navigation ici si nécessaire -->
-              </ul>
-              
-            </div>
-        </nav>
+<div class="container-fluid" style="margin-top: 100px;">
 
-        <!------- debut template panier list-->
+  <table class="table" style="margin-top: 100px;">
+    <thead class="thead-dark">
+      <tr class="table-success">
+        <th scope="col" width="2%">#</th>
+        <th scope="col" width="12%"><h3>Image Produit</h3></th>
+        <th scope="col" width="20%"><h3>Detail Produit</h3></th>
+        <th scope="col" width="25%"><h3>Quantité</h3> </th>
+        
+        <th scope="col" width="8%"> Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of allPanierElement">
+        <th scope="row">1</th>
 
-        <div class="container" >
-            <div class="navbar">
-              <div class="logo">
-                <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px" /></a>
+        <td>
+          <img [src]="produit.imageUrl" width="150px" alt="image produit" />
+
+
+          <br />
+
+        </td>
+
+        <td>
+          <p>{{ produit.name}}</p>
+          <small>{{ produit.prixUnitaire | currency:'TND':'symbol':'1.3-3'}}</small>
+          
+          <div>
+            <button (click)="supprimerDuPanier(produit)" class="btn btn-danger btn-sm mt-2">Remove</button>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <label>Quantité:</label>
+            <div class="row no-gutters">
+              <div class="col">
+                <button (click)="incrementQuantite(produit)" class="btn btn-primary btn-sm">
+                  <i class="fas fa-plus"></i>
+                </button>
               </div>
-              <nav>
-                <ul id="MenuItems">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="product.html">Products</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="account.html">Account</a></li>
-                </ul>
-              </nav>
-              <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>
-              <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />
+
+              <div class="col ml-4 mr-2">
+                {{ produit.quantite }}
+              </div>
+
+              <div class="col">
+                <button (click)="decrementQuantite(produit)" class="btn btn-primary btn-sm">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <div class="col-8"></div>
             </div>
-          </div>
-          
-          <!-- cart items details -->
-          
-          <div class="small-container cart-page" *ngIf="allPanierElement.length > 0">
-            <table>
-              <tr>
-                <th>Produit</th>
-                <th>Quantité</th>
-                <th>Balance</th>
-                
-              </tr>
-          
-              <tr *ngFor="let produit of allPanierElement">
-                <td>
-                  <div class="cart-info">
-                    <img src="https://i.ibb.co/B3vYjvw/buy-1.jpg" alt="" />
-                    <div>
-                      <p>{{ produit.name}}</p>
-                      <small>{{ produit.prixUnitaire | currency:'TND':'symbol':'1.3-3'}}</small>
-                      <br />
-                      <button (click)="supprimerDuPanier(produit)">supprimer</button>
 
-                    </div>
-                  </div>
-                </td>
-                <td>
-                    <div class="row no-gutters">
-                        <div class="col">
-                        <button (click)="incrementQuantite(produit)" class="btn btn-primary btn-sm" >
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        </div>
-                    
-                        <div class="col ml-4 mr-2">
-                            {{ produit.quantite }}
-                        </div>
-
-                        <div class="col">
-                            <button (click)="decrementQuantite(produit)" class="btn btn-primary btn-sm" >
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            </div>
-                    </div>
-                    
-                        <!-- <div class="col-8"></div> -->
-                </td>
-
-                <td>{{ produit.prixUnitaire * produit.quantite| currency:'TND':'symbol':'1.3-3'}}</td>
-              </tr>
-            </table>
-          
-            <div class="total-price">
-              <table>
-                <tr>
-                  <td>Quantite Total</td>
-                  <td>{{ quantiteTotal}}</td>
-                </tr>
-                <tr>
-                  <td>Tax</td>
-                  <td>1.00 DT</td>
-                </tr>
-                <tr>
-                  <td>Prix Total</td>
-                  <td>{{ prixTotal | currency:'TND':'symbol':'1.3-3'}}
-                </td>
-                <tr>
-                    <td>valider paniere</td>
-                  <td><a routerLink="/validerPanier" class="class btn btn-primary">Valider Panier</a></td>
-                                 
-                </tr>
-              </table>
-            </div>
           </div>
 
-          <div *ngIf="allPanierElement.length == 0" class="alert alert-warning " role="alert" style="margin-top: 30px;">
-            <h1 class="text-center" >Votre panier est vide</h1>
+
+          
+
+        </td>
+        <dt>
+          <div >
+            <h4> {{ produit.prixUnitaire * produit.quantite}} DT </h4>
           </div>
           
+        </dt>
+        
+      </tr>
 
-          <script>
-            var MenuItems = document.getElementById('MenuItems');
-            MenuItems.style.maxHeight = '0px';
-          
-            function menutoggle() {
-              if (MenuItems.style.maxHeight == '0px') {
-                MenuItems.style.maxHeight = '200px';
-              } else {
-                MenuItems.style.maxHeight = '0px';
-              }
-            }
-          </script>
-      
-    <!------------------------------------------------------------------>
+      <tr>
+        <td colspan="2"></td>
+        <td style="font-weight: bold">
+          <p>Total Quantite: {{ quantiteTotal }}</p>
+          <p>Shipping: FREE</p>
+          <p>Total Price: {{ prixTotal }}DT</p>
 
-    
-    <!-- <app-footer></app-footer> -->
+          <div>
+            <a routerLink="/validerPanier" class="btn btn-primary">Aller au Paiement</a>
+          </div>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+</div>
+
+<app-footer></app-footer>

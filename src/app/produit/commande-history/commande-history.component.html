@@ -1,14 +1,16 @@
-<p>commande-history works!</p>
+<app-navbar-produit>  </app-navbar-produit>
+<div>
+
+</div>
 <div class="main-content">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
-            
-            <h2>Vos Commandes</h2>
+      
             <hr>
             <div *ngIf="commandHistoriqList.length > 0">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
+                <table class="table table-bordered" style="margin-top: 70px;">
+                    <thead class="table-success">
+                        <tr >
                             <th width="20%"> Numero De Suivi Commande</th>
                             <th width="10%">Prix Total</th>
                             <th width="10%">Quantité Total</th>
@@ -18,7 +20,7 @@
                     <tbody>
                         <tr *ngFor="let command of commandHistoriqList">
                             <td>{{command.numeroSuiviCommande}}</td>
-                            <td>{{command.prixTotal | currency}}</td>
+                            <td>{{command.prixTotal }} DT</td>
                             <td>{{command.quantiteTotale}}</td>
                             <td>{{command.dateCreation | date : 'medium' }}</td>
                         </tr>
@@ -30,11 +32,14 @@
             <!--------- si il y'a pas de commande -->
 
             
-                <div *ngIf="commandHistoriqList.length == 0" class="alert alert-warning col-md-12" role="alert">
+                <!-- <div *ngIf="commandHistoriqList.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    <div style="margin-top: 40px;">
+
+                    </div>
                     
-                        <h1>Vous n'avez pas de commande.</h1>  
+                        <h1 style="text-align: center;">Vous n'avez pas de commande.</h1>  
                     
-                </div>
+                </div> -->
             
         </div>
     </div>

@@ -1,0 +1,104 @@
+<app-sidemenu></app-sidemenu>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700"> 
+ <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<section style="margin-left: 300px;">
+  <div class="container-form">
+    <div class="information">
+      <div class="info-childs">
+        <h2>PRODUIT</h2>
+        <p>epsace admin produit</p>
+        <input type="button" routerLink="/backListProduit" value="Annuler">
+      </div>
+    </div>
+    <div class="form-information">
+      <div class="form-information-childs">
+        <h2>Ajouter Produit</h2>
+
+        <form class="form" [formGroup]="produitForm" (ngSubmit)="save()">
+
+          <label><i class="bx bx-user">
+            </i><input type="text" placeholder="Nom Produit" formControlName="nomProd">
+            <div
+              *ngIf="this.produitForm.controls['nomProd'].invalid && (this.produitForm.controls['nomProd'].dirty || this.produitForm.controls['nomProd'].touched)">
+              <span *ngIf="this.produitForm.controls['nomProd'].hasError('required')" class="alert alert-danger mt-1">ce
+                champ est obligatoire</span>
+              <span *ngIf="this.produitForm.controls['nomProd'].hasError('minlength')"
+                class="alert alert-danger mt-1">le nom est doit avoir au moins 3 lettre</span>
+            </div>
+          </label>
+
+          <label><i class="bx bx-user">
+            </i><input type="text" placeholder="description " formControlName="description">
+            <div
+              *ngIf="this.produitForm.controls['description'].invalid && (this.produitForm.controls['description'].touched || this.produitForm.controls['description'].dirty)">
+              <p *ngIf="this.produitForm.controls['description'].hasError('required')" class="alert alert-danger mt-1">
+                ce champ est obligatoire</p>
+              <p *ngIf="this.produitForm.controls['description'].hasError('minlength')" class="alert alert-danger mt-1">
+                5 caracteres minimun</p>
+            </div>
+          </label>
+
+          <label><i class="bx bx-user">
+            </i><input type="text" formControlName="prix" placeholder="Prix">
+            <div
+              *ngIf="this.produitForm.controls['prix'].invalid && (this.produitForm.controls['prix'].dirty || this.produitForm.controls['prix'].touched)">
+              <p *ngIf="this.produitForm.controls['prix'].hasError('required')" class="alert alert-danger mt-1">le Prix
+                est obligatoire</p>
+              <p *ngIf="this.produitForm.controls['prix'].hasError('pattern')" class="alert alert-danger mt-1">maximum 5
+                chiffres</p>
+            </div>
+            
+          </label>
+          
+          <input type="file" formControlName="image" >
+          <input type="submit" [disabled]="produitForm.invalid" value="Ajouter">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- 
+<p>FormGroup</p>
+<form [formGroup]="produitForm" (click)="save()">
+
+
+    <div>
+    <label>title</label>
+    <input type="text" formControlName="nomProd">
+    <div *ngIf="this.produitForm.controls['nomProd'].invalid && this.produitForm.controls['nomProd'].touched">
+        <p *ngIf="this.produitForm.controls['nomProd'].hasError('required')">le titre est obligatoire</p>
+        <p *ngIf="this.produitForm.controls['nomProd'].hasError('minlength')">le nom est doit avoir au moins 3 lettre</p>
+        <p>min 3 caractere</p>
+    </div>
+</div>
+
+<div>
+    <label>description</label>
+    <input type="text" formControlName="description">
+    <div *ngIf="this.produitForm.controls['description'].invalid && this.produitForm.controls['description'].touched">
+        <p *ngIf="this.produitForm.controls['description'].hasError('required')">le prix est obligatoire</p>
+    </div>
+</div>
+
+    <div>
+    <label>price</label>
+    <input type="text" formControlName="prix">
+    <div *ngIf="this.produitForm.controls['prix'].invalid && this.produitForm.controls['prix'].touched">
+        <p *ngIf="this.produitForm.controls['prix'].hasError('required')">le prix est obligatoire</p>
+    </div>
+</div>
+
+   
+
+    <div>
+     <input type="submit" value="add"  [disabled]="produitForm.invalid"> -->
+<!-- l'equivalent du input en haut
+    <button type="submit" class="btn btn-primary" [disabled]="produitForm.invalid">enregistrer</button>
+</div>
+
+</form> -->
