@@ -20,7 +20,7 @@ export class AddEquipeComponent {
   }
 
   AddEquipeForm = new FormGroup({
-   /// chefEquipe: new FormControl('', [Validators.required]), 
+   // chefEquipe: new FormControl('', [Validators.required]), 
     nomEquipe: new FormControl('', [Validators.required]),
     nbMemEquipe: new FormControl('', [Validators.required]),
     classement: new FormControl(null, [Validators.required]),
