@@ -24,9 +24,8 @@ export class ListBlogComponent implements OnInit {
     this.blogService.getBlogList()
       .subscribe({
         next: (publications) => {
-          // Filter only the approved publications
           this.publications = publications.filter(publication => publication.status === true);
-          console.log('Fetched publications:', this.publications); // Log the fetched publications
+          console.log('Fetched publications:', this.publications); 
         },
         error: (error) => {
           console.error(error);

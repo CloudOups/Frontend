@@ -37,11 +37,10 @@ export class BlogDetailsComponent implements OnInit {
     const today = new Date();
     console.log(this.blogId);
     this.getBlogById(Number(this.blogId)).subscribe((blog: Publication) => {
-      // Specify the type of 'blog' parameter as 'Publication'
-      console.log(blog); // Log the fetched blog
-      this.publication = blog; // Assign the fetched blog to the component's publication property
+      
+      console.log(blog); 
+      this.publication = blog; 
       this.newComment.publication = { ...this.newComment.publication, numPub: this.publication.numPub };
-      // Now, you can proceed to fetch comments or perform any other actions dependent on the blog publication
       this.getCommentaires(Number(this.blogId));
     });
   
@@ -90,14 +89,12 @@ initializeForm(): void {
   }
 
   addCommentToPublication(id: number): void {
-    // Optionally, you can set other properties of the new comment if needed
     this.blogService.addComment(id, this.newComment)
       .subscribe({
         next: () => {
           console.log('Comment added successfully');
           console.log(this.newComment.publication?.numPub);
           console.log(this.newComment);
-          // You may want to refresh the list after adding the comment
           this.getCommentaires(Number(this.blogId));
         },
         error: (error) => {
@@ -111,7 +108,6 @@ initializeForm(): void {
       .subscribe({
         next: () => {
           console.log('Publication liked successfully');
-          // Optionally, you can update the publication or do other actions
         },
         error: (error) => {
           console.error('Error liking publication:', error);
@@ -124,7 +120,6 @@ initializeForm(): void {
       .subscribe({
         next: () => {
           console.log('Publication unliked successfully');
-          // Optionally, you can update the publication or do other actions
         },
         error: (error) => {
           console.error('Error unliking publication:', error);
@@ -160,7 +155,6 @@ initializeForm(): void {
       .subscribe({
         next: () => {
           console.log('comment deleted successfully');
-          // You may want to refresh the list after deletion
           this.getCommentaires(Number(this.blogId));
         },
         error: (error) => {
@@ -168,4 +162,11 @@ initializeForm(): void {
         }
       });
   }
+
+
+
+  
+
+
+  
 }

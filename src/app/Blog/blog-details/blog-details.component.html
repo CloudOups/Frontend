@@ -93,7 +93,9 @@
                                             <h5>{{ comment.user?.firstname}} {{comment.user?.lastname}}</h5>
                                             <i class="fa-solid fa-circle"></i>
                                             <span>{{ comment.datecm }}</span>
-                                            <i class="feather-heart" (onclick)="deletecomment(comment.idcmt || 0)" ></i>
+                                            <span *ngIf="comment.sentiment === 'Neutral'">😑Neutral</span>
+                                            <span *ngIf="comment.sentiment === 'Positive'">😊Positive</span>
+                                            <span *ngIf="comment.sentiment === 'Negative'">😡Negative</span>
                                         </div>
                                         <p>{{ comment.contenucm }}</p>
                                        
