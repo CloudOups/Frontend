@@ -19,7 +19,6 @@ import { EquipeComponent } from './equipe/equipe.component';
 import { AddTerrainComponent } from './add-terrain/add-terrain.component';
 import { UpdateTerrainComponent } from './update-terrain/update-terrain.component';
 
-
 import { ListTournoiComponent } from './Tournoi/list-tournoi/list-tournoi.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
 import { DetailtournoiComponent } from './Tournoi/detailtournoi/detailtournoi.component';
@@ -37,6 +36,7 @@ import { ConfirmartionReservationComponent } from './confirmartion-reservation/c
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
+import { AuthGuard } from './auth.guard';
 
 // import {  } from '';
 // import {  } from '';
@@ -65,54 +65,46 @@ const routes: Routes = [
   // { path :'', component: },
   // { path :'', component: },
 
+  //----------------------------------Path yassin--------------------------------
+  { path: 'terrains', component: TerrainComponent, canActivate: [AuthGuard] },
+  {
+    path: 'reservationTerrain',
+    component: ReservationTerrainComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'equipes', component: EquipeComponent },
+  { path: 'addterrains', component: AddTerrainComponent },
+  { path: 'updateterrain/:numTerrain', component: UpdateTerrainComponent },
+  { path: 'addEquipe', component: AddEquipeComponent },
 
- //----------------------------------Path yassin--------------------------------
- {path:'terrains',component:TerrainComponent},
- {path:'reservationTerrain',component:ReservationTerrainComponent},
- {path:'equipes',component:EquipeComponent},
- {path:'addterrains',component:AddTerrainComponent},
- {path:'updateterrain/:numTerrain',component:UpdateTerrainComponent},
- {path:'addEquipe',component:AddEquipeComponent},
+  {
+    path: 'updateEquipe/:numEquipe/:chefEquipe',
+    component: UpdateEquipeComponent,
+  },
+  {
+    path: 'choisirTerrain/:startTime/:endTime/:typeTerrain',
+    component: ChoisirTerrainComponent,
+  },
+  { path: 'mesReservation', component: MesReservationComponent },
 
- {path:'updateEquipe/:numEquipe/:chefEquipe',component:UpdateEquipeComponent},
- { path:'choisirTerrain/:startTime/:endTime/:typeTerrain', component: ChoisirTerrainComponent },
- { path:'mesReservation', component: MesReservationComponent },
+  {
+    path: 'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',
+    component: ConfirmartionReservationComponent,
+  },
 
- {path:'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',component:ConfirmartionReservationComponent},
+  //************************************path rania*******************************
 
-
- //************************************path rania*******************************
-
- { path : 'tournois', component:ListTournoiComponent},
- { path :'addtournoi', component: AddTournoiComponent},
- { path :'updatetournoi/:id', component: UpdateTournoiComponent},
- { path :'detailtournoi/:id',component: DetailtournoiComponent},
- { path : 'events', component:ListEventComponent},
- { path : 'eventsback', component:ListEventbackComponent},
- { path :'detailevent/:id',component: DetailEventComponent},
- { path :'addevent', component: AddEventComponent},
- { path :'updateevent/:id', component: UpdateEventComponent},
- { path :'tickets',component: ListTicketComponent},
- { path :'detailticket/:id',component: DetailTicketComponent},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  { path: 'tournois', component: ListTournoiComponent },
+  { path: 'addtournoi', component: AddTournoiComponent },
+  { path: 'updatetournoi/:id', component: UpdateTournoiComponent },
+  { path: 'detailtournoi/:id', component: DetailtournoiComponent },
+  { path: 'events', component: ListEventComponent },
+  { path: 'eventsback', component: ListEventbackComponent },
+  { path: 'detailevent/:id', component: DetailEventComponent },
+  { path: 'addevent', component: AddEventComponent },
+  { path: 'updateevent/:id', component: UpdateEventComponent },
+  { path: 'tickets', component: ListTicketComponent },
+  { path: 'detailticket/:id', component: DetailTicketComponent },
 ];
 
 @NgModule({
