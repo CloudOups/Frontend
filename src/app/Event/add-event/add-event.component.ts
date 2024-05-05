@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
-import { EventService } from 'src/app/services/event.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-add-event',

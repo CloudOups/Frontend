@@ -19,11 +19,13 @@ export class ListBlogComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPublications();
   }
+
   fetchPublications(): void {
     this.blogService.getBlogList()
       .subscribe({
         next: (publications) => {
-          this.publications = publications;
+          // Filter only the approved publications
+          this.publications = publications.filter(publication => publication.status === true);
           console.log('Fetched publications:', this.publications); // Log the fetched publications
         },
         error: (error) => {
@@ -31,5 +33,4 @@ export class ListBlogComponent implements OnInit {
         }
       });
   }
-
 }

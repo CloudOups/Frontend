@@ -47,7 +47,6 @@ export class ListTournoiComponent implements OnInit{
 
   deleteTournoi(id: number) {
     this.trService.deleteTournoi(id).subscribe(() => {
-      console.log('Tournoi supprimé avec succès');
       this.refreshTournois();
     }, error => {
       if (error.status === 500) {

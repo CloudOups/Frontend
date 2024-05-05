@@ -8,7 +8,7 @@
       <form [formGroup]="AddEquipeForm"> <!-- Updated formGroup name -->
       
         <input class="form-control" id="chefEquipe" formControlName="chefEquipe">
-          <input  *ngFor="let chef of chefEquipeList" [value]="chef.userId">
+          <input  *ngFor="let chef of chefEquipeList" [value]="chef.id">
     <h5>Nom d'Équipe</h5> <!-- Adjusted form control label -->
     <input class="form-control" type="text" formControlName="nomEquipe"> <!-- Updated formControlName -->
  

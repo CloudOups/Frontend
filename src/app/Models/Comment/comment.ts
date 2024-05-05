@@ -3,9 +3,9 @@ import { User } from "../user/user";
 
 export class Comment {
     idcmt?: number;
-    contenu?: string;
-    dateCreation?: Date;
+    contenucm?: string;
+    datecm?: Date;
     user?:User;
     publication?: Publication;
-    sentiment?: string;
+    Sentiment?: string;
 }
