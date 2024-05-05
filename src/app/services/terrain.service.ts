@@ -14,14 +14,12 @@ export class TerrainService {
   readonly API_URL = "http://localhost:8089/pi";
   readonly ENDPOINT_TERRAINS = "/terrain";
   constructor(private httpClient:HttpClient,private authService: AuthServiceService) { }
+  
   private getHeaders(): HttpHeaders {
     const jwt = localStorage.getItem('jwt');
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
 
     return new HttpHeaders({
       Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json'
     });
   }
   // Method to retrieve all terrains
