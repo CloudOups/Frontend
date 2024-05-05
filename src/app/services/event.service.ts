@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from '../Models/Event/event';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Ticket } from '../Models/Ticket/ticket';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,63 @@ export class EventService {
 
   private baseUrl = 'http://localhost:8089/pi/event'; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private authService: AuthServiceService) { }
+
+  private getHeaders(): HttpHeaders {
+    const jwt = localStorage.getItem('jwt');
+
+    return new HttpHeaders({
+      Authorization: `Bearer ${jwt}`,
+      'Content-Type': 'application/json'
+    });
+  }
+
 
   getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}/get/all`).pipe(
+    return this.http.get<Event[]>(`${this.baseUrl}/get/all` , { headers: this.getHeaders()}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getEventsMostParticipation(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/mostparticipation` , { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)
     );
   }
 
   getEventById(id: number): Observable<Event> {
-    return this.http.get<Event>(`${this.baseUrl}/get/${id}`).pipe(
+    return this.http.get<Event>(`${this.baseUrl}/get/${id}` , { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)
     );
   }
+
+  getCompleteEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/complete`);
+  }
+
+  getIncompleteEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/incomplete`);
+  }
+
+  getExpiredEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/expired`);
+  }
+
+  getUpcomingEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/upcoming`);
+  }
+
+  addEvent(event: any, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('nomevent', event.nomevent);
+    formData.append('img',image, image.name);
+    
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+
+    return this.http.post<any>(`${this.baseUrl}/add`, formData, { headers: headers });
+}
+  
 
  /* addEvent(Event: Event): Observable<Event> {
     return this.http.post<Event>(`${this.baseUrl}/add`, Event).pipe(
@@ -32,20 +77,20 @@ export class EventService {
   }*/
 
  
-
+/*
   addEvent(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/add`, formData);
-  }
+  }*/
 
 
   updateEvent(Event: Event): Observable<Event> {
-    return this.http.put<Event>(`${this.baseUrl}/update`, Event).pipe(
+    return this.http.put<Event>(`${this.baseUrl}/update`, Event, { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteEvent(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/delete/${id}`).pipe(
+    return this.http.delete<void>(`${this.baseUrl}/delete/${id}`, { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)
     );
   }

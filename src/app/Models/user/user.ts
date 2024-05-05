@@ -1,18 +1,14 @@
 import { ERole } from "./role";
 
 export class User {
-    userId?: number;
+    id?: number;
     email?: string;
-    nom?: string;
-    prenom?: string;
-    mdp?: string;
-    role?: ERole;
+    firstname?: string;
+    lastname?: string;
+    password?: string;
+    role?: [ERole];
     registrationDate?: string;
     enabled?: boolean;
-    photo?: string;
-    constructor(id?: string) {
-        if (id) {
-            this.userId = parseInt(id); 
-        }
-       
-    }  }
+    imageName?: string;
+
+}

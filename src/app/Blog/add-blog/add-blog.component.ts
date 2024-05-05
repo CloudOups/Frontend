@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogServiceService } from '../blog-service.service';
 import { Publication } from 'src/app/Models/Blog/publication';
-import { Comment } from 'src/app/Models/Comment/comment'
+import { UserService } from '../../services/user.service'; // Update this path
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-blog',
@@ -10,33 +11,62 @@ import { Comment } from 'src/app/Models/Comment/comment'
 })
 export class AddBlogComponent implements OnInit {
   newPublication: Publication = {}; // Initialize an empty Publication object
-  commentData: string = ''; // Variable to store comment data
-  comments: Comment[] = []; // Array to store comments for the publication
+  currentDate: string = new Date().toISOString().split('T')[0]; 
+  file: File | null = null;
 
-  constructor(private blogService: BlogServiceService) { }
+  constructor(
+    private blogService: BlogServiceService,
+    private userService: UserService, // Inject the UserService
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // Fetch comments for the publication when the component initializes
+    const today = new Date();
+    // Assign the current date directly to the dateCreation field as a Date object
+    this.newPublication.dateCreation = today;
 
+    // Fetch the current user
+    this.userService.getCurrentUser().subscribe({
+      next: (user) => {
+        // Assign the user to newPublication
+        if (user) {
+          this.newPublication.user = { ...this.newPublication.user, id: user.id };
+          this.newPublication.user.role = user.role;
+          this.newPublication.user.firstname = user.firstname;
+          this.newPublication.user.lastname = user.lastname;
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching current user:', error);
+      }
+    });
   }
 
   // Method to add a new blog
   addBlog(): void {
-    this.blogService.createBlog(this.newPublication)
-      .subscribe({
-        next: (response) => {
-          console.log('Blog added successfully:', response);
-          // Clear the form after adding the blog
-          this.newPublication = {};
-        },
-        error: (error) => {
-          console.error('Error adding blog:', error);
-        }
-      });
+    // Log the blogData object just before making the HTTP POST request
+    console.log('Blog Data:', this.newPublication);
+  
+    // Make the HTTP POST request to create a new publication
+    this.blogService.createBlog(this.newPublication).subscribe({
+      next: (response) => {
+        // Log the user and blog data after adding the blog
+        console.log('Current User:', this.newPublication.user?.id);
+        console.log('Blog added successfully:', response);
+        console.log('Publication id:', response.numPub);
+        this.router.navigate(['/listblog']);
+
+        // Clear the form after adding the blog
+        this.newPublication = {};
+      },
+      error: (error) => {
+        console.error('Error adding blog:', error);
+      }
+    });
   }
 
-  // Method to add a comment to the new publication
- 
-
-
+  // Method to handle file selection
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+  }
 }

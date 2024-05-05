@@ -49,7 +49,8 @@
                                         {{ publication.sujet }}
                                     </td>
                                     <td>{{ publication.dateCreation }}</td>
-                                    <td>{{ publication.user }}</td>
+                                    <td>{{ publication.user?.firstname}} {{ publication.user?.lastname}}</td>
+                                  
                                     <td>
                                         <span *ngIf="publication.status == true">Approved</span>
                                         <span *ngIf="publication.status == false">In progress</span>
@@ -57,9 +58,9 @@
                                     <td>        
                                         <div class="btn-group pull-right">
                                             <button id="bEdit" type="button" class="btn btn-sm btn-default">
-                                                <span class="fa fa-check-circle" (click)="approvePublication(publication.numPub)"> </span>
+                                                <span class="fa fa-check-circle"  *ngIf="publication.numPub" (click)="approvePublication(publication.numPub)"> </span>
                                             </button>
-                                            <button id="bDel" type="button" class="btn btn-sm btn-default"  (click)="deletePublication(publication.numPub)">
+                                            <button id="bDel" type="button" class="btn btn-sm btn-default"  *ngIf="publication.numPub" (click)="deletePublication(publication.numPub)">
                                                 <span class="fa fa-trash"> </span>
                                             </button>
                                             <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;">

@@ -40,13 +40,13 @@
                             </span>
                         </h2>
                     </td>
-                    <td>{{e.chefEquipe?.nom}}</td>
+                    <td>{{e.chefEquipe?.firstname}}</td>
                     <td>{{ e.nbMemEquipe }}</td>
                     <td>{{ e.classement }}</td>
                   
                     <td>
                         <!-- Buttons for actions -->
-                        <button class="btn btn-primary"[routerLink]="['/updateEquipe',e.numequipe,e.chefEquipe?.userId]">Edit</button>
+                        <button class="btn btn-primary"[routerLink]="['/updateEquipe',e.numequipe,e.chefEquipe?.id]">Edit</button>
                         <button class="btn btn-danger"*ngIf="e.numequipe" (click)="deleteEquipe(e.numequipe)">Delete</button>
                     </td>
                 </tr>

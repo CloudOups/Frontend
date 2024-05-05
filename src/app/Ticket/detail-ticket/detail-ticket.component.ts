@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Ticket } from 'src/app/Models/Ticket/ticket';
-import { TicketService } from 'src/app/services/ticket.service';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'app-detail-ticket',

@@ -12,18 +12,41 @@ export class ListTournoiComponent implements OnInit{
   title='tournoi app';
   listtournois!: Tournoi []
 
+  currentPage = 0;
+  pageSize = 10;
+  totalPages = 0;
+  totalPagesArray: number[] = [];
+
   constructor(private trService: TournoiService){
 
   }
   
+
   ngOnInit(): void {
-    console.log('on init...')
-    this.trService.getTournois().subscribe( data=>this.listtournois=data)
+    this.getTournois();
+  }
+  
+  
+  getTournois(): void {
+    this.trService.getAllTournois(this.currentPage, this.pageSize).subscribe(
+      response => {
+        this.listtournois = response.content;
+        this.totalPages = response.totalPages;
+        this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1); // Generate array of page numbers
+      },
+      error => {
+        console.error('Error fetching reservations: ', error);
+      }
+    );
+  }
+  
+  goToPage(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    this.getTournois();
   }
 
   deleteTournoi(id: number) {
     this.trService.deleteTournoi(id).subscribe(() => {
-      console.log('Tournoi supprimé avec succès');
       this.refreshTournois();
     }, error => {
       if (error.status === 500) {

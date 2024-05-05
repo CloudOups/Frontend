@@ -75,23 +75,7 @@ export class ListBlogbackComponent implements OnInit {
         }
       });
   }
-  addCommentToPublication(id: number, commentData: string): void {
-    const newComment: Comment = new Comment();
-    newComment.contenu = commentData;
-    // Optionally, you can set other properties of the new comment if needed
-    
-    this.blogService.addComment(id, newComment)
-      .subscribe({
-        next: () => {
-          console.log('Comment added successfully');
-          // You may want to refresh the list after adding the comment
-          this.fetchPublications();
-        },
-        error: (error) => {
-          console.error('Error adding comment:', error);
-        }
-      });
-  }
+
 
 
 }
