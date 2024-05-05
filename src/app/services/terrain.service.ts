@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Terrain } from '../Models/Terrain/terrain';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { StatusTerrain } from '../Models/Terrain/statusTerrain';
 import { Page } from '../Models/Page.interface';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,15 @@ import { Page } from '../Models/Page.interface';
 export class TerrainService {
   readonly API_URL = "http://localhost:8089/pi";
   readonly ENDPOINT_TERRAINS = "/terrain";
+  constructor(private httpClient:HttpClient,private authService: AuthServiceService) { }
+  private getHeaders(): HttpHeaders {
+    const jwt = localStorage.getItem('jwt');
 
-  constructor(private httpClient: HttpClient) { }
-
+    return new HttpHeaders({
+      Authorization: `Bearer ${jwt}`,
+      'Content-Type': 'application/json'
+    });
+  }
   // Method to retrieve all terrains
   getTerrains(): Observable<Terrain[]> {
     return this.httpClient.get<Terrain[]>(this.API_URL + this.ENDPOINT_TERRAINS + "/get/all");
@@ -47,7 +54,7 @@ export class TerrainService {
           formData.append('imageTerrain', imageTerrain, imageTerrain.name); // Here, imageTerrain should be of type File
 
            
-    return this.httpClient.post<Terrain>(this.API_URL + this.ENDPOINT_TERRAINS + "/add", formData);
+    return this.httpClient.post<Terrain>(this.API_URL + this.ENDPOINT_TERRAINS + "/add", formData, { headers: this.getHeaders()});
   }
   getReservationsSortTypeTerrain(page: number, size: number): Observable<Page<Terrain>> {
     const params = new HttpParams()
