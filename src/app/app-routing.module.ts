@@ -63,7 +63,7 @@ const routes: Routes = [
   { path :'listBlogback', component: ListBlogbackComponent},
 
   { path : 'tournois', component:ListTournoiComponent},
-  { path :'addTournoi/:id', component: AddTournoiComponent},
+  { path :'addTournoi/:numevent', component: AddTournoiComponent},
   { path :'updatetournoi/:id', component: UpdateTournoiComponent},
   { path :'detailtournoi/:id',component: DetailtournoiComponent},
   { path : 'events', component:ListEventComponent},

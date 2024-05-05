@@ -1,12 +1,15 @@
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3">
-            <app-sidemenu></app-sidemenu>
+<app-sidemenu></app-sidemenu>
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Tables</div>
         </div>
-  
-        <!-- Main Content -->
-        <div class="col-md-9">
+        <!--end breadcrumb-->
+        <div class="card">
+            <div class="card-body">
+                <div>
+
             <div class="page-content">
                 <!-- Card pour la liste des événements -->
                 <div class="card">
@@ -17,6 +20,7 @@
                             <!-- Sélection du filtre -->
                             <div>
                                 <select [(ngModel)]="selectedFilter">
+                                    <option value="all">Tous les événements</option>
                                     <option value="complete">Événements complets</option>
                                     <option value="incomplete">Événements incomplets</option>
                                     <option value="expired">Événements expirés</option>

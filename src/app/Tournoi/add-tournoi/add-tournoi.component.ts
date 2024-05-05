@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Terrain, TypeTerrain } from 'src/app/Models/Terrain/terrain';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
 
@@ -14,7 +14,7 @@ import { TournoiService } from 'src/app/services/tournoi-service.service';
 export class AddTournoiComponent {
   
   typeTournoi: string[] = Object.values(TypeTerrain);
-
+  numevent!:number
   
   AddTournoiForm= new FormGroup({
     nomTournoi: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -26,12 +26,16 @@ export class AddTournoiComponent {
     
   });
 
-  constructor(private http: HttpClient, private trService: TournoiService, private router: Router) {
+  constructor(private http: HttpClient,private act:ActivatedRoute, private trService: TournoiService, private router: Router) {
 
+  }
+  ngOnInit() {
+      this.numevent=this.act.snapshot.params['numevent'];
+      console.log(this.numevent);
   }
 
   save() {
-    this.trService.addTournoi(this.AddTournoiForm.value as any).subscribe(response => {
+    this.trService.addTournoi(this.AddTournoiForm.value as any,this.numevent).subscribe(response => {
       if (response) {
         console.log('Tournoi added successfully!', response);
         alert('Tournoi ajouté avec succès!');
@@ -39,7 +43,7 @@ export class AddTournoiComponent {
         this.AddTournoiForm.reset();
       } else {
         console.error('Failed to add tournoi: Event full');
-        alert('Événement complet, désolé!');
+        alert('Événement complet ou pas de terrain disponible, désolé!');
       }
     }, error => {
       console.error('Error adding tournoi:', error);

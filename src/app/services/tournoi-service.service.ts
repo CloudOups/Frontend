@@ -32,11 +32,12 @@ export class TournoiService {
     );
   }*/
 
-  addTournoi(tournoi: Tournoi): Observable<Tournoi> {
-    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation`, tournoi).pipe(
+  addTournoi(tournoi: Tournoi,idevent:number): Observable<Tournoi> {
+    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${idevent}`, tournoi).pipe(
       catchError(this.handleError)
     );
   }
+  
   creerTournoiAutomatique(tournoi: Tournoi,idevent:number): Observable<Tournoi> {
     return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${idevent}`, tournoi).pipe(
       catchError(this.handleError)
