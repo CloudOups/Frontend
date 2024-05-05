@@ -43,19 +43,19 @@ export class EventService {
   }
 
   getCompleteEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}/get/complete`);
+    return this.http.get<Event[]>(`${this.baseUrl}/get/complete`, { headers: this.getHeaders()});
   }
 
   getIncompleteEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}/get/incomplete`);
+    return this.http.get<Event[]>(`${this.baseUrl}/get/incomplete`, { headers: this.getHeaders()});
   }
 
   getExpiredEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}/get/expired`);
+    return this.http.get<Event[]>(`${this.baseUrl}/get/expired`, { headers: this.getHeaders()});
   }
 
   getUpcomingEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}/get/upcoming`);
+    return this.http.get<Event[]>(`${this.baseUrl}/get/upcoming`, { headers: this.getHeaders()});
   }
 
   addEvent(event: any, image: File): Observable<any> {
@@ -66,7 +66,7 @@ export class EventService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
 
-    return this.http.post<any>(`${this.baseUrl}/add`, formData, { headers: headers });
+    return this.http.post<any>(`${this.baseUrl}/add`, formData, { headers: this.getHeaders()});
 }
   
 

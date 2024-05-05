@@ -5,6 +5,7 @@ import { Terrain } from '../Models/Terrain/terrain';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { StatusTerrain } from '../Models/Terrain/statusTerrain';
 import { Page } from '../Models/Page.interface';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,7 @@ import { Page } from '../Models/Page.interface';
 export class TerrainService {
   readonly API_URL = "http://localhost:8089/pi";
   readonly ENDPOINT_TERRAINS = "/terrain";
-
-  constructor(private httpClient: HttpClient) { }
-  
+  constructor(private httpClient:HttpClient,private authService: AuthServiceService) { }
   private getHeaders(): HttpHeaders {
     const jwt = localStorage.getItem('jwt');
     const headers = new HttpHeaders();
@@ -25,8 +24,6 @@ export class TerrainService {
       'Content-Type': 'application/json'
     });
   }
-
-
   // Method to retrieve all terrains
   getTerrains(): Observable<Terrain[]> {
     return this.httpClient.get<Terrain[]>(this.API_URL + this.ENDPOINT_TERRAINS + "/get/all", { headers: this.getHeaders()});
