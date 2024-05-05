@@ -10,10 +10,9 @@ import { EventService } from 'src/app/services/event.service';
 export class ListEventComponent implements OnInit{
   title='event app';
   listevents!: Event []
-  
-  constructor(private evService: EventService){
+  url="http://localhost:4200/assets/img/events/"
 
-  }
+  constructor(private evService: EventService){ }
   
   ngOnInit(): void {
     console.log('on init...')
@@ -22,6 +21,10 @@ export class ListEventComponent implements OnInit{
       console.log('Liste des Events rafraîchie avec succès', this.listevents);
 
   }
+
+  
+
+  
 
   deleteEvent(id: number) {
     this.evService.deleteEvent(id).subscribe(() => {

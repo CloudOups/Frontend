@@ -19,7 +19,7 @@ export class EventService {
 
     return new HttpHeaders({
       Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json'
+      //'Content-Type': 'application/json'
     });
   }
 
