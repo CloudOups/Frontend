@@ -32,11 +32,11 @@ export class UpdateTournoiComponent implements OnInit {
   ngOnInit() {
     console.log("on init ......");
   
-    // Récupérer l'ID à partir de l'URL
-    const id = this.act.snapshot.paramMap.get('id'); // Supposons que le paramètre d'URL soit nommé 'id'
+    // Recuperer l'id a partir de l'URL
+    const id = this.act.snapshot.paramMap.get('id'); 
     if (id) {
       this.numTournoi = +id; // Convertir en nombre
-      // Initialiser numTournoi dans le formulaire
+      // Initialiser numTournoi
       this.UpdateTournoiForm.get('numTournoi')?.setValue(this.numTournoi.toString()); // Convertir en chaîne de caractères
       // Fetch the details of the tournoi based on numTournoi
       this.tournoiService.getTournoiById(this.numTournoi).subscribe(

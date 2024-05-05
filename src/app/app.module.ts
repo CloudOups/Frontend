@@ -133,7 +133,6 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     ChoisirTerrainComponent,
     ListEventbackComponent
   
-  
   ],
   imports: [
     BrowserModule,
@@ -142,7 +141,6 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     ReactiveFormsModule,
     HttpClientModule,
     AngularEditorModule,
-
   ],
   providers: [BlogServiceService],
   bootstrap: [AppComponent]

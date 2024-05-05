@@ -29,6 +29,7 @@
     "node-nlp": "^4.27.0",
     "quill": "^2.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.10.8",
     "tinymce": "^7.0.1",
     "tslib": "^2.3.0",
     "vader-sentiment": "^1.1.3",

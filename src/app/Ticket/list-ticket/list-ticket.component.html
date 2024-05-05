@@ -1,29 +1,37 @@
-<div class="container">
-    <h2>Liste des Tickets</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Date du Ticket</th>
-          <th>Nom de l'Utilisateur</th>
-          <th>Nom de l'Événement</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let t of listtickets">
-          <td>{{ t.numTicket }}</td>
-          <td>{{ t.dateTicket }}</td>
-          <td>{{ t.user?.firstname }}</td>
-          <td>{{ t.event?.nomevent }}</td>
-          <td>
-            <button class="btn btn-outline-success" [routerLink]="['/detailticket',t.numTicket]">detail</button>
-            </td>
-          <td>
-            <button class="btn btn-outline-success" *ngIf="t.numTicket" (click)="deleteTicket(t.numTicket)">supprimer</button>
-            </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-3">
+          <app-sidemenu></app-sidemenu>
+      </div>
+
+      <div class="col-md-9">
+          <h2>Liste des Tickets</h2>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Date du Ticket</th>
+                      <th>Nom de l'Utilisateur</th>
+                      <th>Nom de l'Événement</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let t of listtickets">
+                      <td>{{ t.numTicket }}</td>
+                      <td>{{ t.dateTicket }}</td>
+                      <td>{{ t.user?.nom }}</td>
+                      <td>{{ t.event?.numevent}}</td>
+                      <td>{{ t.event?.nomevent}}</td>
+                      <td>
+                          <button class="btn btn-outline-success" [routerLink]="['/detailticket',t.numTicket]">detail</button>
+                      </td>
+                      <td>
+                          <button class="btn btn-outline-success" *ngIf="t.numTicket" (click)="deleteTicket(t.numTicket)">supprimer</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </div>
-  
+</div>

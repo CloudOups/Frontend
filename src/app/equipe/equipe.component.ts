@@ -13,7 +13,10 @@ export class EquipeComponent {
   title='equipe-app';
   equipes: Equipe[] = [];
     idUser!:number
-
+    currentPage = 0;
+    pageSize = 10;
+    totalPages = 0;
+    totalPagesArray: number[] = []; 
 constructor(private equipeService:EquipeService){
 }
 ngOnInit(){
@@ -21,6 +24,7 @@ ngOnInit(){
   this.equipeService.getAllEquipes().subscribe((datas)=>{
     this.equipes=datas;}
    )
+   this.getAllEquipes()
   }
 
     deleteEquipe(id: number) {
@@ -48,4 +52,24 @@ ngOnInit(){
       }
     );
   }
+
+
+
+getAllEquipes(): void {
+  this.equipeService.getAllPaginations(this.currentPage, this.pageSize).subscribe(
+    response => {
+      this.equipes = response.content;
+      this.totalPages = response.totalPages;
+      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1); // Generate array of page numbers
+    },
+    error => {
+      console.error('Error fetching reservations: ', error);
+    }
+  );
+}
+
+goToPage(pageNumber: number): void {
+  this.currentPage = pageNumber;
+  this.getAllEquipes();
+}
 }

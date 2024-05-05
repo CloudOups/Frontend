@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TerrainService } from '../services/terrain.service';
 import { Terrain } from '../Models/Terrain/terrain';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-terrain',
   templateUrl: './terrain.component.html',
@@ -10,11 +11,19 @@ import { Terrain } from '../Models/Terrain/terrain';
 export class TerrainComponent {
   title='terrain-app';
   terrains!: Terrain []
+  currentPage = 0;
+  pageSize = 10;
+  totalPages = 0;
+  totalPagesArray: number[] = []; 
+  sortBy: string | null = null;
+
   url="http://localhost:4200/assets/img/terrains/"  
-constructor(private terrainService:TerrainService){
+constructor(private terrainService:TerrainService,    private router: Router ,   private route: ActivatedRoute
+){
 }
   ngOnInit() {
-    this.getTerrains();
+    this.getPaginatTerrains();
+    
   }
 
 getTerrains() {
@@ -63,6 +72,45 @@ refreshTerrain() {
   );
 }
 
+getPaginatTerrains(): void {
+  this.terrainService.getAllTerrains(this.currentPage, this.pageSize,this.sortBy).subscribe(
+    response => {
+     
+      this.terrains = response.content;
+      this.totalPages = response.totalPages;
+      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1); // Generate array of page numbers
+      this.attachImageUrl();  },
+    error => {
+      console.error('Error fetching reservations: ', error);
+    }
+  );
+}
+
+goToPage(pageNumber: number): void {
+  this.currentPage = pageNumber;
+  this.updateQueryParams();
+}
+
+updateQueryParams(): void {
+  this.router.navigate([], {
+    relativeTo: this.route,
+    queryParams: {
+      page: this.currentPage,
+      sortBy: this.sortBy
+    },
+    queryParamsHandling: 'merge'
+  });
+}
+sortByEtatRes(): void {
+  this.sortBy = 'typeTerrain';
+  this.getPaginatTerrains();
+  this.updateQueryParams();
+}
+clearSort(): void {
+  this.sortBy = null;
+  this.getPaginatTerrains();
+  this.updateQueryParams();
+}
 }
 
 

@@ -4,6 +4,7 @@ import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { ReservationTerrainService } from '../services/reservation-terrain.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TypeReservation } from '../Models/Reservation/typeReservation';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-confirmartion-reservation',
@@ -46,7 +47,7 @@ ngOnInit(){
 save() {
   this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,1,this.numTerrain).subscribe(response => {
     console.log('Reservation added successfully!', response);
-    alert('Reservation done ! check your Email!!!');
+    Swal.fire("Reservation done ! check your Email!!!!");
     this.router.navigate(['/mesReservation']);
     this.ReservationForm.reset();
   }, error => {

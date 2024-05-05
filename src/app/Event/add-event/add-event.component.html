@@ -1,66 +1,12 @@
-<div class="card">
-    <div class="card-header">
-        <h4>Ajouter un événement</h4>
+<form (ngSubmit)="addEvent()" enctype="multipart/form-data">
+    <div>
+        <label for="nomevent">Nom de l'événement:</label>
+        <input type="text" id="nomevent" name="nomevent" [(ngModel)]="event.nomevent" required>
     </div>
-    <div class="card-body">
-        <form [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
-            <div class="mb-3">
-                <label for="nomEvent" class="form-label">Nom de l'événement</label>
-                <input type="text" class="form-control" id="nomEvent" formControlName="nomEvent" placeholder="Entrez le nom de l'événement">
-                <div *ngIf="addEventForm.get('nomEvent')?.invalid && (addEventForm.get('nomEvent')?.dirty || addEventForm.get('nomEvent')?.touched)" class="text-danger">
-                    <div *ngIf="addEventForm.get('nomEvent')?.errors?.['required']">Le nom de l'événement est requis.</div>
-                    <div *ngIf="addEventForm.get('nomEvent')?.errors?.['minlength']">Le nom de l'événement doit comporter au moins 6 caractères.</div>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="categorie" class="form-label">Catégorie</label>
-                <input type="text" class="form-control" id="categorie" formControlName="categorie" placeholder="Entrez la catégorie">
-                <div *ngIf="addEventForm.get('categorie')?.invalid && (addEventForm.get('categorie')?.dirty || addEventForm.get('categorie')?.touched)" class="text-danger">
-                    La catégorie est requise.
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="dateDebut" class="form-label">Date de début</label>
-                <input type="datetime-local" class="form-control" id="dateDebut" formControlName="dateDebut">
-                <div *ngIf="addEventForm.get('dateDebut')?.invalid && (addEventForm.get('dateDebut')?.dirty || addEventForm.get('dateDebut')?.touched)" class="text-danger">
-                    La date de début est requise et doit être au format (AAAA-MM-JJTHH:MM).
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="dateFin" class="form-label">Date de fin</label>
-                <input type="datetime-local" class="form-control" id="dateFin" formControlName="dateFin">
-                <div *ngIf="addEventForm.get('dateFin')?.invalid && (addEventForm.get('dateFin')?.dirty || addEventForm.get('dateFin')?.touched)" class="text-danger">
-                    La date de fin est requise et doit être au format (AAAA-MM-JJTHH:MM).
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="nbParticipants" class="form-label">Nombre de participants</label>
-                <input type="number" class="form-control" id="nbParticipants" formControlName="nbParticipants" placeholder="Entrez le nombre de participants">
-                <div *ngIf="addEventForm.get('nbParticipants')?.invalid && (addEventForm.get('nbParticipants')?.dirty || addEventForm.get('nbParticipants')?.touched)" class="text-danger">
-                    <div *ngIf="addEventForm.get('nbParticipants')?.errors?.['required']">Le nombre de participants est requis.</div>
-                    <div *ngIf="addEventForm.get('nbParticipants')?.errors?.['min']">Le nombre de participants doit être d'au moins 2.</div>
-                    <div *ngIf="addEventForm.get('nbParticipants')?.errors?.['onlyNumbers']">Le nombre de participants doit être un nombre valide.</div>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="location" class="form-label">Lieu</label>
-                <input type="text" class="form-control" id="location" formControlName="location" placeholder="Entrez le lieu">
-                <div *ngIf="addEventForm.get('location')?.invalid && (addEventForm.get('location')?.dirty || addEventForm.get('location')?.touched)" class="text-danger">
-                    Le lieu est requis.
-                </div>
-            </div>
-           
-            <div class="form-group">
-              <label for="imageFile">Sélectionner une image</label>
-              <input type="file" class="form-control-file" id="image" (change)="onFileSelected($event)">
-              <!-- Affichage des erreurs -->
-              <div *ngIf="addEventForm.get('image')?.invalid && addEventForm.get('image')?.touched" class="text-danger">
-                Image requise
-              </div>
-            </div>
-            <!--button type="submit" class="btn btn-primary" [disabled]="addEventForm.invalid">Ajouter</button-->
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-        </form>
+    <!-- Ajoutez d'autres champs d'événement selon vos besoins -->
+    <div>
+        <label for="image">Image:</label>
+        <input type="file" id="image" (change)="onFileSelected($event)" name="image" accept="image/*" [(ngModel)]="image" required>
     </div>
-  </div>
-  
+    <button type="submit">Ajouter</button>
+</form>
