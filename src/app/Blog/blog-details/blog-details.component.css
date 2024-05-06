@@ -1,0 +1,11 @@
+.bx-trash:before {
+
+	content: "\ebac";
+
+}
+
+.bx-trash-alt:before {
+
+	content: "\ebad";
+
+}
