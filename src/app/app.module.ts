@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BlogServiceService } from './Blog/blog-service.service';
 
@@ -43,7 +43,6 @@ import { RegisterComponent } from './register/register.component';
 import { ListBlogbackComponent } from './Blog/list-blogback/list-blogback.component';
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { ListProduitComponent } from './produit/list-produit/list-produit.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StatusPanierComponent } from './produit/status-panier/status-panier.component';
 import { DetailsProduitComponent } from './produit/details-produit/details-produit.component';
@@ -150,9 +149,10 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
     FontAwesomeModule,
     AngularEditorModule,
+    NgbModule,
+    
   ],
   providers: [BlogServiceService],
   bootstrap: [AppComponent]
