@@ -146,7 +146,7 @@ import { authInterceptorProviders } from './auth.interceptor';
     ListEventbackComponent
 
   ],
-    ListEventbackComponent],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
