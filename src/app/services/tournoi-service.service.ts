@@ -43,17 +43,13 @@ export class TournoiService {
     );
   }*/
 
-  addTournoi(tournoi: Tournoi,idevent:number): Observable<Tournoi> {
-    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${idevent}`, tournoi, { headers: this.getHeaders()}).pipe(
+  addTournoi(tournoi: Tournoi,numevent:number): Observable<Tournoi> {
+    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${numevent}`, tournoi, { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)
     );
   }
   
-  creerTournoiAutomatique(tournoi: Tournoi,idevent:number): Observable<Tournoi> {
-    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${idevent}`, tournoi, { headers: this.getHeaders()}).pipe(
-      catchError(this.handleError)
-    );
-  }
+
   
   updateTournoi(tournoi: Tournoi): Observable<Tournoi> {
     return this.http.put<Tournoi>(`${this.baseUrl}/update`, tournoi, { headers: this.getHeaders()}).pipe(
@@ -80,3 +76,4 @@ export class TournoiService {
     return throwError(error);
   }
 }
+
