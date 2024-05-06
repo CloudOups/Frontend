@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TypeReservation } from '../Models/Reservation/typeReservation';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-confirmartion-reservation',
   templateUrl: './confirmartion-reservation.component.html',
@@ -25,12 +26,20 @@ ReservationForm= new FormGroup({
  // terrain: new FormControl('', [Validators.required]),
   prixReser: new FormControl('', [Validators.required]),
   typeRes: new FormControl('Personnel', [Validators.required]),
+  dateRes: new FormControl('', [Validators.required]),
 
 });
+ currentDate = new Date();
 
+// Extraire les composants de la date
+ year = this.currentDate.getFullYear();
+ month = String(this.currentDate.getMonth() + 1).padStart(2, '0'); // Les mois commencent à 0, donc ajoutez 1. Assurez-vous que le mois est toujours sur deux chiffres.
+ day = String(this.currentDate.getDate()).padStart(2, '0'); // Assurez-vous que le jour est toujours sur deux chiffres.
+ hours = String(this.currentDate.getHours()).padStart(2, '0'); // Assurez-vous que les heures sont toujours sur deux chiffres.
+ minutes = String(this.currentDate.getMinutes()).padStart(2, '0'); 
+  formattedDate = `${this.year}-${this.month}-${this.day}T${this.hours}:${this.minutes}`;
 
-
-ngOnInit(){
+ ngOnInit(){
   console.log("on init ......")
   this.endTime = this.act.snapshot.params['endTime'];
   this.startTime = this.act.snapshot.params['startTime'];
@@ -42,9 +51,12 @@ ngOnInit(){
     dateFin: this.startTime ,
 //  terrain: this.numTerrain.toString(),
     prixReser:this.prixReser.toString(),
+    dateRes: this.formattedDate
+
   })
 }
-save() {
+save(){
+
   this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,1,this.numTerrain).subscribe(response => {
     console.log('Reservation added successfully!', response);
     Swal.fire("Reservation done ! check your Email!!!!");

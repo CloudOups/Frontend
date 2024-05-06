@@ -28,7 +28,7 @@ export class AddEquipeComponent {
   });
 
   save() {
-    this.equipeService.addEquipe(this.AddEquipeForm.value as any , 1).subscribe(response => {
+    this.equipeService.addEquipe(this.AddEquipeForm.value as any ,1 ).subscribe(response => {
       console.log('Equipe added successfully!', response);
       Swal.fire('Equipe ajouté avec succès!');
       this.router.navigate(['/equipes']);

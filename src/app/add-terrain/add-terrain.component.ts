@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { StatusTerrain } from '../Models/Terrain/statusTerrain';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-terrain',
@@ -56,7 +57,7 @@ save() {
 
       // Handle response if needed
       console.log('Terrain added successfully!', response);
-      alert('Terrain ajouté avec succès!');
+      Swal.fire('Terrain ajouté avec succès!');
       this.router.navigate(['/terrains']);
 
       // Optionally, you can reset the form after successful submission

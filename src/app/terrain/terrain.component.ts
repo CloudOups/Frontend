@@ -12,7 +12,7 @@ export class TerrainComponent {
   title='terrain-app';
   terrains!: Terrain []
   currentPage = 0;
-  pageSize = 10;
+  pageSize = 5;
   totalPages = 0;
   totalPagesArray: number[] = []; 
   sortBy: string | null = null;
@@ -22,7 +22,13 @@ constructor(private terrainService:TerrainService,    private router: Router ,  
 ){
 }
   ngOnInit() {
-    this.getPaginatTerrains();
+    
+    this.route.queryParams.subscribe(params => {
+      this.sortBy = params['sortBy'];
+      this.currentPage = +params['page'] || 0;
+      this.getPaginatTerrains();
+
+    });
     
   }
 

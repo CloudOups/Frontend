@@ -13,7 +13,13 @@
     <span class="primary-right-round"></span>
     <div class="container">
         <h1 class="text-white">List des Reservations</h1>
-   
+        <div>
+            <button (click)="generatePromoCode()">Generate Promo Code</button>
+          </div>
+          <div *ngIf="promoCode">
+            <p>The generated promo code is: {{ promoCode }}</p>
+            <p id="promoCodeDisplay">Promo Code: {{ promoCode }}</p> <!-- Affichage du code promo dans l'élément avec l'ID 'promoCodeDisplay' -->
+          </div>
     </div></div>
 <div class="table-responsive">
     <table class="table table-borderless datatable">
@@ -99,4 +105,3 @@
             <button class="btn btn-secondary" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Next</button>
         </div>
     </div>
-<app-footer></app-footer>

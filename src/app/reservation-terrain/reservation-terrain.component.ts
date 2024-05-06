@@ -12,7 +12,7 @@ export class ReservationTerrainComponent implements OnInit {
 
   reservationTerrains: any = {};
   currentPage = 0;
-  pageSize = 10;
+  pageSize = 5;
   totalPages = 0;
   totalPagesArray: number[] = [];
   sortBy: string | null = null;
@@ -29,6 +29,7 @@ export class ReservationTerrainComponent implements OnInit {
       this.currentPage = +params['page'] || 0;
       this.getReservations();
     });
+    this.generatePromoCode()
   }
 
   getReservations(): void {
@@ -100,5 +101,19 @@ export class ReservationTerrainComponent implements OnInit {
     this.getReservations();
     this.updateQueryParams();
   }
+  promoCode?: string ;
 
+ 
+  generatePromoCode(): void {
+    this.reservationTerrainService.generatePromoCode().subscribe(
+      (code: string) => {
+        // Afficher le code généré dans l'élément HTML avec l'ID 'promoCodeDisplay'
+        
+        this.promoCode = code;
+      },
+      (error) => {
+        console.error("Error generating promo code:", error);
+      }
+    );
+  }
 }

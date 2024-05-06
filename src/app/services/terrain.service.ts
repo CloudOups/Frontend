@@ -26,7 +26,7 @@ export class TerrainService {
   getTerrains(): Observable<Terrain[]> {
     return this.httpClient.get<Terrain[]>(this.API_URL + this.ENDPOINT_TERRAINS + "/get/all", { headers: this.getHeaders()});
   }
-  getAllTerrains(page: number, size: number,sortBy:string|null): Observable<Page<Terrain>> {
+  getAllTerrains(page: number, size: number,sortBy:string| null): Observable<Page<Terrain>> {
     var params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());

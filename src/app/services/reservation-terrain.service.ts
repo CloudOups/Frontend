@@ -116,4 +116,12 @@ if (sortBy) {
   getReservationTerrainsByTerrainName(nomTerrain: string): Observable<ReservationTerrain[]> {
     return this.httpClient.get<ReservationTerrain[]>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/get/nomTerrain=/" + nomTerrain, { headers: this.getHeaders()});
   }
+  getMost3ReservedTerrains(): Observable<Terrain[]> {
+    return this.httpClient.get<Terrain[]>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS + "/most-3-reserved-terrains/", { headers: this.getHeaders() });
+  }
+  
+  generatePromoCode(length: number = 8): Observable<string> {
+    const params = new HttpParams().set('length', length.toString());
+    return this.httpClient.get<string>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/generate-promo-code", { params,  headers: this.getHeaders() });
+  }
 }
