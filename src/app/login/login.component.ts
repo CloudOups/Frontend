@@ -37,5 +37,6 @@ export class LoginComponent implements OnInit {
     // Check if user is logged in by verifying if JWT token exists in local storage
     return localStorage.getItem('jwt') !== null;
   }
+  
 
 }

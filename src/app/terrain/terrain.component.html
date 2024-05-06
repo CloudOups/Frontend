@@ -1,11 +1,14 @@
-<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+  
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <h2>Liste des Terrains</h2>
 
-<div class="breadcrumb mb-0">
-    <span class="primary-right-round"></span>
-    <div class="container">
-        <h1 class="text-white">List des terrains</h1>
-   
-    </div></div>
 <div class="table-responsive">
     <table class="table table-borderless datatable">
         <thead class="thead-light">
@@ -16,9 +19,16 @@
                 <th>Nom du terrain</th>
                 <th>Image du terrain</th>
                 <th>Statut</th>
-                <th>Type</th>
-                <th>Actions</th> <!-- New column for actions -->
+                <th>Type Terrain<button class="icon fa fa-sort" (click)="sortByEtatRes()"></button>
+                </th>      
+                          <th>Actions <!-- New column for actions -->
+
+                    <button (click)="clearSort()"> <i class="fas fa-sync"></i> 
+              </button>
+                </th>
+
             </tr>
+
         </thead>
         <tbody>
             <ng-container  *ngFor="let terrain of terrains">
@@ -44,6 +54,20 @@
             </ng-container>
         </tbody>
     </table>
+</div>
+<div class="row justify-content-between align-items-center">
+      
+    <div class="col-auto">
+        <button class="btn btn-secondary" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+    </div>
+    <div class="col-auto">
+        <ng-container *ngFor="let page of totalPagesArray">
+            <button class="btn btn-secondary" (click)="goToPage(page - 1)" [class.active]="currentPage === page - 1">{{ page }}</button>
+        </ng-container>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-secondary" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Next</button>
+    </div>
 </div>
 
 <app-footer></app-footer>

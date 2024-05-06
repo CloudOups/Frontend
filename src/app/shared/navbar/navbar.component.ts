@@ -22,6 +22,11 @@ export class NavbarComponent {
   logout() {
     this.authService.logout().subscribe(
       (response) => {
+
+
+        // Clear local storage upon successful logout
+        localStorage.removeItem('jwt'); // Replace 'your_storage_key' with the actual key you want to remove
+        console.log('Local storage cleared');
         // Successful logout handling
         console.log('Logout successful');
       },

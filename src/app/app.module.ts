@@ -78,6 +78,7 @@ import { ConfirmartionReservationComponent } from './confirmartion-reservation/c
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
+import { authInterceptorProviders } from './auth.interceptor';
 
 
 @NgModule({
@@ -142,6 +143,9 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     DetailEventComponent,
     ConfirmartionReservationComponent,
     ChoisirTerrainComponent,
+    ListEventbackComponent
+
+  ],
     ListEventbackComponent],
   imports: [
     BrowserModule,
@@ -154,7 +158,7 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     NgbModule,
     
   ],
-  providers: [BlogServiceService],
+  providers: [BlogServiceService,authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

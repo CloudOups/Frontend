@@ -4,6 +4,7 @@ import { EquipeService } from '../services/equipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../Models/user/user';
 import { Equipe } from '../Models/Equipe/equipe';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-equipe',
@@ -20,16 +21,16 @@ export class AddEquipeComponent {
   }
 
   AddEquipeForm = new FormGroup({
-    chefEquipe: new FormControl('', [Validators.required]), // FormControl for chefEquipe
+   // chefEquipe: new FormControl('', [Validators.required]), 
     nomEquipe: new FormControl('', [Validators.required]),
     nbMemEquipe: new FormControl('', [Validators.required]),
     classement: new FormControl(null, [Validators.required]),
   });
 
   save() {
-    this.equipeService.addEquipe(this.AddEquipeForm.value as any , this.AddEquipeForm.value.chefEquipe as any).subscribe(response => {
+    this.equipeService.addEquipe(this.AddEquipeForm.value as any , 1).subscribe(response => {
       console.log('Equipe added successfully!', response);
-      alert('Equipe ajouté avec succès!');
+      Swal.fire('Equipe ajouté avec succès!');
       this.router.navigate(['/equipes']);
       this.AddEquipeForm.reset();
     }, error => {

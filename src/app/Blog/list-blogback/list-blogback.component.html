@@ -46,7 +46,7 @@
                                     <th scope="row">{{ publication.numPub }}</th>
                                     <td>
                                         <!-- link details lehne -->
-                                        {{ publication.sujet }}
+                                       <a routerLink="/blogdetails/{{ publication.numPub}}" class="approvePublication"> {{ publication.sujet }}</a>
                                     </td>
                                     <td>{{ publication.dateCreation }}</td>
                                     <td>{{ publication.user?.firstname}} {{ publication.user?.lastname}}</td>

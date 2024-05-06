@@ -1,4 +1,4 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from '../Models/Event/event';
 import { Observable, catchError, throwError } from 'rxjs';
@@ -19,7 +19,7 @@ export class EventService {
 
     return new HttpHeaders({
       Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json'
+      //'Content-Type': 'application/json'
     });
   }
 
@@ -42,6 +42,34 @@ export class EventService {
     );
   }
 
+  getCompleteEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/complete`, { headers: this.getHeaders()});
+  }
+
+  getIncompleteEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/incomplete`, { headers: this.getHeaders()});
+  }
+
+  getExpiredEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/expired`, { headers: this.getHeaders()});
+  }
+
+  getUpcomingEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/upcoming`, { headers: this.getHeaders()});
+  }
+
+  addEvent(event: any, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('nomevent', event.nomevent);
+    formData.append('img',image, image.name);
+    
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+
+    return this.http.post<any>(`${this.baseUrl}/add`, formData, { headers: this.getHeaders()});
+}
+  
+
  /* addEvent(Event: Event): Observable<Event> {
     return this.http.post<Event>(`${this.baseUrl}/add`, Event).pipe(
       catchError(this.handleError)
@@ -49,10 +77,10 @@ export class EventService {
   }*/
 
  
-
+/*
   addEvent(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/add`, formData, { headers: this.getHeaders()});
-  }
+    return this.http.post<any>(`${this.baseUrl}/add`, formData);
+  }*/
 
 
   updateEvent(Event: Event): Observable<Event> {

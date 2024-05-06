@@ -11,7 +11,7 @@ import { TicketService } from 'src/app/services/ticket.service';
 export class ListTicketComponent {
   title='ticket app';
   listtickets!: Ticket []
-
+  
   constructor(private trService: TicketService){
 
   }
@@ -42,5 +42,7 @@ export class ListTicketComponent {
         console.log('Liste des tickets rafraîchie avec succès', this.listtickets);
       })
   }
+
+
 
 }

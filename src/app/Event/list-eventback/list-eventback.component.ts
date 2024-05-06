@@ -1,30 +1,81 @@
-import { Component } from '@angular/core';
-import { Event } from 'src/app/Models/Event/event';
-import { EventService } from 'src/app/services/event.service';
-
+import { Component } from "@angular/core";
+import { Event } from "src/app/Models/Event/event";
+import { EventService } from "src/app/services/event.service";
 @Component({
   selector: 'app-list-eventback',
   templateUrl: './list-eventback.component.html',
   styleUrls: ['./list-eventback.component.css']
 })
 export class ListEventbackComponent {
-  title='event app';
-  listevents!: Event []
-  
-  constructor(private evService: EventService){
+  title = 'event app';
+  listevents!: Event[];
+  popularEvents: Event[] = [];
+  filteredEvents: Event[] = [];
+  selectedFilter: string = 'complete'; 
 
-  }
-  
+  constructor(private evService: EventService) {}
+
   ngOnInit(): void {
     console.log('on init...')
-    this.evService.getEvents().subscribe(
-      data=>this.listevents=data)
-
-      this.evService.getEventsMostParticipation().subscribe(
-        data=>this.listevents=data)
+    this.loadAllEvents();
+    this.evService.getEventsMostParticipation().subscribe(
+      data => this.popularEvents = data);
   }
 
-  
+  loadAllEvents() {
+    this.evService.getEvents().subscribe(events => {
+      this.listevents = events;
+      this.filteredEvents = this.listevents; // Charge tous les événements par défaut
+    });
+  }
+
+  loadCompleteEvents() {
+    this.evService.getCompleteEvents().subscribe(events => {
+      this.listevents = events;
+      this.filteredEvents = this.listevents; // Charge les événements complets
+    });
+  }
+
+  loadIncompleteEvents() {
+    this.evService.getIncompleteEvents().subscribe(events => {
+      this.listevents = events;
+      this.filteredEvents = this.listevents; // Charge les événements incomplets
+    });
+  }
+
+  loadExpiredEvents() {
+    this.evService.getExpiredEvents().subscribe(events => {
+      this.listevents = events;
+      this.filteredEvents = this.listevents; // Charge les événements expirés
+    });
+  }
+
+  loadUpcomingEvents() {
+    this.evService.getUpcomingEvents().subscribe(events => {
+      this.listevents = events;
+      this.filteredEvents = this.listevents; // Charge les événements à venir
+    });
+  }
+
+  filterEvents() {
+    switch (this.selectedFilter) {
+      case 'complete':
+        this.loadCompleteEvents();
+        break;
+      case 'incomplete':
+        this.loadIncompleteEvents();
+        break;
+      case 'expired':
+        this.loadExpiredEvents();
+        break;
+      case 'upcoming':
+        this.loadUpcomingEvents();
+        break;
+      default:
+        this.loadAllEvents();
+        break;
+    }
+  }
 
   deleteEvent(id: number) {
     this.evService.deleteEvent(id).subscribe(() => {
@@ -44,8 +95,8 @@ export class ListEventbackComponent {
     this.evService.getEvents().subscribe(
       (events) => {
         this.listevents = events;
+        this.filteredEvents = this.listevents; // Met à jour la liste des événements filtrés
         console.log('Liste des Events rafraîchie avec succès', this.listevents);
-      })
+      });
   }
-
 }

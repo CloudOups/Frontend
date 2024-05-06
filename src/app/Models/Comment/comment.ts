@@ -7,5 +7,5 @@ export class Comment {
     datecm?: Date;
     user?:User;
     publication?: Publication;
-    Sentiment?: string;
+    sentiment?: string;
 }
