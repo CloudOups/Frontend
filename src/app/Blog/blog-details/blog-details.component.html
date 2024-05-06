@@ -96,6 +96,8 @@
                                             <span *ngIf="comment.sentiment === 'Neutral'">😑Neutral</span>
                                             <span *ngIf="comment.sentiment === 'Positive'">😊Positive</span>
                                             <span *ngIf="comment.sentiment === 'Negative'">😡Negative</span>
+                                            <button  class="btn btn-outline-success"  *ngIf="comment.user?.firstname === newComment.user?.firstname && comment.user?.lastname === newComment.user?.lastname "
+                                            (click)="deletecomment(comment.idcmt || 0)"> </button>
                                         </div>
                                         <p>{{ comment.contenucm }}</p>
                                        
