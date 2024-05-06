@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate {
       let decodedJwtJsonData = window.atob(jwtData);
       this.decodedJwtData = JSON.parse(decodedJwtJsonData);
       console.log('user ::::::::', this.decodedJwtData.sub);
-      const [username, role] = this.decodedJwtData.sub.split(':');
+      const role = this.decodedJwtData.authorities[0];
       console.log(' role : ', role);
       if (role == 'Admin') {
         console.log(" if (role == 'Admin')");
