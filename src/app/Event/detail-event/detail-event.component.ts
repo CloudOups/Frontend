@@ -5,6 +5,8 @@ import { Tournoi } from 'src/app/Models/Tournoi/tournoi';
 import { EventService } from '../../services/event.service';
 import { TicketService } from 'src/app/services/ticket.service';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/Models/user/user';
 
 @Component({
   selector: 'app-detail-event',
@@ -21,15 +23,13 @@ export class DetailEventComponent {
   totalPages = 0;
   totalPagesArray: number[] = [];
 
-  constructor(private Act:ActivatedRoute,private ts:EventService,private tournoiservice:TournoiService,private ticketservice:TicketService){}
+  constructor(private Act:ActivatedRoute,private ts:EventService,private tournoiservice:TournoiService,private ticketservice:TicketService, private userService: UserService
+  ) {}
 
-  ngOnInit(){
-    this.id=this.Act.snapshot.params['id']
-    this.ts.getEventById(this.id).subscribe(data=>this.event=data as any )
-    //this.tournoiservice.getTournois().subscribe( data=>this.listtournois=data)
-    this.getTournoiss();
-
-
+  ngOnInit() {
+    this.id = this.Act.snapshot.params['id'];
+    this.ts.getEventById(this.id).subscribe(data => this.event = data as any);
+    this.getTournoiss();  
   }
 
 
@@ -53,22 +53,24 @@ export class DetailEventComponent {
   }
 
    
-    participateEvent(eventId: number) {
-      if (confirm('Êtes-vous sûr de vouloir participer à cet événement ?')) {
-        this.ticketservice.participateEvent(eventId).subscribe(ticket => {
-          if (ticket) {
-            console.log('Ticket créé avec succès : ', ticket);
-            // Rediriger vers une autre page ou afficher un message de succès
-          } else {
-            console.error('L\'événement est complet, désolé.');
-            // Afficher un message à l'utilisateur indiquant que l'événement est complet
-            alert('L\'événement est complet, désolé.');
-          }
-        }, error => {
-          console.error('Erreur lors de la création du ticket : ', error);
-          // Gérer l'erreur et afficher un message approprié à l'utilisateur
-        });
-      }
+  participateEvent(eventId: number,principal:User) {
+    if (confirm('Êtes-vous sûr de vouloir participer à cet événement ?')) {
+      this.userService.getCurrentUser().subscribe(user => {
+        if (user) {
+          this.ticketservice.participateEvent(eventId,principal).subscribe(ticket => {
+            if (ticket) {
+              console.log('Ticket créé avec succès : ', ticket);
+            } else {
+              console.error('L\'événement est complet, désolé.');
+              alert('L\'événement est complet, désolé.');
+            }
+          }, error => {
+            console.error('Erreur lors de la création du ticket : ', error);
+          });
+        } else {
+          console.error('Utilisateur non trouvé.');
+        }
+      });
     }
-    
+  }
 }

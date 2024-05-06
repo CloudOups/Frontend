@@ -13,14 +13,25 @@ export class ListEventbackComponent {
   filteredEvents: Event[] = [];
   selectedFilter: string = 'complete'; 
 
+
+  
   constructor(private evService: EventService) {}
 
   ngOnInit(): void {
     console.log('on init...')
     this.loadAllEvents();
-    this.evService.getEventsMostParticipation().subscribe(
-      data => this.popularEvents = data);
+    this.evService.getEventsMostParticipation().subscribe(events => {
+      this.popularEvents = events;
+      //this.generatePieChart();
+    });
   }
+
+  /*generatePieChart(): void {
+    // Crée les données pour le pie chart en prenant les 5 premiers événements
+    const pieChartData = this.popularEvents.slice(0, 5).map(event => event.nbParticipants);
+    const pieChartLabels = this.popularEvents.slice(0, 5).map(event => event.nomevent);
+
+  }*/
 
   loadAllEvents() {
     this.evService.getEvents().subscribe(events => {

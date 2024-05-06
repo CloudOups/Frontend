@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Ticket } from '../Models/Ticket/ticket';
 import { AuthServiceService } from './auth-service.service';
+import { User } from '../Models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -63,11 +64,11 @@ export class TicketService {
     return this.http.post<Ticket>(url, {});
   }*/
 
-  participateEvent(eventId: number): Observable<Ticket> {
-    const url = `${this.baseUrl}/participate/${eventId}`;
-    return this.http.post<Ticket>(url, { headers: this.getHeaders()});
+  participateEvent(eventId: number,principal: User): Observable<Ticket> {
+    const url = `${this.baseUrl}/participate/${eventId}/${principal}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<Ticket>(url, {}, { headers });
   }
-
   
 
     private handleError(error: any) {

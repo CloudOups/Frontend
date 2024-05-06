@@ -6,31 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { IgxPieChartModule, IgxLegendModule } from "igniteui-angular-charts";
+import { CommonModule } from "@angular/common";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 import { BlogServiceService } from './Blog/blog-service.service';
-
-
-
-
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -141,6 +122,12 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     ReactiveFormsModule,
     HttpClientModule,
     AngularEditorModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    IgxPieChartModule,
+    IgxLegendModule
   ],
   providers: [BlogServiceService],
   bootstrap: [AppComponent]
