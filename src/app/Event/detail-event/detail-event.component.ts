@@ -53,11 +53,11 @@ export class DetailEventComponent {
   }
 
    
-  participateEvent(eventId: number,principal:User) {
+  participateEvent(eventId: number) {
     if (confirm('Êtes-vous sûr de vouloir participer à cet événement ?')) {
       this.userService.getCurrentUser().subscribe(user => {
         if (user) {
-          this.ticketservice.participateEvent(eventId,principal).subscribe(ticket => {
+          this.ticketservice.participateEvent(eventId, user).subscribe(ticket => {
             if (ticket) {
               console.log('Ticket créé avec succès : ', ticket);
             } else {
@@ -73,4 +73,4 @@ export class DetailEventComponent {
       });
     }
   }
-}
+}  
