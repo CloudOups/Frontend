@@ -4,7 +4,6 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { Terrain, TypeTerrain } from 'src/app/Models/Terrain/terrain';
 import { TournoiService } from '../../services/tournoi-service.service';
-import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-add-tournoi',
@@ -16,9 +15,6 @@ export class AddTournoiComponent {
   
   typeTournoi: string[] = Object.values(TypeTerrain);
   numevent!:number
-  event!: Event;
-  minDate!: string;
-  maxDate!: string;
   
   AddTournoiForm= new FormGroup({
     nomTournoi: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -30,39 +26,34 @@ export class AddTournoiComponent {
     
   });
 
-  constructor(private http: HttpClient,private act:ActivatedRoute,private eventservice:EventService, private trService: TournoiService, private router: Router) {
+  constructor(private http: HttpClient,private act:ActivatedRoute, private trService: TournoiService, private router: Router) {
 
   }
   ngOnInit() {
       this.numevent=this.act.snapshot.params['numevent'];
       console.log(this.numevent);
-
-     // Récupérer les informations sur l'événement et initialiser les dates de début et de fin du tournoi
-    this.eventservice.getEventById(this.numevent).subscribe((event: any) => {
-      this.event = event;
-      this.AddTournoiForm.patchValue({
-        dateDebut: event.dateDebut,
-        dateFin: event.dateFin
-      });
-    });
   }
 
   save() {
-    this.trService.addTournoi(this.AddTournoiForm.value as any,this.numevent).subscribe(response => {
-      if (response) {
-        console.log('Tournoi added successfully!', response);
-        alert('Tournoi ajouté avec succès!');
-        this.router.navigate(['/tournois']);
-        this.AddTournoiForm.reset();
-      } else {
-        console.error('Failed to add tournoi: Event full');
-        alert('Événement complet ou pas de terrain disponible, désolé!');
+    this.trService.addTournoi(this.AddTournoiForm.value as any, this.numevent).subscribe(
+      response => {
+        if (response) {
+          console.log('Tournoi added successfully!', response);
+          alert('Tournoi ajouté avec succès!');
+          this.router.navigate(['/tournois']);
+          this.AddTournoiForm.reset();
+        } else {
+          console.error('Failed to add tournoi: Event full');
+          alert('Événement complet ou pas de terrain disponible, désolé!');
+        }
+      }, 
+      error => {
+        console.error('Error adding tournoi:', error);
+        alert('Une erreur est survenue lors de l\'ajout du tournoi. Veuillez réessayer plus tard.');
       }
-    }, error => {
-      console.error('Error adding tournoi:', error);
-      // Gérer l'erreur ici
-    });
+    );
   }
+  
   
   
   onlyNumbersValidator(control: AbstractControl): { [key: string]: any } | null {

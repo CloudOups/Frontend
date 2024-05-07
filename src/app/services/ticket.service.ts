@@ -64,10 +64,12 @@ export class TicketService {
     return this.http.post<Ticket>(url, {});
   }*/
 
- 
-  participateEvent(eventId: number, user: User): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/participate/${eventId}`, user, { headers: this.getHeaders()});
+  participateEvent(eventId: number,principal: User): Observable<Ticket> {
+    const url = `${this.baseUrl}/participate/${eventId}/${principal}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<Ticket>(url, {}, { headers });
   }
+  
 
     private handleError(error: any) {
       console.error('An error occurred:', error);
