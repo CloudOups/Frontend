@@ -130,7 +130,7 @@
                                             <div class="head d-flex align-items-center justify-content-start">
                                                 <h5>{{ newComment.user?.firstname}} {{newComment.user?.lastname}}</h5>
                                             </div>
-                                            <textarea class="form-control" id="comments" rows="3"
+                                            <textarea  [(ngModel)]="newComment.contenucm"  class="form-control" id="comments" rows="3"
                                                       placeholder="Enter Comments"
                                                       formControlName="contenucm"></textarea>
                                                       <button type="submit" class="btn btn-gradient" [disabled]="!newCommentForm.valid">
