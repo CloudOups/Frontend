@@ -20,6 +20,7 @@ export class BlogDetailsComponent implements OnInit {
   newComment: Comment = new Comment();
   blogId = this.route.snapshot.paramMap.get('id');
   var: number = Number(this.blogId);
+  currentUrl!: string;
 
   newCommentForm!: FormGroup;
   badWords: string[] = ['shit', 'black', 'nigga','jabri','nhouchi'];
@@ -34,6 +35,7 @@ export class BlogDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentUrl = window.location.href;
     this.fetchPublications();
     this.initializeForm();
     const today = new Date();
@@ -71,6 +73,9 @@ initializeForm(): void {
 }
 
 
+encodeURL(url: string): string {
+  return encodeURIComponent(url);
+}
 
   getBlogById(blogId: number): Observable<Publication> {
     return this.blogService.getBlog(blogId);

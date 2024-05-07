@@ -60,16 +60,9 @@
                                 <div class="d-flex justify-content-lg-end align-items-center social-medias-wrapper">
                                     <h6>Share on :</h6>
                                     <ul class="social-medias d-flex">
-                                        <li class="facebook"><a href="javascript:void(0);"><i
-                                                    class="fa-brands fa-facebook-f"></i></a></li>
-                                        <li class="linkedin"><a href="javascript:void(0);"><i
-                                                    class="fa-brands fa-linkedin"></i></a></li>
-                                        <li class="instagram"><a href="javascript:void(0);"><i
-                                                    class="fa-brands fa-instagram"></i></a></li>
-                                        <li class="twitter"><a href="javascript:void(0);"><i
-                                                    class="fa-brands fa-twitter"></i></a></li>
-                                        <li class="pinterest"><a href="javascript:void(0);"><i
-                                                    class="fa-brands fa-pinterest"></i></a></li>
+                        
+                                        <li class="linkedin"><a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURL(currentUrl)"><i class="fa-brands fa-facebook"></i></a></li>
+                                        <li class="twitter"><a [href]="'https://twitter.com/intent/tweet?u=' + encodeURL(currentUrl)" ><i class="fa-brands fa-twitter"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
