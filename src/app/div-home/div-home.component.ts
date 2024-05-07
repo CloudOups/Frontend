@@ -6,6 +6,7 @@ import { TerrainService } from '../services/terrain.service';
 //import { WeatherServiceService } from '../services/weather-service.service';
 //import axios from 'axios';
 
+
 @Component({
   selector: 'app-div-home',
   templateUrl: './div-home.component.html',
