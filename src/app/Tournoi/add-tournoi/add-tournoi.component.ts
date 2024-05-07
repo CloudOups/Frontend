@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Terrain, TypeTerrain } from 'src/app/Models/Terrain/terrain';
+import { Terrain } from 'src/app/Models/Terrain/terrain';
 import { TournoiService } from '../../services/tournoi-service.service';
+import { TypeTerrain } from 'src/app/Models/Terrain/typeTerrain';
 
 @Component({
   selector: 'app-add-tournoi',

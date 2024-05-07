@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Tournoi } from 'src/app/Models/Tournoi/tournoi';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
-import { TypeTerrain } from 'src/app/Models/Terrain/terrain';
+import { TypeTerrain } from 'src/app/Models/Terrain/typeTerrain';
 
 @Component({
   selector: 'app-update-tournoi',
