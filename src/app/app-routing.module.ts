@@ -84,7 +84,7 @@ const routes: Routes = [
  //************************************path rania*******************************
 
  { path : 'tournois', component:ListTournoiComponent},
- { path :'addTournoi/:numevent', component: AddTournoiComponent},
+ { path :'addtournoi', component: AddTournoiComponent},
  { path :'updatetournoi/:id', component: UpdateTournoiComponent},
  { path :'detailtournoi/:id',component: DetailtournoiComponent},
  { path : 'events', component:ListEventComponent},
