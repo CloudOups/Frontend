@@ -1038,9 +1038,12 @@ div.dataTables_filter .form-control {
   top: 0;
   width: 100%;
   z-index: 999;
+  background-color: #177c82;
+  height: 105px;
+
 }
 .header.fixed {
-  background-color: #FFFFFF;
+  background-color: #177c82;
   box-shadow: 0px 3px 53px rgba(197, 197, 197, 0.27);
 }
 .header .logo a {
@@ -1806,7 +1809,13 @@ div.dataTables_filter .form-control {
 }
 
 header.header-sticky {
-  position: sticky;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: #177c82;
+  height: 105px;
 }
 header.header-sticky .header-nav .main-nav > li > a {
   color: #6B7385;
