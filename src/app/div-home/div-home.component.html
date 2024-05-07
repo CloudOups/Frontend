@@ -31,7 +31,7 @@
                                 <div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/en/weather/week/aryanah_tunisia_2473247?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank" rel="noopener">meteoblue</a></div>
                             </div>
                             
-                            
+
                                 <div class="search-box">
                                     <form action="#">
                                         <div class="search-input line d-flex align-items-center">
@@ -50,12 +50,12 @@
                                                 <label class="form-label me-2">Select End Time</label>
                                                 <input type="datetime-local" class="form-control date" id="end-time" name="endTime" [(ngModel)]="endTime">
                                             </div>
-                                            <div *ngIf="weatherData">
+                                            <!--div *ngIf="weatherData">
                                                 <h2>Météo pour {{ startTime | date: 'mediumDate' }}</h2>
                                                 <p>{{ weatherData.weather[0].description }}</p>
                                                 <p>Température: {{ weatherData.main.temp }}°C</p>
                                                 <img [src]="'http://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '.png'" alt="Weather Icon">
-                                              </div>
+                                              </div-->
                                             <div class="search-btn">
                                                 <button class="btn btn-primary search-btn" (click)="navigateToReservation()" [routerLink]="['/choisirTerrain',startTime,endTime,selectedTypeTerrain]" type="submit">
                                                     <i class="feather-search"></i> Search

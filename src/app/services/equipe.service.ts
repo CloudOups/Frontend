@@ -15,9 +15,7 @@ export class EquipeService {
   constructor(private httpClient: HttpClient) { }
   private getHeaders(): HttpHeaders {
     const jwt = localStorage.getItem('jwt');
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
-
+   
     return new HttpHeaders({
       Authorization: `Bearer ${jwt}`,
       'Content-Type': 'application/json'
