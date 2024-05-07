@@ -9,8 +9,8 @@
             <table class="table table-striped table-bordered">
               <thead class="thead-dark">
                 <tr>
-                  <th>Event Name</th>
-                  <th>Date & Time</th>
+                  <th>Nom Tournoi</th>
+                  <th>Date debut et fin </th>
                   <th>Récompense</th>
                   <th>Actions</th>
                 </tr>
@@ -73,15 +73,18 @@
     </div>
 
     <div class="col-lg-4">
-      <div class="card booking-details">
+      <div class="card booking-details  border-success">
         <h3 class="border-bottom">Event Details</h3>
+        <div class="text-center">
+          <img [src]="'http://localhost:4200/assets/img/events/'+ event.image" alt="imageevent" style="max-width: 200px; max-height: 200px;" >
+        </div>      
         <ul>
-          <li><i class="fa-regular fa-building me-2"></i>{{ event.nomevent }}</li>
-          <li><i class="fa-regular fa-building me-2"></i>{{ event.location }}</li>
+          <li><i class="fa-regular fa-building me-2"></i>nom de l'evenement : {{ event.nomevent }}</li>
+          <li><i class="fa-regular fa-building me-2"></i>l'emplacement : {{ event.location }}</li>
           <li><i class="feather-calendar me-2"></i>Date de début : {{ event.dateDebut | date: 'short' }}</li>
         </ul>
         <div class="d-grid btn-block">
-          <button class="btn btn-primary" (click)="participateEvent(event.numevent, user.id)">Participer à l'événement</button>
+          <button class="btn btn-primary" (click)="participateEvent(event.numevent)">Participer à l'événement</button>
         </div>
       </div>
     </div>
