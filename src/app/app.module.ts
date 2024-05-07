@@ -11,6 +11,7 @@ import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
+
 import { BlogServiceService } from './Blog/blog-service.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -127,7 +128,8 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     CommonModule,
     FormsModule,
     IgxPieChartModule,
-    IgxLegendModule
+    IgxLegendModule,
+    
   ],
   providers: [BlogServiceService],
   bootstrap: [AppComponent]

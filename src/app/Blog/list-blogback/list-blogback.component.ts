@@ -14,6 +14,7 @@ export class ListBlogbackComponent implements OnInit {
   filteredPublications: Publication[] = [];
   searchInput: string = '';
   sortBy: keyof Publication = 'dateCreation';
+  
 
   constructor(private blogService: BlogServiceService, private router: Router) { }
 

@@ -14,6 +14,8 @@ import { Observable } from 'rxjs'; // Import Observable
 })
 export class BlogDetailsComponent implements OnInit {
   publication: Publication = {};
+  publications: Publication[] = [];
+
   comments: Comment[] = [];
   newComment: Comment = new Comment();
   blogId = this.route.snapshot.paramMap.get('id');
@@ -32,7 +34,7 @@ export class BlogDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.fetchPublications();
     this.initializeForm();
     const today = new Date();
     console.log(this.blogId);
@@ -164,7 +166,18 @@ initializeForm(): void {
   }
 
 
-
+  fetchPublications(): void {
+    this.blogService.getBlogList()
+      .subscribe({
+        next: (publications) => {
+          this.publications = publications;
+          console.log('Fetched publications:', this.publications); // Log the fetched publications
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+  }
   
 
 

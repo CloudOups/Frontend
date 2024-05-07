@@ -9,4 +9,5 @@ export class Publication {
     status?: boolean;
     likes?: number;
     user?: User;
+    category?: string;
 }
