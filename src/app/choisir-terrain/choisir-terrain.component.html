@@ -43,6 +43,13 @@
                     </div>
                 </div>
 
+                <button id="promoButton" (click)="togglePromoInput()">J'ai un code promo !</button>
+
+                <input type="text" id="promoCode" disabled>
+                <button  (click)="verifyPromoCode()">verifier!</button>
+
+             
+                
                 <div class="col-md-6">
                     <aside class="card booking-details">
                         <h5 class="border-bottom">RECOMENDATIONS:</h5>

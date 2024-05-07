@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class ConfirmartionReservationComponent {
   endTime!:string
   startTime!:string
+  time!:string
   typeTerrain!:TypeTerrain
   numTerrain!:number
   prixReser!:number
@@ -43,12 +44,13 @@ ReservationForm= new FormGroup({
   console.log("on init ......")
   this.endTime = this.act.snapshot.params['endTime'];
   this.startTime = this.act.snapshot.params['startTime'];
+  this.time = this.act.snapshot.params['time'];
   this.numTerrain= this.act.snapshot.params['numTerrain'];
   this.prixReser= this.act.snapshot.params['prixReser'];
 
   this.ReservationForm.patchValue({
-    dateDebut: this.endTime,
-    dateFin: this.startTime ,
+    dateDebut: this.startTime,
+    dateFin: this.endTime ,
 //  terrain: this.numTerrain.toString(),
     prixReser:this.prixReser.toString(),
     dateRes: this.formattedDate

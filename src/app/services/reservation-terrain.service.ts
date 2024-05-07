@@ -124,4 +124,8 @@ if (sortBy) {
     const params = new HttpParams().set('length', length.toString());
     return this.httpClient.get<string>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS+"/generate-promo-code", { params,  headers: this.getHeaders() });
   }
+  validatePromoCode(promoCode: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.API_URL}${this.ENDPOINT_RESERVATIONS_TERRAINS}/validatePromoCode/${promoCode}`, { headers: this.getHeaders() });
+  }
+
 }

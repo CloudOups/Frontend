@@ -5,6 +5,7 @@ import { Terrain } from '../Models/Terrain/terrain';
 import { TerrainService } from '../services/terrain.service';
 import { ReservationTerrainComponent } from '../reservation-terrain/reservation-terrain.component';
 import { ReservationTerrainService } from '../services/reservation-terrain.service';
+import { CodePromo } from '../Models/codePromo/code-promo';
 
 @Component({
   selector: 'app-choisir-terrain',
@@ -14,10 +15,12 @@ import { ReservationTerrainService } from '../services/reservation-terrain.servi
 export class ChoisirTerrainComponent {
   endTime!:string
   startTime!:string
+  time!:string
   typeTerrain!:TypeTerrain
   terrains!: Terrain []
   prixReser!:number
   mostReser!:Terrain
+  codePromo!:CodePromo
   url="http://localhost:4200/assets/img/terrains/"  
 
 constructor(private act :ActivatedRoute,private terrainService:TerrainService,private reservationTerrainService :ReservationTerrainService ){}
@@ -25,6 +28,7 @@ ngOnInit(){
   console.log("on init ......")
   this.endTime = this.act.snapshot.params['endTime'];
   this.startTime = this.act.snapshot.params['startTime'];
+  this.time = this.act.snapshot.params['time'];
   this.typeTerrain = this.act.snapshot.params['typeTerrain']; 
   this.terrains = this.act.snapshot.params['terrains'];
   this.Check()
@@ -60,5 +64,36 @@ Check(){
         console.log('mostReserved', response);
 })
    }
+   verifyPromoCode() {
+    const promoInput = document.getElementById("promoCode") as HTMLInputElement;
+    const promoCodeValue = promoInput.value; // Récupérer la valeur actuelle du champ de saisie promoCode
+    if (!promoInput.disabled && promoCodeValue.trim() !== '') { // Vérifier si le champ est activé et non vide
+      this.reservationTerrainService.validatePromoCode(promoCodeValue).subscribe(
+        (isValid: boolean) => {
+          if (isValid) {
+            console.log("Le code promo est valide !");
+            // Faire quelque chose lorsque le code promo est valide
+          } else {
+            console.log("Le code promo n'est pas valide !");
+            // Faire quelque chose lorsque le code promo n'est pas valide
+          }
+        },
+        (error) => {
+          console.error("Une erreur s'est produite lors de la validation du code promo :", error);
+        }
+      );
+    }
+  }
+   togglePromoInput() {
+    const promoInput = document.getElementById("promoCode") as HTMLInputElement;
+    if (promoInput.disabled) {
+      promoInput.disabled = false;
+      promoInput.focus();
 
+    } else {
+      promoInput.disabled = true;
+      promoInput.value = ""; // Effacez le champ si le code est désactivé
+
+    }
+  }
 }
