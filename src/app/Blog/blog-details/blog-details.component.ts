@@ -22,7 +22,7 @@ export class BlogDetailsComponent implements OnInit {
   var: number = Number(this.blogId);
 
   newCommentForm!: FormGroup;
-  badWords: string[] = ['badword1', 'badword2', 'badword3'];
+  badWords: string[] = ['shit', 'black', 'nigga','jabri','nhouchi'];
   
   constructor(
     private blogService: BlogServiceService,

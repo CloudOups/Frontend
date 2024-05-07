@@ -117,7 +117,15 @@
                     </div>
 
                     <div class="blog-comments">
-                        <form (ngSubmit)="addCommentToPublication(newComment.publication?.numPub || 0)">
+                        <form (ngSubmit)="addCommentToPublication(newComment.publication?.numPub || 0)"
+                              [formGroup]="newCommentForm">
+                    
+                            <!-- Display error message for bad words -->
+                            <div *ngIf="newCommentForm.controls['contenucm'].dirty && newCommentForm.controls['contenucm'].value && newCommentForm.controls['contenucm'].errors && newCommentForm.controls['contenucm'].errors"
+                            class="alert alert-danger">
+                           Comment contains inappropriate language.
+                       </div>
+                    
                             <div class="dull-bg">
                                 <hr>
                                 <ul>
@@ -128,20 +136,21 @@
                                         <div class="info">
                                             <div class="head d-flex align-items-center justify-content-start">
                                                 <h5>{{ newComment.user?.firstname}} {{newComment.user?.lastname}}</h5>
-                                            
                                             </div>
                                             <textarea class="form-control" id="comments" rows="3"
-                                                placeholder="Enter Comments"
-                                                [(ngModel)]="newComment.contenucm" [ngModelOptions]="{standalone: true}"></textarea>
-                                            <button type="submit" class="btn btn-gradient">Submit</button>
-                                           
+                                                      placeholder="Enter Comments"
+                                                      formControlName="contenucm"></textarea>
+                                                      <button type="submit" class="btn btn-gradient" [disabled]="!newCommentForm.valid">
+                                                        Submit
+                                                    </button>
                                         </div>
                                     </li>
-
                                 </ul>
                             </div>
                         </form>
                     </div>
+                    
+                    
 
                  
                 </div>
