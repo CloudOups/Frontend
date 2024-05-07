@@ -7,6 +7,21 @@
 <!-- <app-stadehome></app-stadehome> -->
  <!-- <app-sporthome></app-sporthome>  -->
 <!------------------------------------------------------------------------------------>
+<div>
+  <label for="search">Rechercher un produit :</label>
+  <!-- Utilisez la syntaxe de liaison de propriété pour récupérer la valeur de l'entrée -->
+  <input type="text" id="search" placeholder="Rechercher un produit..." (input)="onSearch($event)">
+</div>
+<div *ngIf="filteredProducts.length > 0">
+  <ul>
+    <li *ngFor="let product of filteredProducts" (click)="selectProduct(product)">
+      {{ product.nomProd }} <!-- Affichez le champ approprié ici, comme le nom du produit -->
+    </li>
+  </ul>
+</div>
+
+
+
 
 <ng-container >
 <!------------------------------------------------------------------>

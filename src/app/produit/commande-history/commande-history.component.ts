@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoriqueCommande } from 'src/app/Models/produit/commandeHistorique.model';
+import { User } from 'src/app/Models/user/user';
 import { CommandeHistoriqueService } from 'src/app/services/produit/commandeHistorique.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-commande-history',
@@ -11,11 +13,17 @@ export class CommandeHistoryComponent implements OnInit{
 
   commandHistoriqList : HistoriqueCommande[] = [];
   storage : Storage = sessionStorage;
+  user : User = new User();
 
-  constructor(private commandeService : CommandeHistoriqueService) { }
+  constructor(private commandeService : CommandeHistoriqueService , private userService: UserService) { }
   
   ngOnInit(): void {
     this.gererHistoriqueCommande();
+    this.userService.getCurrentUser().subscribe(
+      (data) => {
+        this.user = data;
+      }
+    );
   }
 
   gererHistoriqueCommande() {
@@ -23,7 +31,10 @@ export class CommandeHistoryComponent implements OnInit{
 
     //const lemail = JSON.parse(this.storage.getItem("userEmail"));
     // console.log("LA VALEUR DE L'EMAIL EST: ",lemail);
-    const lemail = this.storage.getItem("userEmail");
+    // const lemail = this.storage.getItem("userEmail");
+
+    const lemail = this.user.email;
+
     //let email = "michel@gmail.com";
   
     // recuperer les donné du service

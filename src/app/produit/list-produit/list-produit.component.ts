@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ElementPanier } from 'src/app/Models/produit/panier.model';
 import { Produit } from 'src/app/Models/produit/produit';
@@ -12,6 +13,12 @@ import { ProduitService } from 'src/app/services/produit/produit.service';
 })
 export class ListProduitComponent implements OnInit {
 
+//***************************** */
+keywordd = new FormControl();
+productss: Produit[] = [];
+filteredProducts: Produit[] = [];
+
+//***************************** */
 
   //liste des produits
   produits?: Produit[] = [];
@@ -79,5 +86,22 @@ export class ListProduitComponent implements OnInit {
     let elementPanier = new ElementPanier(produit); // Remove the argument from the constructor
 
     this.panierService.addToPanier(elementPanier);
+  }
+
+
+  onSearch(event: Event): void {
+    const keyword = (event.target as HTMLInputElement).value; // Récupérer la valeur de l'élément HTMLInputElement
+    if (keyword) {
+      this.filteredProducts = this.produits.filter(product => {
+        return product.nomProd.toLowerCase().includes(keyword.toLowerCase());
+      });
+    } else {
+      this.filteredProducts = [];
+    }
+  }
+
+  selectProduct(product: Produit): void {
+    console.log('Selected Product:', product);
+    // Faites quelque chose avec le produit sélectionné, par exemple afficher les détails
   }
 }

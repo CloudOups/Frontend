@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ElementPanier } from 'src/app/Models/produit/panier.model';
@@ -16,6 +17,16 @@ export class PanierService {
   //on utilise le stockage du navigateur pour stocker les données
   // storage : Storage = sessionStorage;
   storage : Storage = localStorage;
+
+  private getHeaders(): HttpHeaders {
+    const jwt = localStorage.getItem('jwt');
+
+    return new HttpHeaders({
+      Authorization: `Bearer ${jwt}`,
+      //'Content-Type': 'application/json'
+    });
+  }
+
 
   constructor() { 
 

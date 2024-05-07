@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BlogServiceService } from './Blog/blog-service.service';
 
+//import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 
@@ -79,6 +81,7 @@ import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.compo
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
 import { authInterceptorProviders } from './auth.interceptor';
+
 
 
 @NgModule({
@@ -155,8 +158,7 @@ import { authInterceptorProviders } from './auth.interceptor';
     HttpClientModule,
     FontAwesomeModule,
     AngularEditorModule,
-    NgbModule,
-    
+    NgbModule    
   ],
   providers: [BlogServiceService,authInterceptorProviders],
   bootstrap: [AppComponent]

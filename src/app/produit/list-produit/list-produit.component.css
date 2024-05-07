@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
 
-
+button, input, optgroup, select, textarea {
+  font-family: 'Muli', sans-serif;
+  font-size: 100%;
+}
 
 #-----------------------------------------------------
 

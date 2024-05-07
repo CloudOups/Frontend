@@ -5,8 +5,10 @@ import { Achat } from 'src/app/Models/produit/achat.model';
 import { Commande } from 'src/app/Models/produit/commande.model';
 import { CommandeElement } from 'src/app/Models/produit/commandeElement.model';
 import { PaymentInfo } from 'src/app/Models/produit/paymentInfo.model';
+import { User } from 'src/app/Models/user/user';
 import { AchatService } from 'src/app/services/produit/achat.service';
 import { PanierService } from 'src/app/services/produit/panier.service';
+import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -32,11 +34,12 @@ export class ValiderPanierComponent implements OnInit {
   paymentInfo : PaymentInfo = new PaymentInfo();
   cardElement : any;
   displayError : any ="";
+  user : User = new User();
 
   constructor(private formBuilder: FormBuilder,
     private panierService: PanierService,
     private achatService: AchatService,
-    private router: Router
+    private router: Router, private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -47,9 +50,18 @@ export class ValiderPanierComponent implements OnInit {
     //on recupere l'email de l'utilisateur a partir du brower storage que on a mis chez le user service
    //c'est cette ecriture avec JSON.parse que tu mettra quand tu voudra recuperer les infos de l'utilisateur connecté
     // const lemail = JSON.parse(this.storage.getItem("userEmail"));
-    const lemail = this.storage.getItem("userEmail");
-    const userNom = this.storage.getItem("userNom");
-    const userPrenom = this.storage.getItem("userPrenom");
+    // const lemail = this.storage.getItem("userEmail");
+    // const userNom = this.storage.getItem("userNom");
+    // const userPrenom = this.storage.getItem("userPrenom");
+     
+     this.userService.getCurrentUser().subscribe(
+        (data) => {
+          this.user = data;
+        }
+      );
+    const lemail = this.user.email;
+     const userNom = this.user.firstname;
+     const userPrenom = this.user.lastname;
 
     this.actualisationPanier();
 

@@ -125,6 +125,27 @@ const routes: Routes = [
   { path: 'updateevent/:id', component: UpdateEventComponent },
   { path: 'tickets', component: ListTicketComponent },
   { path: 'detailticket/:id', component: DetailTicketComponent },
+
+
+
+    //---------------------------------------------paths michel-------------------------------------
+
+
+    { path : 'produit', component: ListProduitComponent},
+    { path : 'searchProduit/:keyword', component: ListProduitComponent},
+    { path : 'detailProduit/:id', component: DetailsProduitComponent},
+    { path : 'panierDetail', component: PanierDetailComponent},
+    { path : 'validerPanier', component: ValiderPanierComponent},
+    { path : 'backListProduit', component: BackListProduitComponent},
+    { path : 'historiqueCommande', component: CommandeHistoryComponent},
+    { path : 'backAddProduit', component: BackAddProduitComponent},
+
+
+
+
+
+
+
 ];
 
 @NgModule({
