@@ -8,5 +8,5 @@
         <label for="image">Image:</label>
         <input type="file" id="image" (change)="onFileSelected($event)" name="image" accept="image/*" [(ngModel)]="image" required>
     </div>
-    <button type="submit">Ajouter</button>
+    <button type="submit" routerLink="/eventsback" >Ajouter</button>
 </form>

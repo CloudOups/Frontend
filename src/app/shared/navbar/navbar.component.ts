@@ -30,5 +30,7 @@ export class NavbarComponent {
         console.error('Logout error:', error);
       }
     );
+    localStorage.clear();
+    window.location.reload();
   }
 }

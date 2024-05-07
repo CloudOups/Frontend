@@ -63,6 +63,7 @@ import { ConfirmartionReservationComponent } from './confirmartion-reservation/c
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
+import { ParticipationHistoryComponent } from './Event/participation-history/participation-history.component';
 
 
 @NgModule({
@@ -113,7 +114,8 @@ import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component
     DetailEventComponent,
     ConfirmartionReservationComponent,
     ChoisirTerrainComponent,
-    ListEventbackComponent
+    ListEventbackComponent,
+    ParticipationHistoryComponent
   
   ],
   imports: [

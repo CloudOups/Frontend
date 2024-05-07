@@ -37,6 +37,7 @@ import { ConfirmartionReservationComponent } from './confirmartion-reservation/c
 import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.component';
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
+import { ParticipationHistoryComponent } from './Event/participation-history/participation-history.component';
 
 // import {  } from '';
 // import {  } from '';
@@ -86,7 +87,7 @@ const routes: Routes = [
  { path : 'tournois', component:ListTournoiComponent},
  { path :'addTournoi/:numevent', component: AddTournoiComponent},
  { path :'updatetournoi/:id', component: UpdateTournoiComponent},
- { path :'detailtournoi/:id',component: DetailtournoiComponent},
+ { path :'detailtournoi/:numevent',component: DetailtournoiComponent},
  { path : 'events', component:ListEventComponent},
  { path : 'eventsback', component:ListEventbackComponent},
  { path :'detailevent/:id',component: DetailEventComponent},
@@ -94,6 +95,9 @@ const routes: Routes = [
  { path :'updateevent/:id', component: UpdateEventComponent},
  { path :'tickets',component: ListTicketComponent},
  { path :'detailticket/:id',component: DetailTicketComponent},
+ { path :'historiqueevent',component: ParticipationHistoryComponent},
+
+
 
 
 

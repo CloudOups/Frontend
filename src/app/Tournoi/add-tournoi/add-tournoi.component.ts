@@ -35,25 +35,21 @@ export class AddTournoiComponent {
   }
 
   save() {
-    this.trService.addTournoi(this.AddTournoiForm.value as any, this.numevent).subscribe(
-      response => {
-        if (response) {
-          console.log('Tournoi added successfully!', response);
-          alert('Tournoi ajouté avec succès!');
-          this.router.navigate(['/tournois']);
-          this.AddTournoiForm.reset();
-        } else {
-          console.error('Failed to add tournoi: Event full');
-          alert('Événement complet ou pas de terrain disponible, désolé!');
-        }
-      }, 
-      error => {
-        console.error('Error adding tournoi:', error);
-        alert('Une erreur est survenue lors de l\'ajout du tournoi. Veuillez réessayer plus tard.');
+    this.trService.addTournoi(this.AddTournoiForm.value as any,this.numevent).subscribe(response => {
+      if (response) {
+        console.log('Tournoi added successfully!', response);
+        alert('Tournoi ajouté avec succès!');
+        this.router.navigate(['/tournois']);
+        this.AddTournoiForm.reset();
+      } else {
+        console.error('Failed to add tournoi: Event full');
+        alert('Événement complet ou pas de terrain disponible, désolé!');
       }
-    );
+    }, error => {
+      console.error('Error adding tournoi:', error);
+      // Gérer l'erreur ici
+    });
   }
-  
   
   
   onlyNumbersValidator(control: AbstractControl): { [key: string]: any } | null {

@@ -4,6 +4,7 @@ import { Event } from '../Models/Event/event';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Ticket } from '../Models/Ticket/ticket';
 import { AuthServiceService } from './auth-service.service';
+import { User } from '../Models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class EventService {
 
 
   getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.baseUrl}/get/all`, {headers: this.getHeaders()}).pipe(
+    return this.http.get<Event[]>(`${this.baseUrl}/get/all` , { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)
     );
   }
@@ -56,6 +57,11 @@ export class EventService {
 
   getUpcomingEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.baseUrl}/get/upcoming`, { headers: this.getHeaders()});
+  }
+
+
+  getParticipationHistory(user: User): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/get/history`, { headers: this.getHeaders() });
   }
 
   addEvent(event: any, image: File): Observable<any> {

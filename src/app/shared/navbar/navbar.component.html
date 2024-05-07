@@ -45,18 +45,23 @@
             </ul>
           </li>
           <li class="has-submenu">
-            <a href="#">User <i class="fas fa-chevron-down"></i></a>
+            <a href="#">Evenements <i class="fas fa-chevron-down"></i></a>
             <ul class="submenu">
-              <li><a href="user-dashboard.html">User Dashboard</a></li>
-              <li><a href="user-bookings.html">Bookings</a></li>
-              <li><a href="user-chat.html">Chat</a></li>
-              <li><a href="user-invoice.html">Invoice</a></li>
-              <li><a href="user-wallet.html">Wallet</a></li>
-              <li><a href="user-profile.html">Profile Edit</a></li>
-              <li><a href="user-setting-password.html">Change Password</a></li>
-              <li>
-                <a href="user-profile-othersetting.html">Other Settings</a>
-              </li>
+              <li class="has-submenu">
+                <li class="nav-item">
+                  <a class="nav-link"routerLink="/events">Nos Evenements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"routerLink="/home">Nos tournois</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"routerLink="/addterrains">Mes tickets</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"routerLink="/historiqueevent">Mon historique de participation</a>
+                  </li>
+              
+        
             </ul>
           </li>
           <li class="has-submenu">
@@ -136,7 +141,7 @@
         </li>
         <div *ngIf="userConnected;">
         <li class="nav-item">           
-          <button class="nav-link btn btn-secondary" (click)="logout()" routerLink="/login"
+          <button class="nav-link btn btn-secondary" (click)="logout()" 
             ><span><i class="feather-check-circle"></i></span>Logout</button>
         </li>
       </div>
