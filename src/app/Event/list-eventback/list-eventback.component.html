@@ -63,9 +63,28 @@
                                             </td>
                                         </tr>
                                     </tbody>
+                                    
                                 </table>
+                                  <!-- Pagination -->
+       <div class="row justify-content-center">
+        <div class="col-auto">
+          <button class="btn btn-secondary" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+        </div>
+        <div class="col-auto">
+          <ng-container *ngFor="let page of totalPagesArray">
+            <button class="btn btn-secondary" (click)="goToPage(page - 1)" [class.active]="currentPage === page - 1">{{ page }}</button>
+          </ng-container>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-secondary" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Next</button>
+        </div>
+      </div>
+      <!-- End Pagination -->
+                            </div>  
+                            
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from '../Models/Event/event';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Ticket } from '../Models/Ticket/ticket';
 import { AuthServiceService } from './auth-service.service';
 import { User } from '../Models/user/user';
+import { Page } from '../Models/Page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,11 @@ export class EventService {
     });
   }
 
+  afficherJoursRestantsPourEvenements(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/remaining-days`, { headers: this.getHeaders()}).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.baseUrl}/get/all` , { headers: this.getHeaders()}).pipe(
@@ -64,6 +69,15 @@ export class EventService {
     return this.http.get<Event[]>(`${this.baseUrl}/get/history`, { headers: this.getHeaders() });
   }
 
+  getAllEvents(page: number, size: number): Observable<Page<Event>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<Page<Event>>(this.baseUrl+"/get/withpagination", { params , headers: this.getHeaders()});
+  }
+
+
   recommanderEvenements(user: User): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.baseUrl}/recommandations`,{ headers: this.getHeaders() });
   }
@@ -84,19 +98,6 @@ export class EventService {
     return this.http.post<any>(`${this.baseUrl}/add`, formData, { headers: this.getHeaders()});
 }
   
-
- /* addEvent(Event: Event): Observable<Event> {
-    return this.http.post<Event>(`${this.baseUrl}/add`, Event).pipe(
-      catchError(this.handleError)
-    );
-  }*/
-
- 
-/*
-  addEvent(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/add`, formData);
-  }*/
-
 
   updateEvent(Event: Event): Observable<Event> {
     return this.http.put<Event>(`${this.baseUrl}/update`, Event, { headers: this.getHeaders()}).pipe(

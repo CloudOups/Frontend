@@ -1,25 +1,23 @@
-<app-navbar></app-navbar>
-
 <div class="col-12 col-sm-12 col-md-12 col-lg-4">
     <aside class="card booking-details">
         <h3 class="border-bottom">Tournoi Details</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <i class="fa-regular fa-building me-2"></i>
-                {{ tournoi.nomTournoi }}
+                {{ tournoi?.nomTournoi }} <!-- Assurez-vous d'utiliser le bon nom de propriété -->
                 <span class="badge bg-primary rounded-pill">New</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <i class="feather-calendar me-2"></i>
-                Date de début : {{ tournoi.dateDebut }}
+                Date de début : {{ tournoi?.dateDebut }}
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <i class="feather-clock me-2"></i>
-                Date de fin : {{ tournoi.dateFin }}
+                Date de fin : {{ tournoi?.dateFin }}
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <i class="feather-users me-2"></i>
-                Nombre d'équipes : {{ tournoi.nbEquipes }}
+                Nombre d'équipes : {{ tournoi?.nbEquipes }}
             </li>
         </ul>
         <div class="d-grid gap-2 mt-3">

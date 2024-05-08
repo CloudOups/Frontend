@@ -30,6 +30,8 @@ export class DetailEventComponent {
      private userService: UserService,
   ) {}
 
+
+
   ngOnInit() {
     this.id = this.Act.snapshot.params['id'];
     this.ts.getEventById(this.id).subscribe(data => this.event = data as any);
@@ -60,6 +62,7 @@ export class DetailEventComponent {
   errorMessage: string | null = null;
 
 
+
    
   participateEvent(eventId: number) {
     Swal.fire({
@@ -80,7 +83,7 @@ export class DetailEventComponent {
                   Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Votre inscription a été enregistrée",
+                    title: "Votre participation a été enregistrée",
                     showConfirmButton: false,
                     timer: 1500
                   });

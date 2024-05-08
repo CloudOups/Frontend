@@ -37,14 +37,7 @@ export class TournoiService {
     );
   }
 
-  /*creerTournoiAutomatique(tournoi: Tournoi,idevent:number): Observable<Tournoi> {
-    return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${idevent}`, tournoi).pipe(
-      catchError(this.handleError)
-    );
-  }*/
-
   
- 
   addTournoi(tournoi: Tournoi,idevent:number): Observable<Tournoi> {
     return this.http.post<Tournoi>(`${this.baseUrl}/addtournoireservation/${idevent}`, tournoi, { headers: this.getHeaders()}).pipe(
       catchError(this.handleError)

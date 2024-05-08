@@ -16,7 +16,6 @@ export class DetailtournoiComponent implements OnInit {
 
   ngOnInit(){
     this.id=this.Act.snapshot.params['id']
-    //this.product=this.ps.listProduct.find(p=>p.id==this.id) as Product
     this.ts.getTournoiById(this.id).subscribe(data=>this.tournoi=data)
   }
 }
