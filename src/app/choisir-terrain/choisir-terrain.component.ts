@@ -6,6 +6,7 @@ import { TerrainService } from '../services/terrain.service';
 import { ReservationTerrainComponent } from '../reservation-terrain/reservation-terrain.component';
 import { ReservationTerrainService } from '../services/reservation-terrain.service';
 import { CodePromo } from '../Models/codePromo/code-promo';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-choisir-terrain',
@@ -22,6 +23,7 @@ export class ChoisirTerrainComponent {
   mostReser!:Terrain
   codePromo!:CodePromo
   url="http://localhost:4200/assets/img/terrains/"  
+  isPromoInputVisible: boolean = false;
 
 constructor(private act :ActivatedRoute,private terrainService:TerrainService,private reservationTerrainService :ReservationTerrainService ){}
 ngOnInit(){
@@ -34,12 +36,18 @@ ngOnInit(){
   this.Check()
   this.Calcule();
   this.show()
+
 }
 attachImageUrl() {
   // Loop through each terrain and attach URL to the image filename
   this.terrains.forEach(terrain => {
     terrain.imageTerrain = this.url + terrain.imageTerrain;
   });
+}
+  
+togglePromoInput2(): void {
+  this.isPromoInputVisible = !this.isPromoInputVisible;
+
 }
 Calcule(){
   this.reservationTerrainService.calculateReservationPrice(this.startTime,this.endTime).subscribe(
@@ -64,6 +72,7 @@ Check(){
         console.log('mostReserved', response);
 })
    }
+   
    verifyPromoCode() {
     const promoInput = document.getElementById("promoCode") as HTMLInputElement;
     const promoCodeValue = promoInput.value; // Récupérer la valeur actuelle du champ de saisie promoCode
@@ -71,9 +80,11 @@ Check(){
       this.reservationTerrainService.validatePromoCode(promoCodeValue).subscribe(
         (isValid: boolean) => {
           if (isValid) {
+            Swal.fire("Le code promo est valide !");
             console.log("Le code promo est valide !");
             // Faire quelque chose lorsque le code promo est valide
           } else {
+            Swal.fire("Le code promo est expiré ou invalide !");
             console.log("Le code promo n'est pas valide !");
             // Faire quelque chose lorsque le code promo n'est pas valide
           }

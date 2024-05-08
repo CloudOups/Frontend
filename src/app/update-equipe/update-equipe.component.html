@@ -39,13 +39,6 @@
       Le champ Nombre de Membres dans l'Équipe est obligatoire.
     </div>
  
-    <h5>Classement</h5> <!-- Adjusted form control label -->
-    <input class="form-control" type="text" formControlName="classement"> <!-- Updated formControlName -->
- 
-    <div class="alert alert-danger" *ngIf="UpdateEquipeForm.get('classement')?.errors?.['required'] && UpdateEquipeForm.get('classement')?.touched">
-      Le champ Classement est obligatoire.
-    </div>
-   
     <!-- Adjusted submit button -->
     <input type="submit" class="btn btn-primary" value="Save" (click)="save()" [disabled]="UpdateEquipeForm.invalid">
  </form>

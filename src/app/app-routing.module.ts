@@ -40,6 +40,7 @@ import { UpdateEventComponent } from './Event/update-event/update-event.componen
 import { ParticipationHistoryComponent } from './Event/participation-history/participation-history.component';
 import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.component';
 import { DivHomeComponent } from './div-home/div-home.component';
+import { ListDemandeComponent } from './list-demande/list-demande.component';
 
 // import {  } from '';
 // import {  } from '';
@@ -75,7 +76,8 @@ const routes: Routes = [
  {path:'equipes',component:EquipeComponent},
  {path:'addterrains',component:AddTerrainComponent},
  {path:'updateterrain/:numTerrain',component:UpdateTerrainComponent},
- {path:'addEquipe',component:AddEquipeComponent},
+ {path:'addEquipe/:numTournoi',component:AddEquipeComponent},
+ {path:'listDemande/:numEquipe/:chefEquipe',component:ListDemandeComponent},
 
  {path:'updateEquipe/:numEquipe/:chefEquipe',component:UpdateEquipeComponent},
  { path:'choisirTerrain/:startTime/:endTime/:typeTerrain', component: ChoisirTerrainComponent },

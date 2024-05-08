@@ -26,7 +26,7 @@ url="http://localhost:4200/assets/img/terrains/"
 
 ngOnInit(){
   console.log("on init ......")
-  this.reservationTerrainService.getReservationTerrainById(1).subscribe((datas)=>{
+  this.reservationTerrainService.getReservationTerrainById(2).subscribe((datas)=>{
     this.reservationTerrains=datas;
     console.log('Reservation terrain received:', datas);
 

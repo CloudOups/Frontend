@@ -43,11 +43,7 @@
                     </div>
                 </div>
 
-                <button id="promoButton" (click)="togglePromoInput()">J'ai un code promo !</button>
-
-                <input type="text" id="promoCode" disabled>
-                <button  (click)="verifyPromoCode()">verifier!</button>
-
+                
              
                 
                 <div class="col-md-6">
@@ -71,6 +67,13 @@
                             </div>
                         </ul>
                     </aside>
+                </div>
+                <button class="btn btn-secondary" id="promoButton"  (click)="togglePromoInput2()">J'ai un code promo !</button>
+
+                <!-- Use *ngIf directive to conditionally display the input field and verify button -->
+                <div *ngIf="isPromoInputVisible">
+                    <input type="text" id="promoCode" >
+                    <button class="btn btn-secondary" (click)="verifyPromoCode()">Verifier!</button>
                 </div>
             </div> <!-- End of row -->
         </section>

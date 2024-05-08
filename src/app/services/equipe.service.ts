@@ -29,8 +29,8 @@ export class EquipeService {
 //  addEquipe(equipe: Equipe, userId: number): Observable<Equipe> {
 //    return this.httpClient.post<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/add/" + userId, equipe);
  // }
-  addEquipe(equipe: Equipe, userId: number): Observable<Equipe> {
-    return this.httpClient.post<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/add/" + userId, equipe ,{ headers: this.getHeaders()});
+  addEquipe(equipe: Equipe, userId: number,tournoiId:number): Observable<Equipe> {
+    return this.httpClient.post<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/add/" + userId+"/tour="+tournoiId, equipe ,{ headers: this.getHeaders()});
   }
   // Method to update an equipe
   updateEquipe(equipe: Equipe): Observable<Equipe> {
@@ -59,7 +59,7 @@ export class EquipeService {
   }
    // Method to send adhesion request for an equipe
    demandeEquipe(idEquipe: number, user: User): Observable<Equipe> {
-    return this.httpClient.put<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/demandeAdhesion/idequipe=" + idEquipe , { headers: this.getHeaders()});
+    return this.httpClient.put<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/demandeAdhesion/idequipe=" + idEquipe ,user ,{ headers: this.getHeaders()});
   }
 
 

@@ -5,6 +5,7 @@ import { ReservationTerrainService } from '../services/reservation-terrain.servi
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TypeReservation } from '../Models/Reservation/typeReservation';
 import Swal from 'sweetalert2';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ConfirmartionReservationComponent {
   numTerrain!:number
   prixReser!:number
   typeRes!:TypeReservation
-constructor(private act :ActivatedRoute,private router :Router,private reservationTerrainService:ReservationTerrainService ){}
+constructor(private act :ActivatedRoute,private userService :UserService,private router :Router,private reservationTerrainService:ReservationTerrainService ){}
 ReservationForm= new FormGroup({
   dateDebut:new FormControl('', [Validators.required]),
   dateFin: new FormControl('', [Validators.required]),
@@ -58,8 +59,9 @@ ReservationForm= new FormGroup({
   })
 }
 save(){
-
-  this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,1,this.numTerrain).subscribe(response => {
+  this.userService.getCurrentUser().subscribe(user => {
+    if (user) {
+  this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,2,this.numTerrain).subscribe(response => {
     console.log('Reservation added successfully!', response);
     Swal.fire("Reservation done ! check your Email!!!!");
     this.router.navigate(['/mesReservation']);
@@ -69,4 +71,4 @@ save(){
   });
 }
 
-}
+})}}

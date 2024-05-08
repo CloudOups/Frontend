@@ -18,7 +18,8 @@ export class AddEquipeComponent {
   equipes: Equipe[] = [];
   chefEquipeList: User[] = [];
   tournois!:Tournoi[];
-  
+  numTournoi!:number
+
   constructor(private equipeService: EquipeService, private act: ActivatedRoute, private router: Router,private ts:TournoiService) {
     // Populate chefEquipeList here or call a method to fetch data
   }
@@ -28,12 +29,13 @@ export class AddEquipeComponent {
     nomEquipe: new FormControl('', [Validators.required]),
     nbMemEquipe: new FormControl('', [Validators.required]),
     classement: new FormControl(null, [Validators.required]),
-    tournoi: new FormControl('', [Validators.required]),
+    //tournoi: new FormControl('', [Validators.required]),
 
   });
   ngOnInit(){
     console.log("on init ......")  
     console.log(this.AddEquipeForm.value)
+    this.numTournoi= this.act.snapshot.params['numTournoi'];
 
   this.getTour()
     }
@@ -43,7 +45,7 @@ export class AddEquipeComponent {
     console.log(this.tournois)
   }
   save() {
-    this.equipeService.addEquipe(this.AddEquipeForm.value as any ,1 ).subscribe(response => {
+    this.equipeService.addEquipe(this.AddEquipeForm.value as any ,1,this.numTournoi ).subscribe(response => {
       console.log('Equipe added successfully!', response);
       Swal.fire('Equipe ajouté avec succès!');
       this.router.navigate(['/equipes']);

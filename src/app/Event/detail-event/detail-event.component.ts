@@ -21,7 +21,7 @@ export class DetailEventComponent {
   event!: Event
   listtournois!: Tournoi []
   currentPage = 0;
-  pageSize = 5;
+  pageSize = 1;
   totalPages = 0;
   totalPagesArray: number[] = [];
 

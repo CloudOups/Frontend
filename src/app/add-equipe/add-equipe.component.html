@@ -22,10 +22,7 @@
     <div class="alert alert-danger" *ngIf="AddEquipeForm.get('nbMemEquipe')?.errors?.['required'] && AddEquipeForm.get('nbMemEquipe')?.touched">
       Le champ Nombre de Membres dans l'Équipe est obligatoire.
     </div>
-    <h5>Sélectionner un tournoi</h5>
-    <select class="form-control" formControlName="tournoi">
-      <option *ngFor="let tournoi of tournois" [value]="tournoi?.numTournoi">{{ tournoi?.numTournoi  }}</option>
-    </select>    
+   
     <div class="alert alert-danger" *ngIf="AddEquipeForm.get('tournoi')?.errors?.['required'] && AddEquipeForm.get('tournoi')?.touched">
       Veuillez sélectionner un tournoi.
     </div>

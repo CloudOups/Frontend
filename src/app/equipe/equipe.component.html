@@ -26,6 +26,8 @@
                 <th> chef d'Equipe</th>
                 <th> nbMemEquipe</th>
                 <th>classement</th>
+                <th>Bouttons</th>
+
             </tr>
         </thead>
         <tbody>
@@ -46,6 +48,8 @@
                   
                     <td>
                         <!-- Buttons for actions -->
+                        <button class="btn btn-primary"[routerLink]="['/listDemande',e.numequipe,e.chefEquipe?.id]">Traiter les demandes</button>
+
                         <button class="btn btn-primary"[routerLink]="['/updateEquipe',e.numequipe,e.chefEquipe?.id]">Edit</button>
                         <button class="btn btn-danger"*ngIf="e.numequipe" (click)="deleteEquipe(e.numequipe)">Delete</button>
                     </td>

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, timestamp } from 'rxjs';
 import { WeatherServiceService } from '../services/weather-service.service';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-div-home',
   templateUrl: './div-home.component.html',
@@ -29,12 +30,19 @@ navigateToReservation() {
   if (this.time!=null&&this.startTime!=null&& this.endTime&&this.selectedTypeTerrain) {
     this.startTime=this.time+'T'+this.startTime
     this.endTime=this.time+'T'+this.endTime
- 
 
-
+    const time1 = new Date(this.startTime);
+    const time2 = new Date(this.endTime);
+if (time1>time2)
+Swal.fire("Time debut ne peut pas etre inferieure a temps de fin")
+this.resetTimes();
   } else {
     console.error("Please select both start and end times.");
 }}
+resetTimes(): void {
+  this.startTime = '';
+  this.endTime = '';
+}
 ngOnInit(): void {
   this.show(); // Call the show method when the component initializes
   //this.getTime()

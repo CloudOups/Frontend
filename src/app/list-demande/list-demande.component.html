@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Team Requests</h2>
+    
+    <!-- Display pending team requests -->
+    <div *ngIf="memberenAttente && memberenAttente.length > 0" class="team-request-container">
+      <ul class="team-request-list">
+        <li *ngFor="let member of memberenAttente" class="team-request-item">
+          <div class="member-info">
+            <span>{{ member.firstname }} {{ member.lastname }} </span>
+            <span class="email">{{  member.email }}</span>
+          </div>
+          <div class="action-buttons">
+            <button class="accept-button" (click)="traiterDemande(numEquipe, member, 'accepted')">Accept</button>
+            <button class="reject-button" (click)="traiterDemande(numEquipe, member, 'refused')">Reject</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Display message if no pending team requests -->
+    <div *ngIf="!memberenAttente || memberenAttente.length === 0" class="no-requests">
+      <p>No pending team requests.</p>
+    </div>
+  </div>
+  
