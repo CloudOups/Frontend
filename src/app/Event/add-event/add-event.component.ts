@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { EventService } from '../../services/event.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-event',
@@ -19,7 +20,6 @@ export class AddEventComponent {
       categorie: ['', Validators.required],
       dateDebut: ['', Validators.required],
       dateFin: ['', Validators.required],
-      nbParticipants: ['', [Validators.required, Validators.min(2)]],
       location: ['', Validators.required],
       image: ['', Validators.required]
     });
@@ -43,15 +43,15 @@ onFileSelected(event: any) {
     }
   }
 }
-
 addEvent() {
   this.eventService.addEvent(this.event, this.image as File).subscribe(
-      (res) => {
-          console.log('Event added successfully');
-      },
-      (err) => {
-          console.error('Error adding event');
-      }
+    (res) => {
+      console.log('Event added successfully');
+      Swal.fire('Événement ajouté avec succès', 'Succès');
+    },
+    (err) => {
+      console.error('Error adding event');
+    }
   );
 }
 

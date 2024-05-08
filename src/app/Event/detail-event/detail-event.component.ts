@@ -7,6 +7,7 @@ import { TicketService } from 'src/app/services/ticket.service';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/Models/user/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail-event',
@@ -53,19 +54,38 @@ export class DetailEventComponent {
     this.getTournoiss();
   }
 
+  errorMessage: string | null = null;
+
+
    
   participateEvent(eventId: number) {
-    if (confirm('Êtes-vous sûr de vouloir participer à cet événement ?')) {
-      this.userService.getCurrentUser().subscribe(user => {
-        if (user) {
-          this.ticketservice.participateEvent(eventId, user).subscribe(ticket => {
-            if (ticket) {
-              console.log('Ticket créé avec succès : ', ticket);
-            } else {
-              console.error('L\'événement est complet, désolé.');
-              alert('L\'événement est complet, désolé.');
-            }
-          }, error => {
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`
+    
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.getCurrentUser().subscribe(user => {
+          if (user) {
+            this.ticketservice.participateEvent(eventId, user).subscribe(
+              ticket => {
+                if (ticket) {
+                  console.log('Ticket créé avec succès : ', ticket);
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Votre inscription a été enregistrée",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                } else {
+                  Swal.fire("Vous avez déjà réservé votre place pour cet événement ! Nous sommes ravis de vous accueillir à nouveau.");
+                }
+              },
+           error => {
             console.error('Erreur lors de la création du ticket : ', error);
           });
         } else {
@@ -73,6 +93,6 @@ export class DetailEventComponent {
         }
       });
     }
-  }
-  
+  });
+} 
 }
