@@ -7,6 +7,7 @@ import { TicketService } from 'src/app/services/ticket.service';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/Models/user/user';
+import { EquipeService } from 'src/app/services/equipe.service';
 
 @Component({
   selector: 'app-detail-event',
@@ -23,7 +24,9 @@ export class DetailEventComponent {
   totalPages = 0;
   totalPagesArray: number[] = [];
 
-  constructor(private Act:ActivatedRoute,private ts:EventService,private tournoiservice:TournoiService,private ticketservice:TicketService, private userService: UserService
+  constructor(private Act:ActivatedRoute,private ts:EventService,
+    private tournoiservice:TournoiService,private ticketservice:TicketService,
+     private userService: UserService,
   ) {}
 
   ngOnInit() {

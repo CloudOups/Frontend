@@ -64,6 +64,7 @@ import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.compo
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { AddTournoiComponent } from './Tournoi/add-tournoi/add-tournoi.component';
 import { ParticipationHistoryComponent } from './Event/participation-history/participation-history.component';
+import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.component';
 
 
 @NgModule({
@@ -115,7 +116,8 @@ import { ParticipationHistoryComponent } from './Event/participation-history/par
     ConfirmartionReservationComponent,
     ChoisirTerrainComponent,
     ListEventbackComponent,
-    ParticipationHistoryComponent
+    ParticipationHistoryComponent,
+    DemandeEquipeComponent
   
   ],
   imports: [

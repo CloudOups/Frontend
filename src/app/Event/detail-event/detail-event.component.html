@@ -41,7 +41,9 @@
                   </td>
                   <td>
                     <button class="btn btn-outline-success" [routerLink]="['/detailtournoi', tournoi.numTournoi]">Voir plus</button>
-                    <button class="btn btn-outline-success" [routerLink]="['/updatetournoi', tournoi.numTournoi]">Jouer</button>
+                    <button class="btn btn-outline-success" [routerLink]="['/addEquipe']">Creer equipes</button>
+                    <button class="btn btn-outline-success" [routerLink]="['/demandeEquipe',tournoi.numTournoi]">Joindre une equipe</button>
+
                     <div class="dropdown dropdown-action">
                       <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis"></i></a>
                       <div class="dropdown-menu dropdown-menu-end">

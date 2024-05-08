@@ -72,7 +72,12 @@
                                                </div>
                                              </div>
                                            </div>
-                                           
+         <button (click)="updateWeatherData()">Update Weather Data</button>
+         <div *ngIf="weatherData">
+            <h2>Météo pour {{ time | date: 'mediumDate' }}</h2>
+            <p>Température: {{ weatherData.list[0].main.temp }}°C</p>
+            <img [src]="'http://openweathermap.org/img/wn/' + weatherData.data[0].weather[0].icon + '.png'" alt="Icône météo">
+          </div>
                             <div class="search-box">
                                     <form action="#">
                                         <div class="search-input line d-flex align-items-center">

@@ -38,6 +38,7 @@ import { ChoisirTerrainComponent } from './choisir-terrain/choisir-terrain.compo
 import { ListEventbackComponent } from './Event/list-eventback/list-eventback.component';
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
 import { ParticipationHistoryComponent } from './Event/participation-history/participation-history.component';
+import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.component';
 
 // import {  } from '';
 // import {  } from '';
@@ -96,6 +97,7 @@ const routes: Routes = [
  { path :'tickets',component: ListTicketComponent},
  { path :'detailticket/:id',component: DetailTicketComponent},
  { path :'historiqueevent',component: ParticipationHistoryComponent},
+ { path :'demandeEquipe/:numTournoi',component: DemandeEquipeComponent},
 
 
 

@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../Models/user/user';
 import { Equipe } from '../Models/Equipe/equipe';
 import Swal from 'sweetalert2';
+import { Tournoi } from '../Models/Tournoi/tournoi';
+import { TournoiService } from '../services/tournoi-service.service';
 
 @Component({
   selector: 'app-add-equipe',
@@ -15,9 +17,10 @@ export class AddEquipeComponent {
   title = 'addequipe-app';
   equipes: Equipe[] = [];
   chefEquipeList: User[] = [];
-  constructor(private equipeService: EquipeService, private act: ActivatedRoute, private router: Router) {
+  tournois!:Tournoi[];
+  
+  constructor(private equipeService: EquipeService, private act: ActivatedRoute, private router: Router,private ts:TournoiService) {
     // Populate chefEquipeList here or call a method to fetch data
-    this.populateChefEquipeList();
   }
 
   AddEquipeForm = new FormGroup({
@@ -25,8 +28,20 @@ export class AddEquipeComponent {
     nomEquipe: new FormControl('', [Validators.required]),
     nbMemEquipe: new FormControl('', [Validators.required]),
     classement: new FormControl(null, [Validators.required]),
-  });
+    tournoi: new FormControl('', [Validators.required]),
 
+  });
+  ngOnInit(){
+    console.log("on init ......")  
+    console.log(this.AddEquipeForm.value)
+
+  this.getTour()
+    }
+   getTour() {
+  this.ts.getTournois().subscribe(response => {
+    this.tournois= response});
+    console.log(this.tournois)
+  }
   save() {
     this.equipeService.addEquipe(this.AddEquipeForm.value as any ,1 ).subscribe(response => {
       console.log('Equipe added successfully!', response);
@@ -37,13 +52,5 @@ export class AddEquipeComponent {
       console.error('Error adding equipe:', error);
     });
   }
-
-  populateChefEquipeList() {
-    // Call your service method to fetch chefEquipeList
-    // Example:
-    // this.equipeService.getUsers().subscribe(users => {
-    //   this.chefEquipeList = users;
-    // });
-    // Replace getUsers() with your actual service method to fetch users.
-  }
+ 
 }

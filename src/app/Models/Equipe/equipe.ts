@@ -7,7 +7,7 @@ export class Equipe {
     classement?: number;
     nbMemEquipe?: number;
     chefEquipe?: User;
-    //tournoi?: Tournoi;
+    tournoi?: Tournoi;
     membresEquipe?: User[];
     membresEnAttente?: User[];
 }

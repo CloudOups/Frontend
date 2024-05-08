@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Equipe } from '../Models/Equipe/equipe';
 import { Page } from '../Models/Page.interface';
+import { User } from '../Models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class EquipeService {
 
     return new HttpHeaders({
       Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json'
+     // 'Content-Type': 'application/json'
     });
   }
 
@@ -57,17 +58,21 @@ export class EquipeService {
     return this.httpClient.get<Equipe[]>(this.API_URL + this.ENDPOINT_EQUIPES + "/get/all",{ headers: this.getHeaders()});
   }
    // Method to send adhesion request for an equipe
-  demanderAdhesionEquipe(idEquipe: number, idUser: number): Observable<Equipe> {
-    return this.httpClient.put<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/demandeAdhesion/idequipe=" + idEquipe + "/idUser=" + idUser, { headers: this.getHeaders()});
+   demandeEquipe(idEquipe: number, user: User): Observable<Equipe> {
+    return this.httpClient.put<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/demandeAdhesion/idequipe=" + idEquipe , { headers: this.getHeaders()});
   }
 
+
   // Method to respond to adhesion request for an equipe
-  traiterAdhesionEquipe(idEquipe: number, idUser: number, reponse: string): Observable<Equipe> {
+  traiterEquipe(idEquipe: number, idUser: number, reponse: string): Observable<Equipe> {
     return this.httpClient.put<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/reponseAdhesion/idequipe=" + idEquipe + "/idUser=" + idUser + "/idreponse=" + reponse,{ headers: this.getHeaders()});
   }
 
   // Method to get an equipe by its name
   getEquipeByNom(nomEquipe: string): Observable<Equipe> {
     return this.httpClient.get<Equipe>(this.API_URL + this.ENDPOINT_EQUIPES + "/get/nom=" + nomEquipe,{ headers: this.getHeaders()});
+  }
+  getEquipeByNumTournoi(numTournoi: number): Observable<Equipe[]> {
+    return this.httpClient.get<Equipe[]>(`${this.API_URL}${this.ENDPOINT_EQUIPES}/get/numTournoi/${numTournoi}`, { headers: this.getHeaders() });
   }
 }
