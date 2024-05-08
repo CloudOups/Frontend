@@ -69,29 +69,28 @@
                     </div>
                 </div>
             </div>
-<!-- Section des événements populaires -->
-<section class="popular-events-section">
-    <!-- Titre des événements populaires -->
-    <h2>Événements populaires</h2>
-
-    <!-- Liste des événements populaires -->
-    <div class="popular-events-list">
-        <!-- Boucle sur les événements populaires -->
-        <div *ngFor="let event of popularEvents" class="popular-event">
-            <!-- Nom de l'événement et nombre de participants -->
-            <div class="event-details">
-                <h3>{{ event.nomevent }}</h3>
-                <p>{{ event.nbParticipants }} participants</p>
-            </div>
-
-            <!-- Barre de progression -->
-            <div class="progress-bar">
-                <div class="progress" [style.width.%]="(event.nbParticipants / event.nbParticipants) * 100"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
+            <section class="popular-events-section">
+                <!-- Titre des événements populaires -->
+                <h2>Événements populaires</h2>
+            
+                <!-- Liste des événements populaires -->
+                <div class="popular-events-list">
+                    <!-- Boucle sur les événements populaires -->
+                    <div *ngFor="let event of popularEvents" class="popular-event">
+                        <!-- Nom de l'événement et nombre de participants -->
+                        <div class="event-details">
+                            <h3>{{ event.nomevent }}</h3>
+                            <p>{{ event.nbParticipants }} participants</p>
+                        </div>
+            
+                        <!-- Barre de progression -->
+                        <div class="progress-bar">
+                            <div class="progress" [style.width.%]="(event.nbParticipants/3) * 100"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
 
        
           

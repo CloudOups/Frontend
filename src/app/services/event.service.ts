@@ -64,10 +64,19 @@ export class EventService {
     return this.http.get<Event[]>(`${this.baseUrl}/get/history`, { headers: this.getHeaders() });
   }
 
+  recommanderEvenements(user: User): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.baseUrl}/recommandations`,{ headers: this.getHeaders() });
+  }
+
   addEvent(event: any, image: File): Observable<any> {
     const formData = new FormData();
     formData.append('nomevent', event.nomevent);
     formData.append('img',image, image.name);
+    formData.append('categorie', event.categorie);
+    formData.append('dateDebut', event.dateDebut);
+    formData.append('dateFin', event.dateFin);
+    formData.append('location', event.location);
+    formData.append('nbParticipants', event.nbParticipants.toString());
     
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');

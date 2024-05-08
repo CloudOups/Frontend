@@ -1,12 +1,63 @@
-<form (ngSubmit)="addEvent()" enctype="multipart/form-data">
-    <div>
-        <label for="nomevent">Nom de l'événement:</label>
-        <input type="text" id="nomevent" name="nomevent" [(ngModel)]="event.nomevent" required>
+<app-sidemenu></app-sidemenu>
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!-- Breadcrumb -->
+        <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Tables</div>
+        </div>
+        <!-- End breadcrumb -->
+
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="card-title mb-0">Ajouter un événement</h5>
+                    <button class="btn btn-primary" routerLink="/addevent">Ajouter un événement</button>
+                </div>
+
+                <!-- Formulaire d'ajout d'événement -->
+                <form (ngSubmit)="addEvent()" enctype="multipart/form-data" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nomevent" class="form-label">Nom de l'événement :</label>
+                        <input type="text" id="nomevent" name="nomevent" class="form-control" [(ngModel)]="event.nomevent" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="image" class="form-label">Image :</label>
+                        <input type="file" id="image" name="image" class="form-control" (change)="onFileSelected($event)" accept="image/*" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="categorie" class="form-label">Catégorie :</label>
+                        <input type="text" id="categorie" name="categorie" class="form-control" [(ngModel)]="event.categorie" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="dateDebut" class="form-label">Date de début :</label>
+                        <input type="date" id="dateDebut" name="dateDebut" class="form-control" [(ngModel)]="event.dateDebut" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="dateFin" class="form-label">Date de fin :</label>
+                        <input type="date" id="dateFin" name="dateFin" class="form-control" [(ngModel)]="event.dateFin" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="nbParticipants" class="form-label">Nombre de participants :</label>
+                        <input type="number" id="nbParticipants" name="nbParticipants" class="form-control" [(ngModel)]="event.nbParticipants" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="location" class="form-label">Location :</label>
+                        <input type="text" id="location" name="location" class="form-control" [(ngModel)]="event.location" required>
+                    </div>
+                    
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+                <!-- End formulaire d'ajout d'événement -->
+            </div>
+        </div>
     </div>
-    <!-- Ajoutez d'autres champs d'événement selon vos besoins -->
-    <div>
-        <label for="image">Image:</label>
-        <input type="file" id="image" (change)="onFileSelected($event)" name="image" accept="image/*" [(ngModel)]="image" required>
-    </div>
-    <button type="submit" routerLink="/eventsback" >Ajouter</button>
-</form>
+</div>

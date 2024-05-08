@@ -39,6 +39,7 @@ import { ListEventbackComponent } from './Event/list-eventback/list-eventback.co
 import { UpdateEventComponent } from './Event/update-event/update-event.component';
 import { ParticipationHistoryComponent } from './Event/participation-history/participation-history.component';
 import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.component';
+import { DivHomeComponent } from './div-home/div-home.component';
 
 // import {  } from '';
 // import {  } from '';
@@ -81,6 +82,8 @@ const routes: Routes = [
  { path:'mesReservation', component: MesReservationComponent },
 
  {path:'confirmerReservation/:startTime/:endTime/:numTerrain/:prixReser',component:ConfirmartionReservationComponent},
+
+
 
 
  //************************************path rania*******************************

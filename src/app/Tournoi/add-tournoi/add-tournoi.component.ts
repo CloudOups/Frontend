@@ -39,7 +39,7 @@ export class AddTournoiComponent {
       if (response) {
         console.log('Tournoi added successfully!', response);
         alert('Tournoi ajouté avec succès!');
-        this.router.navigate(['/eventback']);
+        this.router.navigate(['/eventsback']);
         this.AddTournoiForm.reset();
       } else {
         console.error('Failed to add tournoi: Event full');
