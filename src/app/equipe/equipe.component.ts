@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EquipeService } from '../services/equipe.service';
 import { Equipe } from '../Models/Equipe/equipe';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-equipe',
@@ -34,7 +35,7 @@ ngOnInit(){
       }, error => {
         if (error.status === 500) {
           console.error('Erreur lors de la suppression du equipe :', error);
-          alert('Impossible de supprimer ce Equipe car il est associé à des réservations.');
+          Swal.fire('Impossible de supprimer ce Equipe car il est associé à des réservations.');
         } else {
           console.error('Erreur lors de la suppression du terr :', error);
         }

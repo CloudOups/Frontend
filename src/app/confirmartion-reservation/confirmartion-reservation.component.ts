@@ -61,7 +61,7 @@ ReservationForm= new FormGroup({
 save(){
   this.userService.getCurrentUser().subscribe(user => {
     if (user) {
-  this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,2,this.numTerrain).subscribe(response => {
+  this.reservationTerrainService.addReservationTerrain(this.ReservationForm.value as any,1,this.numTerrain).subscribe(response => {
     console.log('Reservation added successfully!', response);
     Swal.fire("Reservation done ! check your Email!!!!");
     this.router.navigate(['/mesReservation']);

@@ -9,13 +9,13 @@
           <div class="col-md-9">
             <h2>Liste des Reservations</h2>
 
-    <div class="breadcrumb mb-0">
-    <span class="primary-right-round"></span>
-    <div class="container">
+     <div class="breadcrumb mb-0">
+     <span class="primary-right-round"></span>
+       <div class="container">
         <h1 class="text-white">List des Reservations</h1>
-    </div></div>
-<div class="table-responsive">
-    <table class="table table-borderless datatable">
+     </div></div>
+      <div class="table-responsive">
+     <table class="table table-borderless datatable">
         
         <thead class="thead-light">
             <button class="btn btn-primary" [routerLink]="['/home']">ajouter une reservation</button>
@@ -62,15 +62,13 @@
                             </span>
                         </h2>
                     </td>
-                    <td>{{ res.user.userId }}</td>
+                    <td>{{ res.user.firstname }}</td>
                     <td>{{ res.dateDebut }}</td>
                     <td>{{ res.dateFin }}</td>
                     <td>{{ res.typeRes }}</td>
                     <td>{{ res.terrain.nomTerrain }}</td> 
                     <td>
                         <!-- Buttons for actions -->
-                        <button class="btn btn-primary"[routerLink]="['/updateterrain',res.numTerrain]">Edit</button>
-                        <button class="btn btn-danger"*ngIf="res.numTerrain">Delete</button>
                     </td>
                     
                 </tr>

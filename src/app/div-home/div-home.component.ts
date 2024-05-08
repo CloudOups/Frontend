@@ -33,9 +33,9 @@ navigateToReservation() {
 
     const time1 = new Date(this.startTime);
     const time2 = new Date(this.endTime);
-if (time1>time2)
+    if (time1>time2)
+      this.resetTimes();
 Swal.fire("Time debut ne peut pas etre inferieure a temps de fin")
-this.resetTimes();
   } else {
     console.error("Please select both start and end times.");
 }}

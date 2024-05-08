@@ -75,7 +75,7 @@ export class ListEventComponent implements OnInit{
         }, error => {
           if (error.status === 500) {
             console.error('Erreur lors de la suppression du Event :', error);
-            alert('Impossible de supprimer ce Event car il est associé à des tournois.');
+            Swal.fire('Impossible de supprimer ce Event car il est associé à des tournois.');
           } else {
             console.error('Erreur lors de la suppression du Event :', error);
           }

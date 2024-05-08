@@ -4,6 +4,7 @@ import { EquipeService } from '../services/equipe.service';
 import { User } from '../Models/user/user';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-demande',
@@ -28,7 +29,7 @@ export class ListDemandeComponent {
   fetchTeamRequests() {
     this.userService.getCurrentUser().subscribe(user => {
       if(user!=this.chefEquipe){
-        console.log('bakakakw user:', user);
+        console.log(' user:', user);
         this.equipeService.getEquipeById(this.numEquipe).subscribe(data => {
           console.log('Data from getEquipeById:', data); // Log the data received
           if (data.membresEnAttente ) {
@@ -48,11 +49,13 @@ console.log(idequipe,user,reponse)
       this.equipeService.traiterEquipe(idequipe,user.id!,reponse).subscribe(
         (equipe: any) => {
           // Handle success response here
+          Swal.fire("Team request processed successfully:")
           console.log('Team request processed successfully:', equipe);
           // Perform any additional actions if needed
         },
         (error: any) => {
           // Handle error response here
+          Swal.fire("Error processing team request:")
           console.error('Error processing team request:', error);
           // Perform any error handling or notification to the user
         }
