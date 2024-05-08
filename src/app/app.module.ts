@@ -67,6 +67,7 @@ import { ParticipationHistoryComponent } from './Event/participation-history/par
 import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.component';
 import { ListDemandeComponent } from './list-demande/list-demande.component';
 import { ListterrainfrontComponent } from './listterrainfront/listterrainfront.component';
+import { CodePromoComponent } from './code-promo/code-promo.component';
 
 
 @NgModule({
@@ -121,7 +122,8 @@ import { ListterrainfrontComponent } from './listterrainfront/listterrainfront.c
     ParticipationHistoryComponent,
     DemandeEquipeComponent,
     ListDemandeComponent,
-    ListterrainfrontComponent
+    ListterrainfrontComponent,
+    CodePromoComponent
   
   ],
   imports: [

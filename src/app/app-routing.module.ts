@@ -42,6 +42,7 @@ import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.componen
 import { DivHomeComponent } from './div-home/div-home.component';
 import { ListDemandeComponent } from './list-demande/list-demande.component';
 import { ListterrainfrontComponent } from './listterrainfront/listterrainfront.component';
+import { CodePromoComponent } from './code-promo/code-promo.component';
 
 // import {  } from '';
 // import {  } from '';
@@ -92,7 +93,7 @@ const routes: Routes = [
 
 
  //************************************path rania*******************************
-
+ { path : 'codepromo', component:CodePromoComponent},
  { path : 'tournois', component:ListTournoiComponent},
  { path :'addTournoi/:numevent', component: AddTournoiComponent},
  { path :'updatetournoi/:id', component: UpdateTournoiComponent},

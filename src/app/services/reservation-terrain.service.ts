@@ -5,6 +5,7 @@ import { ReservationTerrain } from '../Models/Reservation/reservation-terrain';
 import { Terrain } from '../Models/Terrain/terrain';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { Page } from '../Models/Page.interface';
+import { CodePromo } from '../Models/codePromo/code-promo';
 
 
 @Injectable({
@@ -127,5 +128,7 @@ if (sortBy) {
   validatePromoCode(promoCode: string): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.API_URL}${this.ENDPOINT_RESERVATIONS_TERRAINS}/validatePromoCode/${promoCode}`, { headers: this.getHeaders() });
   }
-
+  getallcodesPromo(): Observable<CodePromo[]> {
+    return this.httpClient.get<CodePromo[]>(this.API_URL + this.ENDPOINT_RESERVATIONS_TERRAINS +"/get/all/codepromo", { headers: this.getHeaders() });
+  }
 }

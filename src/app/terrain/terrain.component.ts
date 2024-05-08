@@ -58,7 +58,7 @@ attachImageUrl() {
       console.log('Terrain supprimé avec succès');
       this.refreshTerrain();
     }, error => {
-      if (error.status === 500) {
+      if (error.status === 403) {
         console.error('Erreur lors de la suppression du terrain :', error);
         Swal.fire("Impossible de supprimer ce Terrain car il est associé à des réservations.");
       } else {
