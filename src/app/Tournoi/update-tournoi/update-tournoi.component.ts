@@ -4,6 +4,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Tournoi } from 'src/app/Models/Tournoi/tournoi';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
 import { TypeTerrain } from 'src/app/Models/Terrain/terrain';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-tournoi',
@@ -64,7 +65,7 @@ export class UpdateTournoiComponent implements OnInit {
     this.tournoiService.updateTournoi(this.UpdateTournoiForm.value as any).subscribe(response => {
       // Handle response if needed
       console.log('Tournoi modified successfully!', response);
-      alert('Tournoi modifié avec succès!');
+      Swal.fire("Tournoi modifié avec succès!");
       this.router.navigate(['/tournois']);
 
       // Optionally, you can reset the form after successful submission

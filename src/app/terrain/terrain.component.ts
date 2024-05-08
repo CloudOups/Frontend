@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TerrainService } from '../services/terrain.service';
 import { Terrain } from '../Models/Terrain/terrain';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-terrain',
   templateUrl: './terrain.component.html',
@@ -59,7 +60,7 @@ attachImageUrl() {
     }, error => {
       if (error.status === 500) {
         console.error('Erreur lors de la suppression du terrain :', error);
-        alert('Impossible de supprimer ce Terrain car il est associé à des réservations.');
+        Swal.fire("Impossible de supprimer ce Terrain car il est associé à des réservations.");
       } else {
         console.error('Erreur lors de la suppression du terr :', error);
       }

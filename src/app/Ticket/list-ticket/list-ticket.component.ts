@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Event } from 'src/app/Models/Event/event';
 import { Ticket } from 'src/app/Models/Ticket/ticket';
 import { TicketService } from 'src/app/services/ticket.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-ticket',
@@ -28,7 +29,7 @@ export class ListTicketComponent {
     }, error => {
       if (error.status === 500) {
         console.error('Erreur lors de la suppression du ticket :', error);
-        alert('Impossible de supprimer ce ticket car il est associé à des réservations.');
+        Swal.fire("Impossible de supprimer ce ticket car il est associé à des réservations.");
       } else {
         console.error('Erreur lors de la suppression du ticket :', error);
       }

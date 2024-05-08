@@ -3,6 +3,7 @@ import { Equipe } from '../Models/Equipe/equipe';
 import { EquipeService } from '../services/equipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-equipe',
@@ -57,7 +58,7 @@ save() {
 this.equipeService.updateEquipe(this.UpdateEquipeForm.value as any).subscribe(response => {
     // Handle response if needed
     console.log('Equipe modified successfully!', response);
-    alert('Equipe modifié avec succès!');
+    Swal.fire('Equipe modifié avec succès!');
     this.router.navigate(['/equipes']);
 
     // Optionally, you can reset the form after successful submission

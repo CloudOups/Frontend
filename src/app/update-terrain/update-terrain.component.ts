@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { StatusTerrain } from '../Models/Terrain/statusTerrain';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-terrain',
@@ -57,7 +58,7 @@ save() {
   this.terrainService.updateTerrain(this.UpdateTerrainForm.value as any).subscribe(response => {
       // Handle response if needed
       console.log('Terrain modified successfully!', response);
-      alert('Terrain modifié avec succès!');
+      Swal.fire('Terrain modifié avec succès!');
       this.router.navigate(['/terrains']);
 
       // Optionally, you can reset the form after successful submission

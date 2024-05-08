@@ -4,6 +4,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { TournoiService } from '../../services/tournoi-service.service';
 import { TypeTerrain } from 'src/app/Models/Terrain/typeTerrain';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-tournoi',
@@ -38,12 +39,12 @@ export class AddTournoiComponent {
     this.trService.addTournoi(this.AddTournoiForm.value as any,this.numevent).subscribe(response => {
       if (response) {
         console.log('Tournoi added successfully!', response);
-        alert('Tournoi ajouté avec succès!');
+        Swal.fire('Tournoi ajouté avec succès!');
         this.router.navigate(['/eventsback']);
         this.AddTournoiForm.reset();
       } else {
         console.error('Failed to add tournoi: Event full');
-        alert('Événement complet ou pas de terrain disponible, désolé!');
+        Swal.fire('Événement complet ou pas de terrain disponible, désolé!');
       }
     }, error => {
       console.error('Error adding tournoi:', error);
