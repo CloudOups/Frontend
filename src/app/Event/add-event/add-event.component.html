@@ -34,12 +34,12 @@
 
                     <div class="col-md-6">
                         <label for="dateDebut" class="form-label">Date de début :</label>
-                        <input type="date" id="dateDebut" name="dateDebut" class="form-control" [(ngModel)]="event.dateDebut" required>
+                        <input type="datetime-local" id="dateDebut" name="dateDebut" class="form-control" [(ngModel)]="event.dateDebut" required>
                     </div>
 
                     <div class="col-md-6">
                         <label for="dateFin" class="form-label">Date de fin :</label>
-                        <input type="date" id="dateFin" name="dateFin" class="form-control" [(ngModel)]="event.dateFin" required>
+                        <input type="datetime-local" id="dateFin" name="dateFin" class="form-control" [(ngModel)]="event.dateFin" required>
                     </div>
 
                     <div class="col-md-6">
@@ -53,7 +53,9 @@
                     </div>
                     
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <button type="button" class="btn btn-secondary" [routerLink]="['/eventsback']">Retour</button>
+
+                        <button  type="submit" class="btn btn-primary" >Ajouter</button>
                     </div>
                 </form>
                 <!-- End formulaire d'ajout d'événement -->

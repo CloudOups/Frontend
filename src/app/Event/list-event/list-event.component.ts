@@ -13,18 +13,44 @@ export class ListEventComponent implements OnInit{
   listevents!: Event []
   url="http://localhost:4200/assets/img/events/"
 
+  currentPage = 0;
+  pageSize = 6;
+  totalPages = 0;
+  totalPagesArray: number[] = [];
+
+
   constructor(private evService: EventService){ }
   
   ngOnInit(): void {
     console.log('on init...')
-    this.evService.getEvents().subscribe(
-      data=>this.listevents=data)
-      console.log('Liste des Events rafraîchie avec succès', this.listevents);
+    this.geteventss();
 
   }
 
+  geteventss(): void {
+    this.evService.getAllEvents(this.currentPage, this.pageSize).subscribe(
+      response => {
+        this.listevents = response.content;
+        this.totalPages = response.totalPages;
+        this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+      },
+      error => {
+        console.error('Error fetching reservations: ', error);
+      }
+    );
+  }
   
+  goToPage(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    this.geteventss();
+  }
 
+  errorMessage: string | null = null;
+
+
+
+  
+  
   
 
   deleteEvent(id: number) {

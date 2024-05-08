@@ -1,15 +1,10 @@
-<header class="header header-sticky">
-    <div class="container-fluid">
-      <app-navbar></app-navbar>
-    </div>
-  </header>
-  
+<app-navbar></app-navbar>
   <div class="breadcrumb breadcrumb-list mb-0">
     <span class="primary-right-round"></span>
     <div class="container">
       <h1 class="text-white">Events</h1>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a routerLink="">Home</a></li>
         <li><a routerLink="/events">Events</a></li>
       </ul>
     </div>
@@ -19,19 +14,15 @@
     <div class="container">
       <section class="services">
         <div class="row">
-          <!-- Utilisation de *ngFor pour afficher chaque événement -->
           <div class="col-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let event of listevents">
             <div class="listing-item">
               <div class="listing-img">
                 <a [routerLink]="'/event-details/' + event.numevent">
                   <a href="coach-booking.html" class="academy-img">
-                    <!--img src="assets/img/events/event-02.jpg" alt="Booking"-->
                     <td><img [src]="'http://localhost:4200/assets/img/events/'+ event.image" alt="imageevent" style="max-width: 300px; max-height: 300px;" ></td>
                     </a>
-                  <!--img [src]="event.image" class="img-fluid" [alt]="event.nomevent"-->
                 </a>
                 <div class="date-info text-center">
-                  <!-- Affichage de la date de début de l'événement -->
                   <h2>{{ event.dateDebut | date:'dd' }}</h2>
                   <h6>{{ event.dateDebut | date:'MMM, yyyy' }}</h6>
                 </div>
@@ -46,7 +37,6 @@
                   </li>
                 </ul>
                 <h4 class="listing-title">
-                  <!-- Lien vers les détails de l'événement -->
                   <a [routerLink]="'/detailevent/' + event.numevent">{{ event.nomevent }}</a>
                   <td>
                     <button class="btn btn-outline-success" [routerLink]="['/detailevent',event.numevent]">Voir plus</button>
@@ -57,6 +47,21 @@
           </div>
         </div>
       </section>
+       <!-- Pagination -->
+       <div class="row justify-content-center">
+        <div class="col-auto">
+          <button class="btn btn-secondary" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+        </div>
+        <div class="col-auto">
+          <ng-container *ngFor="let page of totalPagesArray">
+            <button class="btn btn-secondary" (click)="goToPage(page - 1)" [class.active]="currentPage === page - 1">{{ page }}</button>
+          </ng-container>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-secondary" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Next</button>
+        </div>
+      </div>
+      <!-- End Pagination -->
     </div>
   </div>
   

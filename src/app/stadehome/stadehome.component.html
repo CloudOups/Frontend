@@ -14,8 +14,7 @@
                             </a>
                             <div class="card-body">
                                 <div class="fav-item-venues">
-                                    <span class="tag tag-blue">Featured</span>
-                                    <h5 class="tag tag-primary">$450<span>/hr</span></h5>
+                                    <span class="tag tag-primary">Recommendé</span>
                                 </div>
                                 <div class="list-reviews">
                                     <div class="d-flex align-items-center">
@@ -28,7 +27,6 @@
                                 <h3 class="card-title">
                                     <a href="venue-details.html">{{ event.nomevent }}</a>
                                 </h3>
-                                <p class="card-text">{{ event.nomevent }}</p>
                                 <ul class="listing-details-group">
                                     <li>
                                         <span>
@@ -41,9 +39,7 @@
                                         </span>
                                     </li>
                                 </ul>
-                                <div class="listing-button">
-                                    <a href="#" class="user-book-now"><span><i class="feather-calendar me-2"></i></span>Voir plus</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -51,7 +47,7 @@
             </div>
         </div>
         <div class="view-all text-center aos">
-            <a href="listing-grid.html" class="btn btn-secondary d-inline-flex align-items-center">View All Featured<span class="lh-1"><i class="feather-arrow-right-circle ms-2"></i></span></a>
+            <a routerLink="/events" class="btn btn-secondary d-inline-flex align-items-center">Decouvrez tous les évenements<span class="lh-1"><i class="feather-arrow-right-circle ms-2"></i></span></a>
         </div>
     </div>
 </section>

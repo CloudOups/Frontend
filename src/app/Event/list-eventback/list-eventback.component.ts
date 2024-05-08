@@ -13,6 +13,10 @@ export class ListEventbackComponent {
   popularEvents: Event[] = [];
   filteredEvents: Event[] = [];
   selectedFilter: string = 'complete'; 
+  currentPage = 0;
+  pageSize = 5;
+  totalPages = 0;
+  totalPagesArray: number[] = [];
 
 
   
@@ -21,11 +25,30 @@ export class ListEventbackComponent {
   ngOnInit(): void {
     console.log('on init...')
     this.loadAllEvents();
+    this.getEventss();
     this.evService.getEventsMostParticipation().subscribe(events => {
       this.popularEvents = events;
       //this.generatePieChart();
     });
   }
+
+  getEventss(): void {
+    this.evService.getAllEvents(this.currentPage, this.pageSize).subscribe(
+      response => {
+        this.listevents = response.content;
+        this.totalPages = response.totalPages;
+        this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1); // Generate array of page numbers
+      },
+      error => {
+        console.error('Error fetching reservations: ', error);
+      }
+    );
+  }
+  goToPage(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    this.getEventss();
+  }
+
 
   /*generatePieChart(): void {
     // Crée les données pour le pie chart en prenant les 5 premiers événements

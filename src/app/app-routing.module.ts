@@ -41,6 +41,7 @@ import { ParticipationHistoryComponent } from './Event/participation-history/par
 import { DemandeEquipeComponent } from './demande-equipe/demande-equipe.component';
 import { DivHomeComponent } from './div-home/div-home.component';
 import { ListDemandeComponent } from './list-demande/list-demande.component';
+import { ListterrainfrontComponent } from './listterrainfront/listterrainfront.component';
 
 // import {  } from '';
 // import {  } from '';
@@ -72,6 +73,8 @@ const routes: Routes = [
 
  //----------------------------------Path yassin--------------------------------
  {path:'terrains',component:TerrainComponent},
+ {path:'terrainsfront',component:ListterrainfrontComponent},
+
  {path:'reservationTerrain',component:ReservationTerrainComponent},
  {path:'equipes',component:EquipeComponent},
  {path:'addterrains',component:AddTerrainComponent},

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournoi } from 'src/app/Models/Tournoi/tournoi';
 import { TournoiService } from 'src/app/services/tournoi-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-tournoi',
@@ -51,7 +52,7 @@ export class ListTournoiComponent implements OnInit{
     }, error => {
       if (error.status === 500) {
         console.error('Erreur lors de la suppression du tournoi :', error);
-        alert('Impossible de supprimer ce tournoi car il est associé à des réservations.');
+        Swal.fire('Impossible de supprimer ce tournoi car il est associé à des réservations.');
       } else {
         console.error('Erreur lors de la suppression du tournoi :', error);
       }

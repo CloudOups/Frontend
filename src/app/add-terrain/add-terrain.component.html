@@ -29,9 +29,10 @@
   <h5>Types Terrain</h5>
 
    <select class="form-control" formControlName="typeTerrain">
-    <option *ngFor="let type of typeTerrain" >{{ type }}</option>
+    <option *ngFor="let type of typeTerrain" [value]="type">{{ type }}</option>
   </select>
    
+  
  
    <input type="submit"class="btn btn-primary" value="Save" (click)="save()"  [disabled]="AddTerrainForm.invalid">
  </form>

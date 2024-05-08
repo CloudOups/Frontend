@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Ticket } from '../Models/Ticket/ticket';
 import { AuthServiceService } from './auth-service.service';
 import { User } from '../Models/user/user';
+import { Page } from '../Models/Page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,15 @@ export class TicketService {
         catchError(this.handleError)
       );
     }
+
+    getAllTickets(page: number, size: number): Observable<Page<Ticket>> {
+      const params = new HttpParams()
+        .set('page', page.toString())
+        .set('size', size.toString());
+  
+      return this.http.get<Page<Ticket>>(this.baseUrl+"/get/withpagination", { params , headers: this.getHeaders()});
+    }
+  
   
     addTicket(ticket: Ticket, idevent: number): Observable<Ticket> {
       return this.http.post<Ticket>(`${this.baseUrl}/add/${idevent}`, ticket, { headers: this.getHeaders()});
@@ -59,14 +69,10 @@ export class TicketService {
       );
     }
   
-    /* participateEvent(eventId: number, userId: number): Observable<Ticket> {
-    const url = `${this.baseUrl}/participate/${eventId}/${userId}`;
-    return this.http.post<Ticket>(url, {});
-  }*/
 
-  participateEvent(eventId: number, user: User): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/participate/${eventId}`, user, { headers: this.getHeaders() });
-  }
+    participateEvent(eventId: number, user: User): Observable<any> {
+      return this.http.post<any>(`${this.baseUrl}/participate/${eventId}`, user, { headers: this.getHeaders() });
+    }
   
   
     private handleError(error: any) {
