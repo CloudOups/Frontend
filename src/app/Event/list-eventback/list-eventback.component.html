@@ -49,9 +49,7 @@
                                             <td>{{ event.nomevent }}</td>
                                             <td>{{ event.dateDebut | date:'dd/MM/yyyy' }}</td>
                                             <td>{{ event.location }}</td>
-                                            <td>
-                                                <button class="btn btn-outline-success" [routerLink]="['/updateEvent', event.numevent]">update</button>
-                                            </td>
+                                           
                                             <td>
                                                 <button class="btn btn-outline-success" *ngIf="event.numevent" (click)="deleteEvent(event.numevent)">supprimer</button>
                                             </td>
@@ -104,7 +102,7 @@
             
                         <!-- Barre de progression -->
                         <div class="progress-bar">
-                            <div class="progress" [style.width.%]="(event.nbParticipants/3) * 100"></div>
+                            <div class="progress" [style.width.%]="(event.nbParticipants/30) * 100"></div>
                         </div>
                     </div>
                 </div>

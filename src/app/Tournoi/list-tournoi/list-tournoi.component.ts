@@ -50,7 +50,7 @@ export class ListTournoiComponent implements OnInit{
     this.trService.deleteTournoi(id).subscribe(() => {
       this.refreshTournois();
     }, error => {
-      if (error.status === 500) {
+      if (error.status === 403) {
         console.error('Erreur lors de la suppression du tournoi :', error);
         Swal.fire('Impossible de supprimer ce tournoi car il est associé à des réservations.');
       } else {

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
+<div class="content"></div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-8">
@@ -19,9 +19,7 @@
                 <tr *ngFor="let tournoi of listtournois">
                   <td>
                     <div class="academy-info">
-                      <a href="#" class="academy-img">
-                        <img src="assets/img/booking/booking-02.jpg" alt="Booking">
-                      </a>
+                      
                       <div class="academy-content">
                         <h6><a href="#" data-bs-toggle="modal" data-bs-target="#upcoming-court">{{ tournoi.nomTournoi }}</a></h6>
                         <span>{{ tournoi.nomTournoi }}</span>

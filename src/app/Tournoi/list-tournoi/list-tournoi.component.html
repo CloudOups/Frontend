@@ -1,3 +1,11 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-3">
+          <app-sidemenu></app-sidemenu>
+      </div>
+
+      <div class="col-md-9">
+        <div class="content">
 <h3></h3>
 <div class="card dashboard-card flex-fill">
     <div class="card-header card-header-info">
@@ -40,9 +48,7 @@
     <td>
     <h4>{{tournoi.recompense}}</h4>
     </td>
-    <td>
-    <button class="btn btn-outline-success" [routerLink]="['/detailtournoi',tournoi.numTournoi]">detail</button>
-    </td>
+   
     <td>
         <button class="btn btn-outline-success" [routerLink]="['/updatetournoi', tournoi.numTournoi]">update</button>
     </td>
