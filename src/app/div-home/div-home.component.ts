@@ -23,7 +23,7 @@ startTime2!: string; // Property to store selected start time
 endTime2!: string;   // Property to store selected end time
 
 mostReser: Terrain[] = [];
-url="http://localhost:4200/assets/img/terrains/"  
+url="http://localhost:4200/assets/img/terrains/"
 
 constructor(private router: Router,private rs: ReservationTerrainService,http: HttpClient,private weatherService: WeatherServiceService) {}
 navigateToReservation() {
@@ -99,9 +99,9 @@ getTime(){
   });
 }
 getWeatherData() {
-  const API_KEY = '1634cd18fbcc5efb97ddaded3b951552'; 
-  const city = 'Ariana'; 
-  
+  const API_KEY = '1634cd18fbcc5efb97ddaded3b951552';
+  const city = 'Ariana';
+
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
   axios.get(apiUrl)

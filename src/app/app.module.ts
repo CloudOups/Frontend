@@ -124,7 +124,7 @@ import { CodePromoComponent } from './code-promo/code-promo.component';
     ListDemandeComponent,
     ListterrainfrontComponent,
     CodePromoComponent
-  
+
   ],
   imports: [
     BrowserModule,
@@ -139,7 +139,7 @@ import { CodePromoComponent } from './code-promo/code-promo.component';
     FormsModule,
    // IgxPieChartModule,
  //   IgxLegendModule,
-    
+
   ],
   providers: [BlogServiceService],
   bootstrap: [AppComponent]

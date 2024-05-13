@@ -27,38 +27,39 @@
           <li class="has-submenu">
             <a href="#">Terrain <i class="fas fa-chevron-down"></i></a>
             <ul class="submenu">
-              <li class="has-submenu">
-                <li class="nav-item">
-                  <a class="nav-link"routerLink="/terrains">List Terrains</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"routerLink="/home">ajouter reservation</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link"routerLink="/addterrains">Add Terrain</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link"routerLink="/equipes">Equipes</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link"routerLink="/mesReservation">mes Reservation</a>
-                  </li>
-        
+              <li class="has-submenu"></li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/terrains">List Terrains</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/home">ajouter reservation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/addterrains">Add Terrain</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/equipes">Equipes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/mesReservation"
+                  >mes Reservation</a
+                >
+              </li>
             </ul>
           </li>
           <li class="has-submenu">
             <a href="#">Evenements <i class="fas fa-chevron-down"></i></a>
             <ul class="submenu">
-              <li class="has-submenu">
-                <li class="nav-item">
-                  <a class="nav-link"routerLink="/events">Nos Evenements</a>
-                </li>
-                
-                  <li class="nav-item">
-                    <a class="nav-link"routerLink="/historiqueevent">Mon historique de participation</a>
-                  </li>
-              
-        
+              <li class="has-submenu"></li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/events">Nos Evenements</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/historiqueevent"
+                  >Mon historique de participation</a
+                >
+              </li>
             </ul>
           </li>
           <li class="has-submenu">
@@ -103,13 +104,13 @@
               <li><a href="coming-soon.html">Coming Soon</a></li>
             </ul>
           </li>
-        
-          <li class="has-submenu" >
+
+          <li class="has-submenu">
             <a routerLink="/listblog">Blog</a>
-         </li>
-       
-         <li><a routerLink="/eventsback">Contact Us</a></li>
-                   <li class="login-link">
+          </li>
+
+          <li><a routerLink="/eventsback">Contact Us</a></li>
+          <li class="login-link">
             <a href="register.html">Sign Up</a>
           </li>
           <li class="login-link">
@@ -136,12 +137,13 @@
             </div>
           </ng-template>
         </li>
-        <div *ngIf="userConnected;">
-        <li class="nav-item">           
-          <button class="nav-link btn btn-secondary" (click)="logout()" 
-            ><span><i class="feather-check-circle"></i></span>Logout</button>
-        </li>
-      </div>
+        <div *ngIf="userConnected">
+          <li class="nav-item">
+            <button class="nav-link btn btn-secondary" (click)="logout()">
+              <span><i class="feather-check-circle"></i></span>Logout
+            </button>
+          </li>
+        </div>
       </ul>
     </nav>
   </div>

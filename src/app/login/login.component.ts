@@ -16,26 +16,25 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router
   ) {}
+
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', Validators.required, Validators.email],
       password: ['', Validators.required],
     });
   }
-  submitForm() {
-    this.service.login(this.loginForm.value).subscribe((response) => {
-      console.log(response);
-      if (response.access_token) {
-        console.log('JWT Token:', response.access_token); // Check the value of JWT token
-        const jwtToken = response.access_token;
-        localStorage.setItem('jwt', jwtToken);
-        this.router.navigateByUrl('/home');
-      }
-    });
-  }
-  isLoggedIn(): boolean {
-    // Check if user is logged in by verifying if JWT token exists in local storage
-    return localStorage.getItem('jwt') !== null;
-  }
 
+  submitForm() {
+    this.service.login(this.loginForm.value).subscribe(
+      (response) => {
+        console.log(response);
+        // Redirige vers la page d'accueil après la connexion réussie
+        this.router.navigateByUrl('/home');
+      },
+      (error) => {
+        console.error(error);
+        // Gérez les erreurs de connexion ici
+      }
+    );
+  }
 }

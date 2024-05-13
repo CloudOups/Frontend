@@ -9,21 +9,9 @@ import { User } from '../Models/user/user' ;
 export class UserService {
   private baseUrl = 'http://localhost:8089/pi/api/v1/user';
 
-  constructor(private http: HttpClient) {
-    
-  }
-  private getHeaders(): HttpHeaders {
-    const jwt = localStorage.getItem('jwt');
-
-    return new HttpHeaders({
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json'
-    });
-  }
+  constructor(private http: HttpClient) {}
 
   getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/current`, { headers: this.getHeaders() });
+    return this.http.get<User>(`${this.baseUrl}/current`);
   }
-
-
-  }
+}
