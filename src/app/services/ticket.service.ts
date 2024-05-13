@@ -5,13 +5,14 @@ import { Ticket } from '../Models/Ticket/ticket';
 import { AuthServiceService } from './auth-service.service';
 import { User } from '../Models/user/user';
 import { Page } from '../Models/Page.interface';
+import { environment } from '../../environments/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
   
-  private baseUrl = 'http://localhost:8089/pi/ticket'; 
+  private baseUrl = environment.api_Url +'/pi/ticket'; 
 
   constructor(private http: HttpClient,private authService: AuthServiceService) { }
 

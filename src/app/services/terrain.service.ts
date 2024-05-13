@@ -6,12 +6,13 @@ import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { StatusTerrain } from '../Models/Terrain/statusTerrain';
 import { Page } from '../Models/Page.interface';
 import { AuthServiceService } from './auth-service.service';
+import { environment } from '../../environments/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TerrainService {
-  readonly API_URL = "http://localhost:8089/pi";
+  private API_URL = environment.api_Url + '/pi'; 
   readonly ENDPOINT_TERRAINS = "/terrain";
   constructor(private httpClient:HttpClient,private authService: AuthServiceService) { }
   

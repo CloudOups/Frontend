@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Equipe } from '../Models/Equipe/equipe';
 import { Page } from '../Models/Page.interface';
 import { User } from '../Models/user/user';
+import { environment } from '../../environments/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipeService {
 
-  readonly API_URL = "http://localhost:8089/pi";
+  readonly API_URL = environment.api_Url;
   readonly ENDPOINT_EQUIPES = "/equipe";
 
   constructor(private httpClient: HttpClient) { }

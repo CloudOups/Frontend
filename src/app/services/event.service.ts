@@ -5,13 +5,14 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
 import { User } from '../Models/user/user';
 import { Page } from '../Models/Page.interface';
+import { environment } from '../../environments/environement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private baseUrl = 'http://localhost:8089/pi/event'; 
+  private baseUrl = environment.api_Url+'/pi/event'; 
 
   constructor(private http: HttpClient,private authService: AuthServiceService) { }
 

@@ -78,7 +78,7 @@
                                 <li *ngFor="let comment of comments"
                                     class="author-group d-md-flex align-items-center justify-content-start">
                                     <div class="profile-pic">
-                                        <a href="javascript:void(0);" class="d-inline-block"><img alt="User"></a>
+                                        <a href="javascript:void(0);" class="d-inline-block"><img src="../../../../../../assets/img/profiles/avatar-01.jpg" alt="User"></a>
                                     </div>
                                     <div class="info">
                                         <div class="head d-flex align-items-center justify-content-start">
@@ -124,7 +124,7 @@
                                 <ul>
                                     <li class="author-group d-md-flex align-items-center justify-content-start">
                                         <div class="profile-pic">
-                                            <a href="javascript:void(0);" class="d-inline-block"><img alt="User"></a>
+                                            <a href="javascript:void(0);" class="d-inline-block"><img src="../../../../../../assets/img/profiles/avatar-01.jpg" alt="User"></a>
                                         </div>
                                         <div class="info">
                                             <div class="head d-flex align-items-center justify-content-start">
@@ -148,55 +148,59 @@
                  
                 </div>
             </div>
-        </div>
-        <section class="section dull-bg similar-list">
-            <div class="container">
-                <h2 class="text-center mb-40">Similar Listing</h2>
-                <div class="row">
-                    <div class="featured-slider-group ">
-                        <div class="  featured-venues-slider owl-theme">
-                            <div *ngFor=" let simpublication of publications" class="featured-venues-item">
-                                <div *ngIf="simpublication.category === publication.category && simpublication.sujet !== publication.sujet" class="listing-item mb-0">
-                                    <div class="listing-img">
-                                        <a href="blog-details.html">
-                                            <img alt="Venue">
-                                        </a>
-                                        <div class="fav-item-venues news-sports">
-                                            <span class="tag tag-blue">Badminton</span>
-                                            <div class="list-reviews coche-star">
-                                                <a href="javascript:void(0)" class="fav-icon">
-                                                    <i class="feather-heart"></i>
-                                                </a>
+            <section class="section dull-bg similar-list">
+                <div class="container">
+                    <h2 class="text-center mb-40">Similar Listing</h2>
+                    <div class="row">
+                        <div class="featured-slider-group ">
+                            <div class="  featured-venues-slider owl-theme">
+                                <div *ngFor=" let simpublication of publications" class="featured-venues-item">
+                                    <div *ngIf="(simpublication.category === publication.category) && (simpublication.sujet !== publication.sujet)" class="listing-item mb-0">
+                                        <div class="listing-img">
+                                            <a href="blog-details.html">
+                                                <img src="assets/img/venues/venues-08.jpg" alt="Venue">
+                                            </a>
+                                            <div class="fav-item-venues news-sports">
+                                                <span class="tag tag-blue">Badminton</span>
+                                                <div class="list-reviews coche-star">
+                                                    <a href="javascript:void(0)" class="fav-icon">
+                                                        <i class="feather-heart"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="listing-content news-content">
-                                        <div class="listing-venue-owner">
-                                            <div class="navigation">
-                                                <a href="javascript:void(0)"><img
-                                                         alt="User"> {{simpublication.user?.firstname}} {{simpublication.user?.lastname}}</a>
-                                                <span><i class="feather-calendar"></i>{{simpublication.dateCreation}}</span>
+                                        <div class="listing-content news-content">
+                                            <div class="listing-venue-owner">
+                                                <div class="navigation">
+                                                    <a href="javascript:void(0)"><img src="../../../../../../assets/img/profiles/avatar-01.jpg"
+                                                             alt="User"> {{simpublication.user?.firstname}} {{simpublication.user?.lastname}}</a>
+                                                    <span><i class="feather-calendar"></i>{{simpublication.dateCreation}}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <h3 class="listing-title blog-title">
-                                            <a routerLink="/blogdetails/{{ simpublication.numPub}}">
-                                                {{simpublication.sujet}}</a>
-                                        </h3>
-                                        <div class="listing-button read-new">
-                                            <ul class="nav">
-                                                <li><i class="feather-heart"></i>{{simpublication.likes}}</li>
-                                            </ul>
-                                            <span><img src="../../../assets/img/icons/clock.svg" alt="Icon">10 Min To Read</span>
+                                            <h3 class="listing-title blog-title">
+                                                <a routerLink="/blogdetails/{{ simpublication.numPub}}">
+                                                    {{simpublication.sujet}}</a>
+                                            </h3>
+                                            <div class="listing-button read-new">
+                                                <ul class="nav">
+                                                    <li><i class="feather-heart"></i>{{simpublication.likes}}</li>
+                                                </ul>
+                                                <span><img src="../../../assets/img/icons/clock.svg" alt="Icon">10 Min To Read</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+    
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+
+            
+        </div>
+     
     </div>
 
 

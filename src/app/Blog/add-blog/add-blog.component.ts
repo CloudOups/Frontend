@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogServiceService } from '../blog-service.service';
 import { Publication } from 'src/app/Models/Blog/publication';
-import { UserService } from '../../services/user.service'; // Update this path
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -38,8 +38,7 @@ export class AddBlogComponent implements OnInit {
       }
     });
   }
-
-  // Method to add a new blog
+// methode ta3 new blog baby 
   addBlog(): void {
     console.log('Blog Data:', this.newPublication);
   

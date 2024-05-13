@@ -5,13 +5,15 @@ import { catchError } from 'rxjs/operators';
 import { Tournoi } from '../Models/Tournoi/tournoi';
 import { Page } from '../Models/Page.interface';
 import { AuthServiceService } from './auth-service.service';
+import { environment } from '../../environments/environement';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TournoiService {
 
-  private baseUrl = 'http://localhost:8089/pi/tournoi'; 
+  private baseUrl = environment.api_Url + '/pi'; 
 
   constructor(private http: HttpClient,private authService: AuthServiceService) { }
 

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Publication } from '../Models/Blog/publication';
 import { Comment } from '../Models/Comment/comment';
 import { AuthServiceService } from '../services/auth-service.service';
+import { environment } from '../../environments/environement';
 
 
 
@@ -12,7 +13,7 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 
 export class BlogServiceService {
-  private baseUrl='http://localhost:8089/pi/publication' 
+  private baseUrl=environment.api_Url+'/pi/publication' 
 
   
 
@@ -54,7 +55,7 @@ export class BlogServiceService {
       headers: this.getHeaders(),
       responseType: 'text' as const
     };
-    return this.http.delete(`http://localhost:8089/pi/commentaire/delete/${id}`, options);
+    return this.http.delete(environment.api_Url+`/pi/commentaire/delete/${id}`, options);
   }
 
 
@@ -73,22 +74,10 @@ export class BlogServiceService {
 
   //   return `${this.baseUrl}/download/${photo}`;
   // }
-
-  //*********** comments */
   addComment(id: number,comment: Comment): Observable<any> {
     const headers = { 'Content-Type': 'application/json' };
-    return this.http.post<any>(`http://localhost:8089/pi/commentaire/addcommentaire/${id}`, comment,  { headers: this.getHeaders()});
+    return this.http.post<any>(environment.api_Url+`/pi/commentaire/addcommentaire/${id}`, comment,  { headers: this.getHeaders()});
     }
-
-
-
-
-
-
-
-
-
-
 
   approveBlog(id: number): Observable<any> {
     const headers = { 'Content-Type': 'application/json' };
@@ -99,7 +88,7 @@ export class BlogServiceService {
     return this.http.put(`${this.baseUrl}`+`/approveAll`,{ headers }, { headers: this.getHeaders()});
   }
   getCommentsForPublication(publicationId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`http://localhost:8089/pi/commentaire/get/byPublication/${publicationId}`, { headers: this.getHeaders()});
+    return this.http.get<Comment[]>(environment.api_Url+`/pi/commentaire/get/byPublication/${publicationId}`, { headers: this.getHeaders()});
   }
 
   likePublication(numPub: number): Observable<any> {

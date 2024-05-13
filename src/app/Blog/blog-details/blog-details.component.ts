@@ -5,7 +5,7 @@ import { BlogServiceService } from '../blog-service.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Comment } from 'src/app/Models/Comment/comment';
 import { UserService } from '../../services/user.service'; 
-import { Observable } from 'rxjs'; // Import Observable
+import { Observable } from 'rxjs'; 
 
 @Component({
   selector: 'app-blog-details',
@@ -85,7 +85,7 @@ encodeURL(url: string): string {
     this.blogService.getCommentsForPublication(blogId)
       .subscribe({
         next: (comments) => {
-          this.comments = comments; // Assign fetched comments to the comments array
+          this.comments = comments;
           console.log('Fetched comments:', this.comments);
         },
         error: (error) => {
@@ -176,7 +176,7 @@ encodeURL(url: string): string {
       .subscribe({
         next: (publications) => {
           this.publications = publications;
-          console.log('Fetched publications:', this.publications); // Log the fetched publications
+          console.log('Fetched publications:', this.publications); //test ya sa7bi 
         },
         error: (error) => {
           console.error(error);

@@ -6,6 +6,7 @@ import { Terrain } from '../Models/Terrain/terrain';
 import { TypeTerrain } from '../Models/Terrain/typeTerrain';
 import { Page } from '../Models/Page.interface';
 import { CodePromo } from '../Models/codePromo/code-promo';
+import { environment } from '../../environments/environement';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { CodePromo } from '../Models/codePromo/code-promo';
 })
 export class ReservationTerrainService {
 
-  readonly API_URL = "http://localhost:8089/pi";
+  private API_URL = environment.api_Url + '/pi'; 
   readonly ENDPOINT_RESERVATIONS_TERRAINS = "/reservation";
 
   constructor(private httpClient: HttpClient) { }
